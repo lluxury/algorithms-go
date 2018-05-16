@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"sort"
 
 	"github.com/Chyroc/algorithms-go/lib"
@@ -19,7 +18,7 @@ import (
 */
 
 func backtrackWithDup(list *[][]int, tempList []int, nums []int, start int) {
-	*list = append(*list, lib.ArrayDeepCopy(tempList))
+	*list = append(*list, lib.IntArrayDeepCopy(tempList))
 	for i := start; i < len(nums); i++ {
 		// skip duplicates
 		if i > start && nums[i] == nums[i-1] {
@@ -37,12 +36,12 @@ func subsetsWithDup(nums []int) [][]int {
 	return list
 }
 
-func Example_90() {
-	fmt.Printf("%v\n", subsetsWithDup([]int{}))
-	fmt.Printf("%v\n", subsetsWithDup([]int{1}))
-	fmt.Printf("%v\n", subsetsWithDup([]int{1, 2}))
-	fmt.Printf("%v\n", subsetsWithDup([]int{1, 2, 3}))
-	fmt.Printf("%v\n", subsetsWithDup([]int{1, 2, 3, 1}))
+func Example_90_subsetsWithDup() {
+	lib.ExamplePrint(subsetsWithDup([]int{}))
+	lib.ExamplePrint(subsetsWithDup([]int{1}))
+	lib.ExamplePrint(subsetsWithDup([]int{1, 2}))
+	lib.ExamplePrint(subsetsWithDup([]int{1, 2, 3}))
+	lib.ExamplePrint(subsetsWithDup([]int{1, 2, 3, 1}))
 
 	// Output:
 	// [[]]

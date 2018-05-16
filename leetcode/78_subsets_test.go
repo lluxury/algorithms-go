@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/Chyroc/algorithms-go/lib"
@@ -13,6 +12,7 @@ import (
 
 
 * 给一个非重复元素数据集set，求这个set的所有子集，如[1, 2]返回[[] [1] [1 2] [2]] (78)
+  * 结果是无序的
   * 遍历递归
     * 添加空元素（第一个元素）到结果集
     * 然后把第一个元素之后的元素append到第一个元素上（遍历），所得的结果加到返回的结果集
@@ -34,7 +34,7 @@ import (
 */
 
 func backtrack(list *[][]int, tempList []int, nums []int, start int) {
-	*list = append(*list, lib.ArrayDeepCopy(tempList))
+	*list = append(*list, lib.IntArrayDeepCopy(tempList))
 	for i := start; i < len(nums); i++ {
 		backtrack(list, append(tempList, nums[i]), nums, i+1)
 	}
@@ -70,11 +70,11 @@ func subsets_bit(nums []int) [][]int {
 	return list
 }
 
-func Example_78_res() {
-	fmt.Printf("%v\n", subsets([]int{}))
-	fmt.Printf("%v\n", subsets([]int{1}))
-	fmt.Printf("%v\n", subsets([]int{1, 2}))
-	fmt.Printf("%v\n", subsets([]int{1, 2, 3}))
+func Example_78_subsets_res() {
+	lib.ExamplePrint(subsets([]int{}))
+	lib.ExamplePrint(subsets([]int{1}))
+	lib.ExamplePrint(subsets([]int{1, 2}))
+	lib.ExamplePrint(subsets([]int{1, 2, 3}))
 
 	// Output:
 	// [[]]
@@ -83,11 +83,11 @@ func Example_78_res() {
 	// [[] [1] [1 2] [1 2 3] [1 3] [2] [2 3] [3]]
 }
 
-func Example_78_bit() {
-	fmt.Printf("%v\n", subsets_bit([]int{}))
-	fmt.Printf("%v\n", subsets_bit([]int{1}))
-	fmt.Printf("%v\n", subsets_bit([]int{1, 2}))
-	fmt.Printf("%v\n", subsets_bit([]int{1, 2, 3}))
+func Example_78_subsets_bit() {
+	lib.ExamplePrint(subsets_bit([]int{}))
+	lib.ExamplePrint(subsets_bit([]int{1}))
+	lib.ExamplePrint(subsets_bit([]int{1, 2}))
+	lib.ExamplePrint(subsets_bit([]int{1, 2, 3}))
 
 	// Output:
 	// [[]]
