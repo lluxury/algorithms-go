@@ -3,6 +3,8 @@ package leetcode
 import (
 	"fmt"
 	"math"
+
+	"github.com/Chyroc/algorithms-go/lib"
 )
 
 /*
@@ -32,9 +34,7 @@ import (
 */
 
 func backtrack(list *[][]int, tempList []int, nums []int, start int) {
-	temp := make([]int, len(tempList))
-	copy(temp, tempList)
-	*list = append(*list, temp)
+	*list = append(*list, lib.ArrayDeepCopy(tempList))
 	for i := start; i < len(nums); i++ {
 		backtrack(list, append(tempList, nums[i]), nums, i+1)
 	}
@@ -46,7 +46,7 @@ func subsets(nums []int) [][]int {
 	return list
 }
 
-func subsets2(nums []int) [][]int {
+func subsets_bit(nums []int) [][]int {
 	var list [][]int
 
 	m := int(math.Pow(float64(2), float64(len(nums))))
@@ -65,7 +65,7 @@ func subsets2(nums []int) [][]int {
 			numIndex--
 		}
 
-		list= append(list, l)
+		list = append(list, l)
 	}
 	return list
 }
@@ -84,10 +84,10 @@ func Example_78_res() {
 }
 
 func Example_78_bit() {
-	fmt.Printf("%v\n", subsets2([]int{}))
-	fmt.Printf("%v\n", subsets2([]int{1}))
-	fmt.Printf("%v\n", subsets2([]int{1, 2}))
-	fmt.Printf("%v\n", subsets2([]int{1, 2, 3}))
+	fmt.Printf("%v\n", subsets_bit([]int{}))
+	fmt.Printf("%v\n", subsets_bit([]int{1}))
+	fmt.Printf("%v\n", subsets_bit([]int{1, 2}))
+	fmt.Printf("%v\n", subsets_bit([]int{1, 2, 3}))
 
 	// Output:
 	// [[]]
