@@ -24,6 +24,7 @@ Output:
   * 本集合是有顺序的
   * for v in nums: 只要不在临时数据的就加到临时数据进行下一轮递归
   * tempList长度等于nums长度返回
+
 */
 
 func backtrackPermute(list *[][]int, tempList []int, nums []int) {
@@ -32,11 +33,12 @@ func backtrackPermute(list *[][]int, tempList []int, nums []int) {
 		return
 	}
 
+	tempListMap := make(map[int]bool)
+	for _, v := range tempList {
+		tempListMap[v] = true
+	}
+
 	for _, v := range nums {
-		tempListMap := make(map[int]bool)
-		for _, v := range tempList {
-			tempListMap[v] = true
-		}
 		if tempListMap[v] {
 			continue // element already exists, skip
 		}

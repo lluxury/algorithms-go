@@ -1,26 +1,24 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
-
 /*
 > https://leetcode.com/problems/valid-palindrome/description/
 
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
-Note: For the purpose of this problem, we define empty string as valid palindrome.
+For example,
+`"A man, a plan, a canal: Panama"` is a palindrome.
+`"race a car"` is not a palindrome.
 
-Example 1:
+Note:
+Have you consider that the string might be empty? This is a good question to ask during an interview.
 
-Input: "A man, a plan, a canal: Panama"
-Output: true
-Example 2:
+For the purpose of this problem, we define empty string as valid palindrome.
 
-Input: "race a car"
-Output: false
-
-* 回文字符串判断，忽略大小写并假设只有数字和字母
+- 验证是否是回文字符串（只计算字母和数字，忽略其他字符串）
 - i从前往后，j从后往前扫描，只要不一样就返回false
 - 这个循环里面，注意跳过非字母和数字
+
+
 */
 
 // isAlpha 是否是字母
@@ -46,12 +44,14 @@ func isPalindrome(s string) bool {
 	}
 
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+
 		for i < j && !isAlpha(int32(s[i])) {
 			i++
 		}
 		for i < j && !isAlpha(int32(s[j])) {
 			j--
 		}
+		println(i, j)
 
 		if !isAlphaEqual(int32(s[i]), int32(s[j])) {
 			return false
@@ -59,14 +59,4 @@ func isPalindrome(s string) bool {
 	}
 
 	return true
-}
-
-
-func Example_125_isPalindrome() {
-	lib.ExamplePrint(isPalindrome("A man, a plan, a canal: Panama"))
-	lib.ExamplePrint(isPalindrome("race a car"))
-
-	// Output:
-	// true
-	// false
 }

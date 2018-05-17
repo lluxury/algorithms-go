@@ -35,6 +35,7 @@ A solution set is:
 * 无序的
 * 对于[a, b]来说，先选a再选b和先选b再选a，效果是一样的，所以需要一个游标start记录遍历开始的位置
 * 如果是有序的，就不要游标
+
 */
 
 func backtrackCombinationSum(list *[][]int, nums []int, tempList []int, target int, start int) {
