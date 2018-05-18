@@ -37,7 +37,10 @@ The characters in J are distinct.
 
 */
 
-import "testing"
+import (
+	"testing"
+	"github.com/Chyroc/algorithms-go/test"
+)
 
 func numJewelsInStones(J string, S string) int {
 	var m = make(map[rune]bool)
@@ -54,14 +57,9 @@ func numJewelsInStones(J string, S string) int {
 	return n
 }
 
-func TestNumJewelsInStones(t *testing.T) {
-	n := numJewelsInStones("aA", "aAAbbbb")
-	if n != 3 {
-		t.Fatal()
-	}
-
-	n = numJewelsInStones("z", "ZZ")
-	if n != 0 {
-		t.Fatal()
-	}
+func Test_771(t *testing.T) {
+	test.Runs(t, numJewelsInStones, []*test.Case{
+		{Input: `aA\naAAbbbb`, Output: "3"},
+		{Input: `z\nZZ`, Output: "0"},
+	})
 }

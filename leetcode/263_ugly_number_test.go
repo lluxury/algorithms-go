@@ -1,6 +1,9 @@
 package leetcode
 
-import "fmt"
+import (
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
+)
 
 /*
 > https://leetcode.com/problems/ugly-number/description/
@@ -46,13 +49,10 @@ func isUgly(num int) bool {
 	return num == 1
 }
 
-func Example_263() {
-	fmt.Printf("%v\n", isUgly(6))
-	fmt.Printf("%v\n", isUgly(8))
-	fmt.Printf("%v\n", isUgly(14))
-
-	// Output:
-	// true
-	// true
-	// false
+func Test_263(t *testing.T) {
+	test.Runs(t, isUgly, []*test.Case{
+		{Input: "6", Output: "true"},
+		{Input: "8", Output: "true"},
+		{Input: "14", Output: "false"},
+	})
 }

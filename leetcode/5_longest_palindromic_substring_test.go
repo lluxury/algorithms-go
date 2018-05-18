@@ -1,7 +1,8 @@
 package leetcode
 
 import (
-	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 /*
@@ -52,15 +53,11 @@ func longestPalindrome(s string) string {
 	return s[start : start+offset]
 }
 
-func Example_5() {
-	lib.ExamplePrint(longestPalindrome(""))
-	lib.ExamplePrint(longestPalindrome("a"))
-	lib.ExamplePrint(longestPalindrome("abba"))
-	lib.ExamplePrint(longestPalindrome("cbbd"))
-
-	// Output:
-	//
-	// a
-	// abba
-	// bb
+func Test_5(t *testing.T) {
+	test.Runs(t, longestPalindrome, []*test.Case{
+		{Input: "", Output: ""},
+		{Input: "a", Output: "a"},
+		{Input: "abba", Output: "abba"},
+		{Input: "cbbd", Output: "bb"},
+	})
 }

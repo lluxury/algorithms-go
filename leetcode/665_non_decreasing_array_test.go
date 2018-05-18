@@ -41,7 +41,7 @@ Note: The `n` belongs to [1, 10,000].
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func checkPossibility(nums []int) bool {
@@ -75,8 +75,10 @@ func checkPossibility(nums []int) bool {
 }
 
 func TestT_665(t *testing.T) {
-	assert.Equal(t, true, checkPossibility([]int{4, 2, 3}))
-	assert.Equal(t, false, checkPossibility([]int{4, 2, 1}))
-	assert.Equal(t, false, checkPossibility([]int{3, 4, 2, 3}))
-	assert.Equal(t, true, checkPossibility([]int{-1, 4, 2, 3}))
+	test.Runs(t, checkPossibility, []*test.Case{
+		{Input: `[4, 2, 3]`, Output: "true"},
+		{Input: `[4, 2, 1]`, Output: "false"},
+		{Input: `[3, 4, 2, 3]`, Output: "false"},
+		{Input: `[-1, 4, 2, 3]`, Output: "true"},
+	})
 }

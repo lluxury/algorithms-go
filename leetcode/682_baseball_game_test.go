@@ -70,6 +70,7 @@ Every integer represented in the list will be between -30000 and 30000.
 import (
 	"strconv"
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func calPoints(ops []string) int {
@@ -105,18 +106,9 @@ func calPoints(ops []string) int {
 	return sum
 }
 
-func TestNumJewelsInStones_682(t *testing.T) {
-	{
-		n := calPoints([]string{"5", "2", "C", "D", "+"})
-		if n != 30 {
-			t.Fatal()
-		}
-	}
-
-	{
-		n := calPoints([]string{"5", "-2", "4", "C", "D", "9", "+", "+"})
-		if n != 27 {
-			t.Fatal()
-		}
-	}
+func Test_682(t *testing.T) {
+	test.Runs(t, calPoints, []*test.Case{
+		{Input: `[5, 2, C, D, +]`, Output: "30"},
+		{Input: "[5, -2, 4, C, D, 9, +, +]", Output: "27"},
+	})
 }

@@ -39,7 +39,7 @@ Note:
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func findRestaurant(list1 []string, list2 []string) []string {
@@ -69,6 +69,8 @@ func findRestaurant(list1 []string, list2 []string) []string {
 	return n[min]
 }
 
-func TestT_599(t *testing.T) {
-	assert.Equal(t, []string{"Shogun"}, findRestaurant([]string{"Shogun", "Tapioca Express", "Burger King", "KFC"}, []string{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"}))
+func Test_599(t *testing.T) {
+	test.Runs(t, findRestaurant, []*test.Case{
+		{Input: `[Shogun, Tapioca Express, Burger King, KFC]\n[Piatti, The Grill at Torrey Pines, Hungry Hunter Steakhouse, Shogun]`, Output: `[Shogun]`},
+	})
 }

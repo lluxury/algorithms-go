@@ -35,8 +35,8 @@ The boundaries of each input argument are 1 <= left <= right <= 10000.
 */
 
 import (
-	"reflect"
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func selfDividingNumbers(left int, right int) []int {
@@ -71,10 +71,8 @@ func selfDividingNumbers(left int, right int) []int {
 	return l
 }
 
-func TestNumJewelsInStones_728(t *testing.T) {
-	n := selfDividingNumbers(1, 22)
-	t.Log("", n)
-	if !reflect.DeepEqual(n, []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22}) {
-		t.Fatal()
-	}
+func Test_728(t *testing.T) {
+	test.Runs(t, selfDividingNumbers, []*test.Case{
+		{Input: `1\n22`, Output: "[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]"},
+	})
 }

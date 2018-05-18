@@ -34,7 +34,7 @@ Note: Length of the array will not exceed 10,000.
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func findLengthOfLCIS(nums []int) int {
@@ -61,9 +61,10 @@ func findLengthOfLCIS(nums []int) int {
 	return max
 }
 
-func TestT_674(t *testing.T) {
-	assert.Equal(t, 4, findLengthOfLCIS([]int{1, 3, 5, 7}))
-	assert.Equal(t, 3, findLengthOfLCIS([]int{1, 3, 5, 4, 7}))
-	assert.Equal(t, 1, findLengthOfLCIS([]int{2, 2, 2}))
-
+func Test_674(t *testing.T) {
+	test.Runs(t, findLengthOfLCIS, []*test.Case{
+		{Input: `[1, 3, 5, 7]`, Output: "4"},
+		{Input: `[1, 3, 5, 4, 7]`, Output: "3"},
+		{Input: `[2, 2, 2]`, Output: "1"},
+	})
 }

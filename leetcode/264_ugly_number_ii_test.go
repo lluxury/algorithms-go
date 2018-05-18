@@ -1,6 +1,10 @@
 package leetcode
 
-import "fmt"
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+)
 
 /*
 > https://leetcode.com/problems/ugly-number-ii/description/
@@ -60,15 +64,11 @@ func nthUglyNumber(n int) int {
 	return s[n-1]
 }
 
-func Example_264() {
-	fmt.Printf("%v\n", nthUglyNumber(0))
-	fmt.Printf("%v\n", nthUglyNumber(1))
-	fmt.Printf("%v\n", nthUglyNumber(10))
-	fmt.Printf("%v\n", nthUglyNumber(100))
-
-	// Output:
-	// -1
-	// 1
-	// 12
-	// 1536
+func Test_264(t *testing.T) {
+	test.Runs(t, nthUglyNumber, []*test.Case{
+		{Input: "0", Output: "-1"},
+		{Input: "1", Output: "1"},
+		{Input: "10", Output: "12"},
+		{Input: "100", Output: "1536"},
+	})
 }

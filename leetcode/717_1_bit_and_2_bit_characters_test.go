@@ -48,6 +48,7 @@ Note:
 
 import (
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func isOneBitCharacter(bits []int) bool {
@@ -63,23 +64,9 @@ func isOneBitCharacter(bits []int) bool {
 }
 
 func TestA_717(t *testing.T) {
-	{
-
-		if !isOneBitCharacter([]int{1, 0, 0}) {
-			t.Fatal("get false")
-		}
-	}
-
-	{
-
-		if !isOneBitCharacter([]int{0, 0}) {
-			t.Fatal("get false")
-		}
-	}
-
-	{
-		if isOneBitCharacter([]int{1, 1, 1, 0}) {
-			t.Fatal("get true")
-		}
-	}
+	test.Runs(t, isOneBitCharacter, []*test.Case{
+		{Input: `[1, 0, 0]`, Output: "true"},
+		{Input: `[0, 0]`, Output: "true"},
+		{Input: `[1, 1, 1, 0]`, Output: "false"},
+	})
 }
