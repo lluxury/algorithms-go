@@ -20,7 +20,6 @@ import (
 	"math"
 )
 
-
 // 高度差 / 是平衡树
 func check(p *TreeNode) (int, bool) {
 	if p == nil {

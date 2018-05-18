@@ -61,8 +61,14 @@ func nthUglyNumber(n int) int {
 }
 
 func Example_264() {
+	fmt.Printf("%v\n", nthUglyNumber(0))
+	fmt.Printf("%v\n", nthUglyNumber(1))
 	fmt.Printf("%v\n", nthUglyNumber(10))
+	fmt.Printf("%v\n", nthUglyNumber(100))
 
 	// Output:
+	// -1
+	// 1
 	// 12
+	// 1536
 }

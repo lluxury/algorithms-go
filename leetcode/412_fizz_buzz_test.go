@@ -50,6 +50,6 @@ func fizzBuzz(n int) []string {
 			s = append(s, fmt.Sprintf("%d", i))
 		}
 	}
-	
+
 	return s
 }

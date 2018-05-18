@@ -15,7 +15,6 @@ The maximum depth is the number of nodes along the longest path from the root no
 
 */
 
-
 func maxDepth(root *TreeNode) int {
 	if root == nil {
 		return 0

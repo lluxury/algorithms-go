@@ -44,9 +44,7 @@ type MinStack struct {
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
-	return MinStack{
-
-	}
+	return MinStack{}
 }
 
 func (this *MinStack) Push(x int) {

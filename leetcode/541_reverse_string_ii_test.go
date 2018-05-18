@@ -1,4 +1,5 @@
 package leetcode
+
 /*> https://leetcode.com/problems/reverse-string-ii/description/
 
 
@@ -49,7 +50,7 @@ func reverseStr(s string, k int) string {
 		if (i+1)*k > len(s) {
 			sub = s[i*k:]
 		} else {
-			sub = s[i*k:(i+1)*k]
+			sub = s[i*k : (i+1)*k]
 		}
 
 		if ji {

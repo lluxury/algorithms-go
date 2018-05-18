@@ -22,9 +22,9 @@ Special thanks to [@ifanchu](https://oj.leetcode.com/discuss/user/ifanchu) for a
 
 import (
 	"fmt"
-	"testing"
 	"math"
 	"strings"
+	"testing"
 
 	"github.com/stretchr/testify/assert"
 )

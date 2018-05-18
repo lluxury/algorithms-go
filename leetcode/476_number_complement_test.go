@@ -27,9 +27,9 @@ Explanation: The binary representation of 1 is 1 (no leading zero bits), and its
 */
 
 import (
-	"testing"
 	"math"
 	"strconv"
+	"testing"
 )
 
 func findComplement(num int) int {
@@ -84,4 +84,3 @@ func TestA_476(t *testing.T) {
 		}
 	}
 }
-

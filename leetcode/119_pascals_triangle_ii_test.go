@@ -16,7 +16,6 @@ Could you optimize your algorithm to use only O(k) extra space?
 
 */
 
-
 func getRow(rowIndex int) []int {
 	t := make([]int, rowIndex+1)
 	t[0] = 1

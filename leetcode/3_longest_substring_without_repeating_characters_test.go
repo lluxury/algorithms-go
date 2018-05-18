@@ -26,8 +26,8 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 */
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func longestString(s string) int {

@@ -28,8 +28,8 @@ For example:
 */
 
 import (
-	"testing"
 	"math"
+	"testing"
 )
 
 func titleToNumber(s string) int {

@@ -11,8 +11,6 @@ Given an array where elements are sorted in ascending order, convert it to a hei
 
 */
 
-
-
 func tobst(nums []int, left, right int) *TreeNode {
 	if left > right {
 		return nil
