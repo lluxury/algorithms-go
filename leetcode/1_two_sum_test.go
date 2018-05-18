@@ -22,7 +22,7 @@ return [0, 1].
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func func1(nums []int, target int) []int {
@@ -63,8 +63,14 @@ func func3(nums []int, target int) []int {
 	return []int{}
 }
 
-func TestFunc_1(t *testing.T) {
-	assert.Equal(t, []int{0, 1}, func1([]int{2, 7, 11, 15}, 9))
-	assert.Equal(t, []int{0, 1}, func2([]int{2, 7, 11, 15}, 9))
-	assert.Equal(t, []int{1, 0}, func3([]int{2, 7, 11, 15}, 9))
+func Test_1(t *testing.T) {
+	test.Runs(t, func1, []*test.Case{
+		{Input: `[2, 7, 11, 15]\n9`, Output: "[0, 1]"},
+	})
+	test.Runs(t, func2, []*test.Case{
+		{Input: `[2, 7, 11, 15]\n9`, Output: "[0, 1]"},
+	})
+	test.Runs(t, func3, []*test.Case{
+		{Input: `[2, 7, 11, 15]\n9`, Output: "[1, 0]"},
+	})
 }
