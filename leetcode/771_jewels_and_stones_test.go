@@ -38,8 +38,8 @@ The characters in J are distinct.
 */
 
 import (
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func numJewelsInStones(J string, S string) int {

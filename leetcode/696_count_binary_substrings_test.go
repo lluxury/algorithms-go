@@ -46,8 +46,8 @@ Note:
 
 import (
 	"fmt"
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func countBinarySubstrings(s string) int {

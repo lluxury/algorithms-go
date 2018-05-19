@@ -16,31 +16,6 @@ func StringArrayDeepCopy(nums []string) []string {
 	return temp
 }
 
-// ArrayEquals ...
-func ArrayEquals(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-
-	for i := 0; i < len(a); i++ {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-
-	return true
-}
-
-// ArrayContain ...
-func ArrayContain(s [][]int, b []int) bool {
-	for _, a := range s {
-		if ArrayEquals(a, b) {
-			return true
-		}
-	}
-	return false
-}
-
 // ExamplePrint ...
 func ExamplePrint(v interface{}) {
 	fmt.Printf("%v\n", v)

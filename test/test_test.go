@@ -1,8 +1,19 @@
 package test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/lib"
+)
 
 func TestRunCase(t *testing.T) {
+	t.Run("ListNode", func(t *testing.T) {
+		Runs(t, func(node *lib.ListNode) *lib.ListNode { return node.Clone() }, []*Case{
+			{Input: `1 -> 2 -> 3`, Output: "1 -> 2->3"},
+			{Input: `1`, Output: "1"},
+		})
+	})
+
 	t.Run("(int)->int", func(t *testing.T) {
 		Runs(t, func(a int) int { return a + 1 }, []*Case{
 			{Input: `1`, Output: "2"},

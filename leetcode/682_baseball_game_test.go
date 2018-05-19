@@ -68,9 +68,9 @@ Every integer represented in the list will be between -30000 and 30000.
 */
 
 import (
+	"github.com/Chyroc/algorithms-go/test"
 	"strconv"
 	"testing"
-	"github.com/Chyroc/algorithms-go/test"
 )
 
 func calPoints(ops []string) int {

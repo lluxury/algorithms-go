@@ -47,8 +47,8 @@ Note:
 */
 
 import (
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func isOneBitCharacter(bits []int) bool {

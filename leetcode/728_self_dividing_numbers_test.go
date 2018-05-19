@@ -35,8 +35,8 @@ The boundaries of each input argument are 1 <= left <= right <= 10000.
 */
 
 import (
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func selfDividingNumbers(left int, right int) []int {
