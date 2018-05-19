@@ -1,7 +1,11 @@
 package leetcode
 
 import (
+	"testing"
+
 	"github.com/Chyroc/algorithms-go/lib"
+	"reflect"
+	"fmt"
 )
 
 /*
@@ -61,11 +65,11 @@ func combinationSum(candidates []int, target int) [][]int {
 	return list
 }
 
-func Example_39_combinationSum() {
-	lib.ExamplePrint(combinationSum([]int{2, 3, 6, 7}, 7))
-	lib.ExamplePrint(combinationSum([]int{2, 3, 5}, 8))
-
-	// Output:
-	// [[2 2 3] [7]]
-	// [[2 2 2 2] [2 3 3] [3 5]]
+func Test_39(t *testing.T) {
+	if result := combinationSum([]int{2, 3, 6, 7}, 7); !reflect.DeepEqual(result, [][]int{{2, 2, 3}, {7}}) {
+		panic(fmt.Sprintf("get %v", result))
+	}
+	if result := combinationSum([]int{2, 3, 5}, 8); !reflect.DeepEqual(result, [][]int{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}}) {
+		panic(fmt.Sprintf("get %v", result))
+	}
 }

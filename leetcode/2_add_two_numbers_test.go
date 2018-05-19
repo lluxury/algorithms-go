@@ -1,7 +1,5 @@
 package leetcode
 
-import "github.com/stretchr/testify/assert"
-
 /*
 > https://leetcode.com/problems/add-two-numbers/description/
 
@@ -20,11 +18,14 @@ Output: 7 -> 0 -> 8
 
 import (
 	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+	"github.com/Chyroc/algorithms-go/lib"
 )
 
 // 链表节点分别相加
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	l3 := &ListNode{}
+func addTwoNumbers(l1 *lib.ListNode, l2 *lib.ListNode) *lib.ListNode {
+	l3 := &lib.ListNode{}
 	l := l3
 
 	add := 0
@@ -50,7 +51,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		add = z / 10
 
 		if l1 != nil || l2 != nil || add != 0 {
-			l3.Next = &ListNode{}
+			l3.Next = &lib.ListNode{}
 			l3 = l3.Next
 		} else {
 			l3.Next = nil
@@ -61,69 +62,9 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 func TestFunc(t *testing.T) {
-	assert.Nil(t, nil)
-
-	{
-		var l1 = &ListNode{
-			Val: 5,
-			Next: &ListNode{
-				Val:  5,
-				Next: nil,
-			},
-		}
-		var l2 = &ListNode{
-			Val:  5,
-			Next: nil,
-		}
-		l3 := addTwoNumbers(l1, l2)
-
-		assert.Equal(t, 0, l3.Val)
-		assert.Equal(t, 6, l3.Next.Val)
-		assert.Nil(t, l3.Next.Next)
-	}
-
-	{
-		var l1 = &ListNode{
-			Val: 2,
-			Next: &ListNode{
-				Val: 4,
-				Next: &ListNode{
-					Val:  3,
-					Next: nil,
-				},
-			},
-		}
-		var l2 = &ListNode{
-			Val: 5,
-			Next: &ListNode{
-				Val: 6,
-				Next: &ListNode{
-					Val:  4,
-					Next: nil,
-				},
-			},
-		}
-		l3 := addTwoNumbers(l1, l2)
-
-		assert.Equal(t, 7, l3.Val)
-		assert.Equal(t, 0, l3.Next.Val)
-		assert.Equal(t, 8, l3.Next.Next.Val)
-		assert.Nil(t, l3.Next.Next.Next)
-	}
-
-	{
-		var l1 = &ListNode{
-			Val:  5,
-			Next: nil,
-		}
-		var l2 = &ListNode{
-			Val:  5,
-			Next: nil,
-		}
-		l3 := addTwoNumbers(l1, l2)
-
-		assert.Equal(t, 0, l3.Val)
-		assert.Equal(t, 1, l3.Next.Val)
-		assert.Nil(t, l3.Next.Next)
-	}
+	test.Runs(t, addTwoNumbers, []*test.Case{
+		{Input: `5 -> 5 \n 5`, Output: "0 -> 6"},
+		{Input: `2 -> 4 -> 3 \n 5 -> 6 -> 4`, Output: "7 -> 0 -> 8"},
+		{Input: `5 \n 5`, Output: "0 -> 1"},
+	})
 }

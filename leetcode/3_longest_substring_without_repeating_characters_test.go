@@ -26,8 +26,9 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 */
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func longestString(s string) int {
@@ -52,8 +53,9 @@ func longestString(s string) int {
 }
 
 func TestFunc2(t *testing.T) {
-	assert.Nil(t, nil)
-	assert.Equal(t, 3, longestString("abcabcbb"))
-	assert.Equal(t, 1, longestString("bbbbb"))
-	assert.Equal(t, 3, longestString("pwwkew"))
+	test.Runs(t, longestString, []*test.Case{
+		{Input: `abcabcbb`, Output: "3"},
+		{Input: `bbbbb`, Output: "1"},
+		{Input: `pwwkew`, Output: "3"},
+	})
 }

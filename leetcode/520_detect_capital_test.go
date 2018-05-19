@@ -34,6 +34,7 @@ Note: The input will be a non-empty word consisting of uppercase and lowercase l
   - 从第二个字母开始，所有字母必须一样
 
 */
+
 func isLowwer(r rune) bool {
 	return r >= 97 && r <= 122
 }

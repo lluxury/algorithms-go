@@ -26,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 var d = make(map[string]int)
@@ -61,8 +61,10 @@ func rob(nums []int) int {
 	return data
 }
 
-func TestT_198(t *testing.T) {
-	assert.Equal(t, 7, rob([]int{4, 2, 3}))
-	assert.Equal(t, 3, rob([]int{1, 3, 1}))
-	assert.Equal(t, 2, rob([]int{1, 1, 1, 1}))
+func Test_198(t *testing.T) {
+	test.Runs(t, rob, []*test.Case{
+		{Input: `[4, 2, 3]`, Output: "7"},
+		{Input: `[1, 3, 1]`, Output: "3"},
+		{Input: `[1, 1, 1, 1]`, Output: "2"},
+	})
 }

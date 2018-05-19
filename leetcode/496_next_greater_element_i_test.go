@@ -32,6 +32,7 @@ Note:
 - 然后遍历小数组，对于每一个数，看看是不是在哈希表里面，并且其后面有大于其本身的
 
 */
+
 func nextGreaterElement(findNums []int, nums []int) []int {
 	set := make(map[int]int, 0)
 	for k, v := range nums {

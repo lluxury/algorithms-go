@@ -74,7 +74,7 @@ func checkPossibility(nums []int) bool {
 	return false
 }
 
-func TestT_665(t *testing.T) {
+func Test_665(t *testing.T) {
 	test.Runs(t, checkPossibility, []*test.Case{
 		{Input: `[4, 2, 3]`, Output: "true"},
 		{Input: `[4, 2, 1]`, Output: "false"},

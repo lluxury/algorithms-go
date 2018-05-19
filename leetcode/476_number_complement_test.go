@@ -30,6 +30,8 @@ import (
 	"math"
 	"strconv"
 	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func findComplement(num int) int {
@@ -69,18 +71,9 @@ func findComplement(num int) int {
 	return twoToTen(rev(tenToTwo(num)))
 }
 
-func TestA_476(t *testing.T) {
-	{
-		n := findComplement(5)
-		if n != 2 {
-			t.Fatal("get", n)
-		}
-	}
-
-	{
-		n := findComplement(1)
-		if n != 0 {
-			t.Fatal("get", n)
-		}
-	}
+func Test_476(t *testing.T) {
+	test.Runs(t, findComplement, []*test.Case{
+		{Input: `5`, Output: "2"},
+		{Input: `1`, Output: "0"},
+	})
 }

@@ -29,6 +29,7 @@ For example:
 
 import (
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func convertToTitle(n int) string {
@@ -46,18 +47,9 @@ func convertToTitle(n int) string {
 	return s
 }
 
-func TestA_168(t *testing.T) {
-	{
-		n := convertToTitle(26)
-		if n != "Z" {
-			t.Fatal("get", n)
-		}
-	}
-
-	{
-		n := convertToTitle(28)
-		if n != "AB" {
-			t.Fatal("get", n)
-		}
-	}
+func Test_168(t *testing.T) {
+	test.Runs(t, convertToTitle, []*test.Case{
+		{Input: `26`, Output: "Z"},
+		{Input: `28`, Output: "AB"},
+	})
 }

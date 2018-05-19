@@ -25,7 +25,11 @@ Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 ```
 */
 
-import "math"
+import (
+	"math"
+	"testing"
+	"github.com/Chyroc/algorithms-go/test"
+)
 
 func countPrimes(n int) int {
 	if n <= 1 {
@@ -58,12 +62,9 @@ func countPrimes(n int) int {
 	return res
 }
 
-//func main() {
-//	if x := countPrimes(10); x != 4 {
-//		panic(x)
-//	}
-//	if x := countPrimes(0); x != 0 {
-//		panic(x)
-//	}
-//}
-//
+func Test_204(t *testing.T) {
+	test.Runs(t, countPrimes, []*test.Case{
+		{Input: `10`, Output: "4"},
+		{Input: `0`, Output: "0"},
+	})
+}

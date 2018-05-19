@@ -22,6 +22,7 @@ The length of input array is a positive integer and will not exceed 10,000
 - 输入1连续最长的值
 
 */
+
 func findMaxConsecutiveOnes(nums []int) int {
 	c := 0
 	m := 0

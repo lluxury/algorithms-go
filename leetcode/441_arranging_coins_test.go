@@ -44,6 +44,7 @@ Because the 4th row is incomplete, we return 3.
 
 import (
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func rev(n, x int) int {
@@ -65,17 +66,8 @@ func arrangeCoins(n int) int {
 }
 
 func Test_441(t *testing.T) {
-	{
-
-		if 2 != arrangeCoins(5) {
-			t.Fatal("get", arrangeCoins(5))
-		}
-	}
-
-	{
-
-		if 3 != arrangeCoins(8) {
-			t.Fatal("get", arrangeCoins(8))
-		}
-	}
+	test.Runs(t, arrangeCoins, []*test.Case{
+		{Input: `5`, Output: "2"},
+		{Input: `8`, Output: "3"},
+	})
 }

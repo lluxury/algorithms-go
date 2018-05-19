@@ -29,7 +29,7 @@ Follow up:
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func intersect(nums1 []int, nums2 []int) []int {
@@ -56,6 +56,8 @@ func intersect(nums1 []int, nums2 []int) []int {
 	return d
 }
 
-func TestT_350(t *testing.T) {
-	assert.Equal(t, []int{2, 2}, intersect([]int{1, 2, 2, 1}, []int{2, 2}))
+func Test_350(t *testing.T) {
+	test.Runs(t, intersect, []*test.Case{
+		{Input: `[1, 2, 2, 1] \n [2, 2]`, Output: "[2, 2]"},
+	})
 }

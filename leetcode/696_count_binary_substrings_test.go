@@ -45,7 +45,6 @@ Note:
 */
 
 import (
-	"fmt"
 	"github.com/Chyroc/algorithms-go/test"
 	"testing"
 )
@@ -76,11 +75,10 @@ func countBinarySubstrings(s string) int {
 		}
 	}
 
-	fmt.Printf("%#v\n", group)
 	return sum
 }
 
-func TestA_696(t *testing.T) {
+func Test_696(t *testing.T) {
 	test.Runs(t, countBinarySubstrings, []*test.Case{
 		{Input: `00110011`, Output: "6"},
 		{Input: `00110`, Output: "3"},

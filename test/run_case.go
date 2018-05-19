@@ -38,12 +38,17 @@ var nilValue = reflect.New(reflect.TypeOf((*interface{})(nil)).Elem()).Elem()
 // parseParam 这里需要自定义string转化
 //
 // 参数是string / reflect.Type，返回值是reflect.Value
+// string("") => zero value
 // string(1), int => int(1)
 // string([1,2,3]), slice(int) => []int{1,2,3}
 // string(2 -> 4 -> 3)/Serialization => Serialization()
 func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, error) {
 	var r reflect.Value
 	param = strings.TrimSpace(param)
+
+	if param == "" {
+		return reflect.Zero(typ), nil
+	}
 
 	switch typ.Kind() {
 	case reflect.Ptr:
@@ -138,8 +143,6 @@ func Run(t *testing.T, c *Case) {
 	}
 
 	out := fv.Call(in)
-
-	fmt.Printf("out %v\n", out[0])
 
 	// out 有三个，call返回，ft.Out(i)的，output的
 	for i := 0; i < ft.NumOut(); i++ {

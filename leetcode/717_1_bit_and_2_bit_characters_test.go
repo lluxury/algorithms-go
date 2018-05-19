@@ -63,7 +63,7 @@ func isOneBitCharacter(bits []int) bool {
 	}
 }
 
-func TestA_717(t *testing.T) {
+func Test_717(t *testing.T) {
 	test.Runs(t, isOneBitCharacter, []*test.Case{
 		{Input: `[1, 0, 0]`, Output: "true"},
 		{Input: `[0, 0]`, Output: "true"},

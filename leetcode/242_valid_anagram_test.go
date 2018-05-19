@@ -24,7 +24,7 @@ What if the inputs contain unicode characters? How would you adapt your solution
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func isAnagram(s string, t string) bool {
@@ -58,8 +58,9 @@ func isAnagram(s string, t string) bool {
 	return true
 }
 
-func TestT_242(t *testing.T) {
-	assert.Equal(t, true, isAnagram("abc", "bac"))
-	assert.Equal(t, false, isAnagram("aacc", "aaac"))
-
+func Test_242(t *testing.T) {
+	test.Runs(t, isAnagram, []*test.Case{
+		{Input: `abc \n bac`, Output: "true"},
+		{Input: `aacc \n aaac`, Output: "false"},
+	})
 }

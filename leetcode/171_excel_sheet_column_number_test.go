@@ -30,6 +30,7 @@ For example:
 import (
 	"math"
 	"testing"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func titleToNumber(s string) int {
@@ -43,18 +44,9 @@ func titleToNumber(s string) int {
 	return n
 }
 
-func TestA_171(t *testing.T) {
-	{
-		n := titleToNumber("Z")
-		if n != 26 {
-			t.Fatal("get", n)
-		}
-	}
-
-	{
-		n := titleToNumber("AB")
-		if n != 28 {
-			t.Fatal("get", n)
-		}
-	}
+func Test_171(t *testing.T) {
+	test.Runs(t, titleToNumber, []*test.Case{
+		{Input: "Z", Output: `26`},
+		{Input: "AB", Output: `28`},
+	})
 }

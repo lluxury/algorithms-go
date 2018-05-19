@@ -21,6 +21,9 @@ Given `1->1->2->3->3`, return `1->2->3`.
 import (
 	"strconv"
 	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+	"github.com/Chyroc/algorithms-go/lib"
 )
 
 func (l *ListNode) String() string {
@@ -32,7 +35,7 @@ func (l *ListNode) String() string {
 	return s
 }
 
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates(head *lib.ListNode) *lib.ListNode {
 	if head == nil {
 		return nil
 	}
@@ -53,38 +56,9 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	return head
 }
 
-func TestA_83(t *testing.T) {
-	{
-		p := ListNode{
-			Val: 1,
-			Next: &ListNode{
-				Val: 1,
-				Next: &ListNode{
-					Val:  2,
-					Next: nil,
-				},
-			},
-		}
-
-		p2 := deleteDuplicates(&p)
-		if "12" != p2.String() {
-			t.Fatal("get", p2.String())
-		}
-	}
-
-	{
-		p := ListNode{}
-
-		p2 := deleteDuplicates(&p)
-		if "0" != p2.String() {
-			t.Fatal("get", p2.String())
-		}
-	}
-
-	{
-		p2 := deleteDuplicates(nil)
-		if nil != p2 {
-			t.Fatal("get", p2)
-		}
-	}
+func Test_83(t *testing.T) {
+	test.Runs(t, deleteDuplicates, []*test.Case{
+		{Input: `1 -> 1 -> 2`, Output: "1 -> 2"},
+		{Input: ``, Output: ""},
+	})
 }

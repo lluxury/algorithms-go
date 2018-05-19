@@ -36,7 +36,7 @@ Output: False
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func checkRecord(s string) bool {
@@ -76,7 +76,9 @@ func checkRecord(s string) bool {
 	return true
 }
 
-func TestT_551(t *testing.T) {
-	assert.Equal(t, true, checkRecord("PPALLP"))
-	assert.Equal(t, false, checkRecord("PPALLL"))
+func Test_551(t *testing.T) {
+	test.Runs(t, checkRecord, []*test.Case{
+		{Input: `PPALLP`, Output: "true"},
+		{Input: `PPALLL`, Output: "false"},
+	})
 }

@@ -29,7 +29,7 @@ Output: "bacdfeg"
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func reverse(s string) string {
@@ -65,6 +65,8 @@ func reverseStr(s string, k int) string {
 	return ss
 }
 
-func TestT_541(t *testing.T) {
-	assert.Equal(t, "bacdfeg", reverseStr("abcdefg", 2))
+func Test_541(t *testing.T) {
+	test.Runs(t, reverseStr, []*test.Case{
+		{Input: `abcdefg \n 2`, Output: "bacdfeg"},
+	})
 }
