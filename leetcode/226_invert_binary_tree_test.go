@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/invert-binary-tree/description/
 
@@ -28,7 +30,7 @@ This problem was inspired by [this original tweet](https://twitter.com/mxcl/stat
 
 */
 
-func invertTree(root *TreeNode) *TreeNode {
+func invertTree(root *lib.TreeNode) *lib.TreeNode {
 	if root == nil {
 		return nil
 	}

@@ -77,6 +77,10 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 //
 // 时间复杂度：是一个递归，每次抛弃a或者b个长度，这个长度大概是off的一半，即O(log(m+n))
 //
+// 还使用到了动态规划：
+//   * 短数组长度为0，返回长数组的第off个数
+//   * 求第1个数，返回两个数组的第一个元素的最小值
+//   * 其余的，从两个数组的前面一共取x个，然后抛弃较小的那一端（x就是k）
 func findKth(num1, num2 []int, num1_len, num2_len, off int, start_1, start_2 int) int {
 	// 我们规定第一个数组比较小，所以num1_len > num2_len，调换顺序
 	if num1_len > num2_len {

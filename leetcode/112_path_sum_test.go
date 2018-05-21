@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/path-sum/description/
 
@@ -26,7 +28,7 @@ return true, as there exist a root-to-leaf path `5->4->11->2` which sum is 22.
 
 */
 
-func hasPathSum(root *TreeNode, sum int) bool {
+func hasPathSum(root *lib.TreeNode, sum int) bool {
 	if root == nil {
 		return false
 	}

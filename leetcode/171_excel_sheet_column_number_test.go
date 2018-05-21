@@ -28,9 +28,9 @@ For example:
 */
 
 import (
+	"github.com/Chyroc/algorithms-go/test"
 	"math"
 	"testing"
-	"github.com/Chyroc/algorithms-go/test"
 )
 
 func titleToNumber(s string) int {

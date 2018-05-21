@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/merge-two-binary-trees/description/
 
@@ -32,7 +34,7 @@ Note: The merging process must start from the root nodes of both trees.
 
 */
 
-func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
+func mergeTrees(t1 *lib.TreeNode, t2 *lib.TreeNode) *lib.TreeNode {
 	if t2 == nil {
 		return t1
 	}

@@ -17,11 +17,12 @@ For this problem, a height-balanced binary tree is defined as a binary tree in w
 */
 
 import (
+	"github.com/Chyroc/algorithms-go/lib"
 	"math"
 )
 
 // 高度差 / 是平衡树
-func check(p *TreeNode) (int, bool) {
+func check(p *lib.TreeNode) (int, bool) {
 	if p == nil {
 		return 0, true
 	}
@@ -44,7 +45,7 @@ func check(p *TreeNode) (int, bool) {
 	return 1 + int(math.Max(float64(leftHigh), float64(rightHigh))), true
 }
 
-func isBalanced(root *TreeNode) bool {
+func isBalanced(root *lib.TreeNode) bool {
 	_, ok := check(root)
 	return ok
 }

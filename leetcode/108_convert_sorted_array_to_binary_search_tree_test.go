@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
 
@@ -11,20 +13,20 @@ Given an array where elements are sorted in ascending order, convert it to a hei
 
 */
 
-func tobst(nums []int, left, right int) *TreeNode {
+func tobst(nums []int, left, right int) *lib.TreeNode {
 	if left > right {
 		return nil
 	}
 
 	mid := (left + right) / 2
-	root := &TreeNode{Val: nums[mid]}
+	root := &lib.TreeNode{Val: nums[mid]}
 	root.Left = tobst(nums, left, mid-1)
 	root.Right = tobst(nums, mid+1, right)
 
 	return root
 }
 
-func sortedArrayToBST(nums []int) *TreeNode {
+func sortedArrayToBST(nums []int) *lib.TreeNode {
 	if len(nums) == 0 {
 		return nil
 	}

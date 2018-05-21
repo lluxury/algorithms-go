@@ -76,3 +76,8 @@ func (node *ListNode) Marshal() (string, error) {
 	}
 	return strings.Join(s, "->"), nil
 }
+
+func (node *ListNode) String() string {
+	s, _ := node.Marshal()
+	return s
+}

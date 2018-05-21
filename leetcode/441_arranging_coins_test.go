@@ -43,8 +43,8 @@ Because the 4th row is incomplete, we return 3.
 */
 
 import (
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func rev(n, x int) int {

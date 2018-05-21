@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/symmetric-tree/description/
 
@@ -34,12 +36,12 @@ Bonus points if you could solve it both recursively and iteratively.
 
 */
 
-func reverse_101(root *TreeNode) *TreeNode {
+func reverse_101(root *lib.TreeNode) *lib.TreeNode {
 	if root == nil {
 		return root
 	}
 
-	var root2 = &TreeNode{Val: root.Val}
+	var root2 = &lib.TreeNode{Val: root.Val}
 
 	root2.Right = reverse_101(root.Left)
 	root2.Left = reverse_101(root.Right)
@@ -47,6 +49,6 @@ func reverse_101(root *TreeNode) *TreeNode {
 	return root2
 }
 
-func isSymmetric(root *TreeNode) bool {
+func isSymmetric(root *lib.TreeNode) bool {
 	return isSameTree(root, reverse_101(root))
 }

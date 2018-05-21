@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/same-tree/description/
 
@@ -13,7 +15,7 @@ Two binary trees are considered equal if they are structurally identical and the
 
 */
 
-func isSameTree(p *TreeNode, q *TreeNode) bool {
+func isSameTree(p *lib.TreeNode, q *lib.TreeNode) bool {
 	if p == nil && q == nil {
 		return true
 	} else if q == nil || p == nil {

@@ -19,21 +19,11 @@ Given `1->1->2->3->3`, return `1->2->3`.
 */
 
 import (
-	"strconv"
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 )
-
-func (l *ListNode) String() string {
-	s := ""
-	for l != nil {
-		s = s + strconv.Itoa(l.Val)
-		l = l.Next
-	}
-	return s
-}
 
 func deleteDuplicates(head *lib.ListNode) *lib.ListNode {
 	if head == nil {

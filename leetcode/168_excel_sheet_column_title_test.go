@@ -28,8 +28,8 @@ For example:
 */
 
 import (
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 func convertToTitle(n int) string {

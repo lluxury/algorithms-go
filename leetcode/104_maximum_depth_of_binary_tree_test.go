@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
 
@@ -15,7 +17,7 @@ The maximum depth is the number of nodes along the longest path from the root no
 
 */
 
-func maxDepth(root *TreeNode) int {
+func maxDepth(root *lib.TreeNode) int {
 	if root == nil {
 		return 0
 	}

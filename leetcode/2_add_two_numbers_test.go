@@ -19,8 +19,8 @@ Output: 7 -> 0 -> 8
 import (
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 // 链表节点分别相加

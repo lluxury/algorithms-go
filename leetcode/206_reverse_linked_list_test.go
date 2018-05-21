@@ -1,5 +1,7 @@
 package leetcode
 
+import "github.com/Chyroc/algorithms-go/lib"
+
 /*
 > https://leetcode.com/problems/reverse-linked-list/description/
 
@@ -30,10 +32,9 @@ A linked list can be reversed either iteratively or recursively. Could you imple
 
 */
 
-func reverseList(head *ListNode) *ListNode {
-
-	var prev *ListNode = nil
-	var curr *ListNode = head
+func reverseList(head *lib.ListNode) *lib.ListNode {
+	var prev *lib.ListNode = nil
+	var curr *lib.ListNode = head
 
 	for curr != nil {
 		tmp := curr.Next
@@ -45,7 +46,7 @@ func reverseList(head *ListNode) *ListNode {
 	return prev
 }
 
-func reverseList2(head *ListNode) *ListNode {
+func reverseList2(head *lib.ListNode) *lib.ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}

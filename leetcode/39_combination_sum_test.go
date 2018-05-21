@@ -3,9 +3,9 @@ package leetcode
 import (
 	"testing"
 
+	"fmt"
 	"github.com/Chyroc/algorithms-go/lib"
 	"reflect"
-	"fmt"
 )
 
 /*
