@@ -101,9 +101,12 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 		}
 		param = strings.TrimPrefix(param, "[")
 		param = strings.TrimSuffix(param, "]")
+		r = reflect.MakeSlice(reflect.SliceOf(typ.Elem()), 0, 0)
+		if param == `` {
+			return r, nil
+		}
 		s2 := strings.Split(param, ",")
 
-		r = reflect.MakeSlice(reflect.SliceOf(typ.Elem()), 0, 0)
 		for _, v := range s2 {
 			paramValue, err := parseParam(t, v, typ.Elem())
 			if err != nil {
@@ -113,6 +116,12 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 		}
 	case reflect.Struct:
 		return nilValue, fmt.Errorf("unsupport type(%v)", reflect.Struct)
+	case reflect.Float64:
+		f, err := strconv.ParseFloat(param, 64)
+		if err != nil {
+			return nilValue, err
+		}
+		return reflect.ValueOf(f), nil
 	default:
 		return nilValue, fmt.Errorf("not support %s", typ.Kind())
 	}

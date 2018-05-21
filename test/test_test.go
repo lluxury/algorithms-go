@@ -7,6 +7,12 @@ import (
 )
 
 func TestRunCase(t *testing.T) {
+	t.Run("init", func(t *testing.T) {
+		Runs(t, func(a []int) int { return len(a) }, []*Case{
+			{Input: `[]`, Output: `0`},
+		})
+	})
+
 	t.Run("ListNode", func(t *testing.T) {
 		Runs(t, func(node *lib.ListNode) *lib.ListNode { return node.Clone() }, []*Case{
 			{Input: `1 -> 2 -> 3`, Output: "1 -> 2->3"},

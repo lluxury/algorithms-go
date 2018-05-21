@@ -29,6 +29,14 @@ n does not exceed 1690.
   * 如果2乘了一次，那么就不能再乘以数组中的这个相同的数字了，所以需要三变量存储2，3，5分别需要与数组中的哪个数字相乘
   * 那么，第n个加入的就是要求的数字
 */
+func min3(a, b, c int) int {
+	if a > b {
+		return min(b, c)
+	} else {
+		return min(a, c)
+	}
+}
+
 func nthUglyNumber(n int) int {
 	if n == 1 {
 		return 1
@@ -47,7 +55,7 @@ func nthUglyNumber(n int) int {
 			y5 = s[t5] * 5
 		)
 
-		m := min(y2, y3, y5)
+		m := min3(y2, y3, y5)
 		s = append(s, m)
 
 		if m == y2 {
