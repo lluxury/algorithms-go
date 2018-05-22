@@ -1,9 +1,10 @@
 package leetcode
 
 import (
-	"github.com/Chyroc/algorithms-go/lib"
 	"testing"
-	"github.com/stretchr/testify/assert"
+
+	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 /*
@@ -67,44 +68,8 @@ func back_637(root *lib.TreeNode, dep int, sum *[][]int) {
 }
 
 func Test_637(t *testing.T) {
-	{
-		x := averageOfLevels(&lib.TreeNode{
-			Val: 3,
-			Left: &lib.TreeNode{
-				Val: 9,
-			},
-			Right: &lib.TreeNode{
-				Val: 20,
-				Left: &lib.TreeNode{
-					Val: 15,
-				},
-				Right: &lib.TreeNode{
-					Val: 7,
-				},
-			},
-		})
-
-		as := assert.New(t)
-		as.Len(x, 3)
-		as.Equal(float64(3), x[0])
-		as.Equal(14.5, x[1])
-		as.Equal(float64(11), x[2])
-	}
-
-	{
-		x := averageOfLevels(&lib.TreeNode{
-			Val: 5,
-			Left: &lib.TreeNode{
-				Val: 2,
-			},
-			Right: &lib.TreeNode{
-				Val: -3,
-			},
-		})
-
-		as := assert.New(t)
-		as.Len(x, 2)
-		as.Equal(float64(5), x[0])
-		as.Equal(float64(-0.5), x[1])
-	}
+	test.Runs(t, averageOfLevels, []*test.Case{
+		{Input: `(3,9,(20,15,7))`, Output: `[3,14.5,11]`},
+		{Input: `(5,2,-3)`, Output: `[5,-0.5]`},
+	})
 }

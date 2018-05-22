@@ -2,8 +2,8 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 	"testing"
-	"github.com/stretchr/testify/assert"
 )
 
 /*
@@ -62,39 +62,8 @@ func back_653(root *lib.TreeNode, k int, m *map[int]bool) bool {
 }
 
 func Test_653(t *testing.T) {
-	as := assert.New(t)
-
-	{
-		x := findTarget(&lib.TreeNode{
-			Val: 2,
-			Left: &lib.TreeNode{
-				Val: 1,
-			},
-			Right: &lib.TreeNode{
-				Val: 3,
-			},
-		}, 4)
-
-		as.True(x)
-	}
-
-	t.SkipNow()
-
-	{
-		x := findTarget(&lib.TreeNode{
-			Val: 5,
-			Left: &lib.TreeNode{
-				Val:   3,
-				Left:  &lib.TreeNode{Val: 2},
-				Right: &lib.TreeNode{Val: 4},
-			},
-			Right: &lib.TreeNode{
-				Val:   6,
-				Right: &lib.TreeNode{Val: 7},
-			},
-		}, 9)
-
-		as.True(x)
-	}
-
+	test.Runs(t, findTarget, []*test.Case{
+		{Input: `(2,1,3) \n 4`, Output: `true`},
+		{Input: `(5,(3,2,4),(6,,7)) \n 9`, Output: `true`},
+	})
 }
