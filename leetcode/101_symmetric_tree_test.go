@@ -1,6 +1,10 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import (
+	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
+)
 
 /*
 > https://leetcode.com/problems/symmetric-tree/description/
@@ -51,4 +55,11 @@ func reverse_101(root *lib.TreeNode) *lib.TreeNode {
 
 func isSymmetric(root *lib.TreeNode) bool {
 	return isSameTree(root, reverse_101(root))
+}
+
+func Test_101(t *testing.T) {
+	test.Runs(t, isSymmetric, []*test.Case{
+		{Input: `(1,(2,3,4),(2,4,3))`, Output: `true`},
+		{Input: `(1,(2,,3),(2,,3))`, Output: `false`},
+	})
 }

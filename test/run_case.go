@@ -1,13 +1,13 @@
 package test
 
 import (
-	"bytes"
 	"fmt"
 	"reflect"
 	"strconv"
 	"strings"
 	"testing"
 
+	"github.com/Chyroc/algorithms-go/lib"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -73,6 +73,8 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 
 			if !errValue.IsNil() {
 				return nilValue, fmt.Errorf("%s", errValue.Interface())
+			} else if returnInterface.IsNil() {
+				return reflect.New(typ).Elem(), nil
 			}
 
 			r = returnInterface.Elem().Convert(typ)
@@ -103,7 +105,7 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 			return r, nil
 		}
 
-		s2, err := splitWithToken(param, '[', ']')
+		s2, err := lib.SplitWithToken(param, '[', ']')
 		if err != nil {
 			return nilValue, err
 		}
@@ -115,8 +117,6 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 			}
 			r = reflect.Append(r, paramValue)
 		}
-	case reflect.Struct:
-		return nilValue, fmt.Errorf("unsupport type(%v)", reflect.Struct)
 	case reflect.Float64:
 		f, err := strconv.ParseFloat(param, 64)
 		if err != nil {
@@ -165,50 +165,4 @@ func Run(t *testing.T, c *Case) {
 		as.Equal(ithCallOut.Kind(), ithCallRealOut.Convert(ithCallOutType).Kind())
 		as.Equal(ithCallOut.Interface(), ithCallRealOut.Convert(ithCallOutType).Interface())
 	}
-}
-
-func splitWithToken(s string, pre, suf rune) ([]string, error) {
-	if !strings.HasPrefix(s, string(pre)) || !strings.HasSuffix(s, string(suf)) {
-		return nil, fmt.Errorf("invalid string(%s): pre(%v) and suf(%v)", s, pre, suf)
-	}
-
-	s = strings.Replace(s, " ", "", -1)
-	s = s[1 : len(s)-1]
-	if strings.Count(s, "[") == 0 && strings.Count(s, "]") == 0 {
-		return strings.Split(s, ","), nil
-	} else if strings.Count(s, ",") == 0 {
-		return []string{s}, nil
-	}
-
-	var result []string
-	var tokenCount int
-	var buf bytes.Buffer
-	for k, v := range s {
-		// TODO: 优化
-		if k == 0 {
-			buf.WriteRune(v)
-		} else if k == len(s)-1 {
-			buf.WriteRune(v)
-			result = append(result, buf.String())
-			buf.Reset()
-		} else if tokenCount == 0 {
-			if v == ',' {
-				result = append(result, buf.String())
-				buf.Reset()
-			} else {
-				buf.WriteRune(v)
-			}
-		} else {
-			buf.WriteRune(v)
-		}
-
-		switch v {
-		case pre:
-			tokenCount++
-		case suf:
-			tokenCount--
-		}
-	}
-
-	return result, nil
 }

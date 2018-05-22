@@ -1,6 +1,10 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import (
+	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
+)
 
 /*
 > https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
@@ -29,4 +33,11 @@ func maxDepth(root *lib.TreeNode) int {
 	}
 
 	return 1 + rightDep
+}
+
+func Test_104(t *testing.T) {
+	test.Runs(t, maxDepth, []*test.Case{
+		{Input: `(1,(2,3,4),(2,4,3))`, Output: `3`},
+		{Input: `(1,(2,,3),(2,(1,2,3),3))`, Output: `4`},
+	})
 }

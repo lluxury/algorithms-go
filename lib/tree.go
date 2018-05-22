@@ -3,7 +3,6 @@ package lib
 import (
 	"bytes"
 	"fmt"
-	"regexp"
 	"strconv"
 	"strings"
 )
@@ -20,8 +19,6 @@ func (t *TreeNode) String() string {
 	return s
 }
 
-var treeReg = regexp.MustCompile(`(\d*),(\(\d*,\d*,\d*\)|\d*),(\(\d*,\d*,\d*\)|\d*)`)
-
 func treeNodeUnmarshal(data string) (*TreeNode, error) {
 	node, err := new(TreeNode).Unmarshal(data)
 	if err != nil {
@@ -37,6 +34,9 @@ func treeNodeUnmarshal(data string) (*TreeNode, error) {
 }
 
 func treeNodeUnmarshalAll(data, left, right string) (*TreeNode, error) {
+	if data == "" || data == "()" {
+		return nil, nil
+	}
 	var tree = new(TreeNode)
 	var err error
 
@@ -59,46 +59,26 @@ func treeNodeUnmarshalAll(data, left, right string) (*TreeNode, error) {
 }
 
 func (t *TreeNode) Unmarshal(data string) (interface{}, error) {
-	if data == "" {
+	if data == "" || data == "()" {
 		return nil, nil
 	}
 
 	startWithLeftBrackets := strings.HasPrefix(data, `(`)
 	startWithRightBrackets := strings.HasSuffix(data, `)`)
 	if startWithLeftBrackets && startWithRightBrackets {
-		// ()
-		data = strings.TrimSuffix(strings.TrimPrefix(data, `(`), `)`)
-
-		if data == "" {
-			return nil, nil
+		results, err := SplitWithToken(data, '(', ')')
+		if err != nil {
+			return nil, err
 		}
 
 		var tree = new(TreeNode)
-		var err error
 
-		// ,数量
-		commaCount := strings.Count(data, `,`)
-
-		// 0 ''
-		// 1 1,x
-		// 2 1,x,y
-		if commaCount < 3 {
-			var datas = strings.Split(data, `,`)
-			var left, right string
-			if commaCount > 0 {
-				left = datas[1]
-			}
-			if commaCount == 2 {
-				right = datas[2]
-			}
-			tree, err = treeNodeUnmarshalAll(datas[0], left, right)
-		} else {
-			result := treeReg.FindStringSubmatch(data)
-			if len(result) != 4 {
-				return nil, fmt.Errorf("result(%v) len(%d) is invalid", result, len(result))
-			}
-			tree, err = treeNodeUnmarshalAll(result[1], result[2], result[3])
+		for len(results) < 3 {
+			results = append(results, "")
 		}
+
+		tree, err = treeNodeUnmarshalAll(results[0], results[1], results[2])
+
 		if err != nil {
 			return nil, err
 		}
@@ -142,4 +122,19 @@ func (t *TreeNode) Marshal() (string, error) {
 		buf.WriteString(`)`)
 		return buf.String(), nil
 	}
+}
+
+func (t *TreeNode) Dump() {
+	t.dump("")
+}
+
+func (t *TreeNode) dump(indent string) {
+	if t == nil {
+		//fmt.Printf(indent+"<nil>\n")
+		return
+	}
+
+	fmt.Printf(indent+"%d\n", t.Val)
+	t.Left.dump(indent + "  ")
+	t.Right.dump(indent + "  ")
 }
