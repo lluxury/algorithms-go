@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/stretchr/testify/assert"
 	"strings"
 )
 
@@ -44,6 +45,12 @@ func TestRunCase(t *testing.T) {
 			{Input: `[1,2,3]`, Output: "true"},
 			{Input: `[1]`, Output: "false"},
 		})
+		Runs(t, func(s [][]int) int { return s[1][1] }, []*Case{
+			{Input: `[[1],[2,3]]`, Output: "3"},
+		})
+		Runs(t, func(s [][][]int) int { return s[1][1][1] }, []*Case{
+			{Input: `[[[1],[1,1]],[[1],[1,3]]]`, Output: "3"},
+		})
 	})
 
 	t.Run("external type", func(t *testing.T) {
@@ -52,4 +59,23 @@ func TestRunCase(t *testing.T) {
 			{Input: `1`, Output: "1"},
 		})
 	})
+}
+
+func Test_splitWithToken(t *testing.T) {
+	as := assert.New(t)
+
+	var cases = []string{`[1]`, `[[1]]`, `[1,23]`, `[1,2,3,[1,2,3],2,3,[3,4]]`, `[1,2,3,[1,2,3],2,3,[3,4],2]`, `[ 1, [ 1, [ 1, [1] ] ] ]`}
+	var results = [][]string{
+		{"1"},
+		{"[1]"},
+		{"1", "23"},
+		{"1", "2", "3", "[1,2,3]", "2", "3", "[3,4]"},
+		{"1", "2", "3", "[1,2,3]", "2", "3", "[3,4]", "2"},
+		{"1", "[1,[1,[1]]]"},
+	}
+	for k := range cases {
+		x, err := splitWithToken(cases[k], '[', ']')
+		as.Nil(err)
+		as.Equal(results[k], x)
+	}
 }

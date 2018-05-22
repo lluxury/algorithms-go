@@ -3,9 +3,8 @@ package leetcode
 import (
 	"testing"
 
-	"fmt"
 	"github.com/Chyroc/algorithms-go/lib"
-	"reflect"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 /*
@@ -66,10 +65,8 @@ func combinationSum(candidates []int, target int) [][]int {
 }
 
 func Test_39(t *testing.T) {
-	if result := combinationSum([]int{2, 3, 6, 7}, 7); !reflect.DeepEqual(result, [][]int{{2, 2, 3}, {7}}) {
-		panic(fmt.Sprintf("get %v", result))
-	}
-	if result := combinationSum([]int{2, 3, 5}, 8); !reflect.DeepEqual(result, [][]int{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}}) {
-		panic(fmt.Sprintf("get %v", result))
-	}
+	test.Runs(t, combinationSum, []*test.Case{
+		{Input: `[2, 3, 6, 7] \n 7`, Output: `[ [2, 2, 3], [7] ]`},
+		{Input: `[2, 3, 5] \n 8`, Output: `[ [2, 2, 2, 2], [2, 3, 3], [3,5] ]`},
+	})
 }

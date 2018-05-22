@@ -1,6 +1,7 @@
 package test
 
 import (
+	"bytes"
 	"fmt"
 	"reflect"
 	"strconv"
@@ -94,18 +95,18 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 		r = reflect.ValueOf(b)
 	case reflect.Slice:
 		if len(param) <= 1 {
-			return nilValue, fmt.Errorf("invalid params length(%d) when mathched %v", len(param), reflect.Slice)
+			return nilValue, fmt.Errorf("invalid params(%s) length(%d) when mathched %v", param, len(param), reflect.Slice)
 		}
-		if !strings.HasPrefix(param, "[") || !strings.HasSuffix(param, "]") {
-			return nilValue, fmt.Errorf("invalid param(%s) when mathched %v", param, reflect.Slice)
-		}
-		param = strings.TrimPrefix(param, "[")
-		param = strings.TrimSuffix(param, "]")
+
 		r = reflect.MakeSlice(reflect.SliceOf(typ.Elem()), 0, 0)
-		if param == `` {
+		if param == `` || param == `[]` {
 			return r, nil
 		}
-		s2 := strings.Split(param, ",")
+
+		s2, err := splitWithToken(param, '[', ']')
+		if err != nil {
+			return nilValue, err
+		}
 
 		for _, v := range s2 {
 			paramValue, err := parseParam(t, v, typ.Elem())
@@ -164,4 +165,50 @@ func Run(t *testing.T, c *Case) {
 		as.Equal(ithCallOut.Kind(), ithCallRealOut.Convert(ithCallOutType).Kind())
 		as.Equal(ithCallOut.Interface(), ithCallRealOut.Convert(ithCallOutType).Interface())
 	}
+}
+
+func splitWithToken(s string, pre, suf rune) ([]string, error) {
+	if !strings.HasPrefix(s, string(pre)) || !strings.HasSuffix(s, string(suf)) {
+		return nil, fmt.Errorf("invalid string(%s): pre(%v) and suf(%v)", s, pre, suf)
+	}
+
+	s = strings.Replace(s, " ", "", -1)
+	s = s[1 : len(s)-1]
+	if strings.Count(s, "[") == 0 && strings.Count(s, "]") == 0 {
+		return strings.Split(s, ","), nil
+	} else if strings.Count(s, ",") == 0 {
+		return []string{s}, nil
+	}
+
+	var result []string
+	var tokenCount int
+	var buf bytes.Buffer
+	for k, v := range s {
+		// TODO: 优化
+		if k == 0 {
+			buf.WriteRune(v)
+		} else if k == len(s)-1 {
+			buf.WriteRune(v)
+			result = append(result, buf.String())
+			buf.Reset()
+		} else if tokenCount == 0 {
+			if v == ',' {
+				result = append(result, buf.String())
+				buf.Reset()
+			} else {
+				buf.WriteRune(v)
+			}
+		} else {
+			buf.WriteRune(v)
+		}
+
+		switch v {
+		case pre:
+			tokenCount++
+		case suf:
+			tokenCount--
+		}
+	}
+
+	return result, nil
 }
