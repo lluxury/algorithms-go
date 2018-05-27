@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+type Equal interface {
+	EqualsTo(interface{}) bool
+}
+
 // IntArrayDeepCopy ...
 func IntArrayDeepCopy(nums []int) []int {
 	temp := make([]int, len(nums))

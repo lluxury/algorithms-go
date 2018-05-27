@@ -19,6 +19,18 @@ func (t *TreeNode) String() string {
 	return s
 }
 
+func EqualsTo(r, t *TreeNode) bool {
+	if t == nil || r == nil {
+		return r == t
+	}
+
+	if t.Val != r.Val {
+		return false
+	}
+
+	return EqualsTo(t.Left, r.Left) && EqualsTo(t.Right, r.Right)
+}
+
 func treeNodeUnmarshal(data string) (*TreeNode, error) {
 	node, err := new(TreeNode).Unmarshal(data)
 	if err != nil {
