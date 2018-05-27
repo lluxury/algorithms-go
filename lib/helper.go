@@ -6,6 +6,20 @@ import (
 	"strings"
 )
 
+// IntArrayDeepCopy ...
+func IntArrayDeepCopy(nums []int) []int {
+	temp := make([]int, len(nums))
+	copy(temp, nums)
+	return temp
+}
+
+// StringArrayDeepCopy ...
+func StringArrayDeepCopy(nums []string) []string {
+	temp := make([]string, len(nums))
+	copy(temp, nums)
+	return temp
+}
+
 func SplitWithToken(s string, pre, suf rune) ([]string, error) {
 	preS := string(pre)
 	sufS := string(suf)

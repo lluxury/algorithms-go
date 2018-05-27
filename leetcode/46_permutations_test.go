@@ -2,6 +2,8 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 /*
@@ -51,13 +53,10 @@ func permute(nums []int) (list [][]int) {
 	return list
 }
 
-func Example_46_permute() {
-	lib.ExamplePrint(permute([]int{}))
-	lib.ExamplePrint(permute([]int{1, 2, 3}))
-	lib.ExamplePrint(permute([]int{0, -1, 1}))
-
-	// Output:
-	// [[]]
-	// [[1 2 3] [1 3 2] [2 1 3] [2 3 1] [3 1 2] [3 2 1]]
-	// [[0 -1 1] [0 1 -1] [-1 0 1] [-1 1 0] [1 0 -1] [1 -1 0]]
+func Test_46(t *testing.T) {
+	test.Runs(t, permuteUnique, []*test.Case{
+		{Input: `[]`, Output: `[[]]`},
+		{Input: `[1,2,3]`, Output: `[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]`},
+		{Input: `[0,-1,1]`, Output: `[[-1, 0, 1], [-1, 1, 0], [0, -1, 1], [0, 1, -1], [1, -1, 0], [1, 0, -1]]`},
+	})
 }

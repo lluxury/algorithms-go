@@ -4,6 +4,8 @@ import (
 	"sort"
 
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 /*
@@ -36,17 +38,12 @@ func subsetsWithDup(nums []int) [][]int {
 	return list
 }
 
-func Example_90_subsetsWithDup() {
-	lib.ExamplePrint(subsetsWithDup([]int{}))
-	lib.ExamplePrint(subsetsWithDup([]int{1}))
-	lib.ExamplePrint(subsetsWithDup([]int{1, 2}))
-	lib.ExamplePrint(subsetsWithDup([]int{1, 2, 3}))
-	lib.ExamplePrint(subsetsWithDup([]int{1, 2, 3, 1}))
-
-	// Output:
-	// [[]]
-	// [[] [1]]
-	// [[] [1] [1 2] [2]]
-	// [[] [1] [1 2] [1 2 3] [1 3] [2] [2 3] [3]]
-	// [[] [1] [1 1] [1 1 2] [1 1 2 3] [1 1 3] [1 2] [1 2 3] [1 3] [2] [2 3] [3]]
+func Test_90(t *testing.T) {
+	test.Runs(t, subsetsWithDup, []*test.Case{
+		{Input: `[]`, Output: `[[]]`},
+		{Input: `[1]`, Output: `[[],[1]]`},
+		{Input: `[1,2]`, Output: `[[],[1],[1,2],[2]]`},
+		{Input: `[1,2,3]`, Output: `[[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]`},
+		{Input: `[1,2,3,1]`, Output: `[[],[1],[1,1],[1,1,2],[1,1,2,3],[1,1,3],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]`},
+	})
 }

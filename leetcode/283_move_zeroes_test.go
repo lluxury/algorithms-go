@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
 > https://leetcode.com/problems/move-zeroes/description/
 
@@ -40,13 +38,11 @@ func moveZeroes(nums []int) {
 		println(k, v)
 		if v == 0 {
 			if k == len(nums)-1 {
-				fmt.Printf("2 %v\n", nums)
 				return
 			}
 
 			k2 := findFirstNotZero(nums, k+1)
 			if k2 == -1 {
-				fmt.Printf("1 %v\n", nums)
 				return
 			}
 

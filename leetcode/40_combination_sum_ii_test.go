@@ -2,7 +2,9 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 	"sort"
+	"testing"
 )
 
 /*
@@ -85,11 +87,9 @@ func combinationSum2(candidates []int, target int) [][]int {
 	return list
 }
 
-func Example_40_combinationSum2() {
-	lib.ExamplePrint(combinationSum2([]int{10, 1, 2, 7, 6, 1, 5}, 8))
-	lib.ExamplePrint(combinationSum2([]int{2, 5, 2, 1, 2}, 5))
-
-	// Output:
-	// [[1 1 6] [1 2 5] [1 7] [2 6]]
-	// [[1 2 2] [5]]
+func Test_40(t *testing.T) {
+	test.Runs(t, combinationSum2, []*test.Case{
+		{Input: `[10, 1, 2, 7, 6, 1, 5] \n 8`, Output: `[[1,1,6],[1,2,5],[1,7],[2,6]]`},
+		{Input: `[2, 5, 2, 1, 2] \n 5`, Output: `[[1,2,2],[5]]`},
+	})
 }

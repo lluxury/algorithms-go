@@ -1,40 +1,31 @@
 package lib
 
-func Example_stack() {
-	t := NewStack()
-	ExamplePrint(t)
-	ExamplePrint(t.IsEmpty())
-	t.Push(2)
-	t.Push(3)
-	ExamplePrint(t.IsEmpty())
-	ExamplePrint(t.Pop())
-	ExamplePrint(t.Peek())
-	ExamplePrint(t.IsEmpty())
-	ExamplePrint(t)
-	t.Pop()
-	ExamplePrint(t.IsEmpty())
+import (
+	"testing"
 
-	// Output:
-	// &{[]}
-	// true
-	// false
-	// 3
-	// 2
-	// false
-	// &{[2]}
-	// true
+	"github.com/stretchr/testify/assert"
+)
+
+func Test_Stack(t *testing.T) {
+	as := assert.New(t)
+
+	stack := NewStack()
+	as.True(stack.IsEmpty())
+	stack.Push(2)
+	stack.Push(3)
+	as.False(stack.IsEmpty())
+	as.Equal(3, stack.Pop())
+	as.Equal(2, stack.Peek())
+	as.False(stack.IsEmpty())
+	as.Equal(2, stack.Pop())
+	as.True(stack.IsEmpty())
 }
 
-func Example_stack_ref() {
-	var stack_ref = func(stack *Stack) {
-		stack.Push(100)
-	}
-	t := NewStack()
-	ExamplePrint(t)
-	stack_ref(t)
-	ExamplePrint(t)
+func Test_stack_ref(t *testing.T) {
+	as := assert.New(t)
+	var stackRef = func(stack *Stack) { stack.Push(100) }
 
-	// Output:
-	// &{[]}
-	// &{[100]}
+	stack := NewStack()
+	stackRef(stack)
+	as.Equal(100, stack.Pop())
 }

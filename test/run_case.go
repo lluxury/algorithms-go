@@ -36,14 +36,14 @@ type Serialization interface {
 
 var nilValue = reflect.New(reflect.TypeOf((*interface{})(nil)).Elem()).Elem()
 
-// parseParam 这里需要自定义string转化
+// ParseParam 这里需要自定义string转化
 //
 // 参数是string / reflect.Type，返回值是reflect.Value
 // string("") => zero value
 // string(1), int => int(1)
 // string([1,2,3]), slice(int) => []int{1,2,3}
 // string(2 -> 4 -> 3)/Serialization => Serialization()
-func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, error) {
+func ParseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, error) {
 	var r reflect.Value
 	param = strings.TrimSpace(param)
 
@@ -79,7 +79,7 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 
 			r = returnInterface.Elem().Convert(typ)
 		} else {
-			return parseParam(t, param, typ.Elem())
+			return ParseParam(t, param, typ.Elem())
 		}
 	case reflect.Int:
 		i, err := strconv.Atoi(param)
@@ -111,7 +111,7 @@ func parseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 		}
 
 		for _, v := range s2 {
-			paramValue, err := parseParam(t, v, typ.Elem())
+			paramValue, err := ParseParam(t, v, typ.Elem())
 			if err != nil {
 				return nilValue, err
 			}
@@ -146,7 +146,7 @@ func Run(t *testing.T, c *Case) {
 	for i := 0; i < ft.NumIn(); i++ {
 		ithCallInType := ft.In(i)
 
-		ithParamIn, err := parseParam(t, input[i], ithCallInType)
+		ithParamIn, err := ParseParam(t, input[i], ithCallInType)
 		as.Nil(err)
 
 		in = append(in, ithParamIn)
@@ -158,7 +158,7 @@ func Run(t *testing.T, c *Case) {
 	for i := 0; i < ft.NumOut(); i++ {
 		ithCallRealOut := out[i] // 比input多的
 		ithCallOutType := ft.Out(i)
-		ithCallOut, err := parseParam(t, output[i], ithCallOutType)
+		ithCallOut, err := ParseParam(t, output[i], ithCallOutType)
 		as.Nil(err)
 
 		as.Equal(ithCallOut.Kind(), ithCallRealOut.Kind())

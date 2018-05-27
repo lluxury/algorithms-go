@@ -1,6 +1,10 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import (
+	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
+)
 
 /*
 > https://leetcode.com/problems/palindrome-partitioning/description/
@@ -50,9 +54,8 @@ func partition(s string) (list [][]string) {
 	return
 }
 
-func Example_131_partition() {
-	lib.ExamplePrint(partition("aab"))
-
-	// Output:
-	// [[a a b] [aa b]]
+func Test_131(t *testing.T) {
+	test.Runs(t, partition, []*test.Case{
+		{Input: `aab`, Output: `[[a,a,b],[aa,b]]`},
+	})
 }

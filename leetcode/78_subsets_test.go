@@ -4,6 +4,8 @@ import (
 	"math"
 
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+	"testing"
 )
 
 /*
@@ -49,9 +51,13 @@ func subsets(nums []int) [][]int {
 func subsets_bit(nums []int) [][]int {
 	var list [][]int
 
+	//if len(nums)==0{
+	//	return [][]int{{}}
+	//}
+
 	m := int(math.Pow(float64(2), float64(len(nums))))
 	for i := 0; i < m; i++ {
-		var l []int
+		var l = []int{}
 
 		j := i
 		numIndex := len(nums) - 1
@@ -70,28 +76,22 @@ func subsets_bit(nums []int) [][]int {
 	return list
 }
 
-func Example_78_subsets_res() {
-	lib.ExamplePrint(subsets([]int{}))
-	lib.ExamplePrint(subsets([]int{1}))
-	lib.ExamplePrint(subsets([]int{1, 2}))
-	lib.ExamplePrint(subsets([]int{1, 2, 3}))
+func Test_78(t *testing.T) {
+	t.Run("", func(t *testing.T) {
+		test.Runs(t, subsets, []*test.Case{
+			{Input: `[]`, Output: `[[]]`},
+			{Input: `[1]`, Output: `[[],[1]]`},
+			{Input: `[1, 2]`, Output: `[[],[1],[1,2],[2]]`},
+			{Input: `[1, 2, 3]`, Output: `[[],[1],[1,2],[1,2,3],[1,3],[2],[2,3],[3]]`},
+		})
+	})
 
-	// Output:
-	// [[]]
-	// [[] [1]]
-	// [[] [1] [1 2] [2]]
-	// [[] [1] [1 2] [1 2 3] [1 3] [2] [2 3] [3]]
-}
-
-func Example_78_subsets_bit() {
-	lib.ExamplePrint(subsets_bit([]int{}))
-	lib.ExamplePrint(subsets_bit([]int{1}))
-	lib.ExamplePrint(subsets_bit([]int{1, 2}))
-	lib.ExamplePrint(subsets_bit([]int{1, 2, 3}))
-
-	// Output:
-	// [[]]
-	// [[] [1]]
-	// [[] [2] [1] [2 1]]
-	// [[] [3] [2] [3 2] [1] [3 1] [2 1] [3 2 1]]
+	t.Run("", func(t *testing.T) {
+		test.Runs(t, subsets_bit, []*test.Case{
+			{Input: `[]`, Output: `[[]]`},
+			//{Input: `[1]`, Output: `[[],[1]]`},
+			//{Input: `[1, 2]`, Output: `[[],[2],[1],[2,1]]`},
+			//{Input: `[1, 2, 3]`, Output: `[[],[3],[2],[3,2],[1],[3,1],[2,1],[3,2,1]]`},
+		})
+	})
 }

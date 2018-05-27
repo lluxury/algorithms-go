@@ -2,7 +2,9 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 	"sort"
+	"testing"
 )
 
 /*
@@ -63,15 +65,11 @@ func permuteUnique(nums []int) (list [][]int) {
 	return list
 }
 
-func Example_47_permuteUnique() {
-	lib.ExamplePrint(permuteUnique([]int{}))
-	lib.ExamplePrint(permuteUnique([]int{1, 2, 3}))
-	lib.ExamplePrint(permuteUnique([]int{1, 1, 2}))
-	lib.ExamplePrint(permuteUnique([]int{3, 3, 0, 3}))
-
-	// Output:
-	// [[]]
-	// [[1 2 3] [1 3 2] [2 1 3] [2 3 1] [3 1 2] [3 2 1]]
-	// [[1 1 2] [1 2 1] [2 1 1]]
-	// [[0 3 3 3] [3 0 3 3] [3 3 0 3] [3 3 3 0]]
+func Test_47(t *testing.T) {
+	test.Runs(t, permuteUnique, []*test.Case{
+		{Input: `[]`, Output: `[[]]`},
+		{Input: `[1,2,3]`, Output: `[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]`},
+		{Input: `[1, 1, 2]`, Output: `[[1,1,2],[1,2,1],[2,1,1]]`},
+		{Input: `[3, 3, 0, 3]`, Output: `[[0,3,3,3],[3,0,3,3],[3,3,0,3],[3,3,3,0]]`},
+	})
 }
