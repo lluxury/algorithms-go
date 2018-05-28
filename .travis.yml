@@ -8,6 +8,7 @@ before_install:
   - go get -u github.com/haya14busa/goverage
 
 script:
+  - go test $(go list ./... | grep -v 'ttt') -bench .
   - ./cover.sh
 
 notifications:

@@ -28,7 +28,6 @@ func SplitWithToken(s string, pre, suf rune) ([]string, error) {
 	preS := string(pre)
 	sufS := string(suf)
 	if !strings.HasPrefix(s, preS) || !strings.HasSuffix(s, sufS) {
-		fmt.Printf("%s %s %s %s %s\n", s, preS, sufS, string(s[0]), string(s[len(s)-1]))
 		return nil, fmt.Errorf("invalid string(%s): pre(%v) and suf(%v)", s, pre, suf)
 	}
 
