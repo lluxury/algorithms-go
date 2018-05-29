@@ -60,8 +60,6 @@ func kthSmallestPrimeFraction_1(A []int, K int) []int {
 			}
 		}
 
-		//fmt.Printf("(%d) %0.5f (%d/%d) (%d/%d)\n", i, min, A[min_index[0]], A[min_index[1]], min_index[0], min_index[1])
-
 		// 取最小值的index，让其在xuhao中加1
 		fenzi_index := min_index[0]
 		xuhao[fenzi_index]--
@@ -82,7 +80,6 @@ func kthSmallestPrimeFraction(A []int, K int) []int {
 	var intpairless = func(a, b interface{}) bool {
 		x := a.([]int)
 		y := b.([]int)
-		//fmt.Printf("a(%v) b(%v) %.2f < %.2f\n", a, b, float64(A[x[0]])/float64(A[x[1]]), float64(A[y[0]])/float64(A[y[1]]))
 		return float64(A[x[0]])/float64(A[x[1]]) < float64(A[y[0]])/float64(A[y[1]])
 	}
 	var input []interface{}

@@ -2,7 +2,8 @@ package leetcode
 
 import (
 	"testing"
-	"fmt"
+
+	"github.com/stretchr/testify/assert"
 
 	"github.com/Chyroc/algorithms-go/lib"
 	"github.com/Chyroc/algorithms-go/test"
@@ -25,13 +26,21 @@ import (
 */
 
 func mergeKLists(lists []*lib.ListNode) *lib.ListNode {
+	switch len(lists) {
+	case 0:
+		return nil
+	case 1:
+		return lists[0]
+	}
 	var less = func(a, b interface{}) bool {
 		return a.(*lib.ListNode).Val < b.(*lib.ListNode).Val
 	}
 
 	var input []interface{}
 	for _, v := range lists {
-		input = append(input, v)
+		if v != nil {
+			input = append(input, v)
+		}
 	}
 	heap := lib.NewHeap(less, input...)
 
@@ -46,7 +55,6 @@ func mergeKLists(lists []*lib.ListNode) *lib.ListNode {
 		if !ok || top == nil {
 			break
 		}
-		fmt.Printf("top %#v\n", top)
 		t := top.(*lib.ListNode)
 		if tmp == nil {
 			tmp = &lib.ListNode{Val: t.Val}
@@ -64,9 +72,12 @@ func mergeKLists(lists []*lib.ListNode) *lib.ListNode {
 }
 
 func Test_23(t *testing.T) {
-	t.Logf("",mergeKLists([]*lib.ListNode{}))
 	test.Runs(t, mergeKLists, []*test.Case{
 		{Input: `[]`, Output: ``},
 		{Input: `[1->4->5, 1->3->4, 2->6]`, Output: `1->1->2->3->4->4->5->6`},
+		{Input: `[0->2->5]`, Output: `0->2->5`},
+		{Input: `[1->2->3, 4->5->6->7]`, Output: `1->2->3->4->5->6->7`},
 	})
+
+	assert.Nil(t, mergeKLists([]*lib.ListNode{nil}))
 }

@@ -26,15 +26,12 @@ type heap struct {
 // 首先将所有数据加到数组，然后排序最大堆
 func NewHeap(less LessFunc, xs ...interface{}) *heap {
 	r := new(heap)
-	if len(xs) > 0 {
-		r.heap = append(r.heap, xs[0]) //第一个位置没有数据
-		for _, v := range xs {
-			r.heap = append(r.heap, v)
-		}
+	r.heap = append(r.heap, nil) //第一个位置没有数据
+
+	for _, v := range xs {
+		r.heap = append(r.heap, v)
 	}
-
 	r.less = less
-
 	r.adjust()
 
 	return r
@@ -43,8 +40,8 @@ func NewHeap(less LessFunc, xs ...interface{}) *heap {
 // 添加节点
 // 将x添加到最后一个叶子节点，然后将最后一个节点上浮
 func (r *heap) Add(x interface{}) {
-	if r.Len() == 0 {
-		r.heap = append(r.heap, 0)
+	if len(r.heap) == 0 {
+		r.heap = append(r.heap, nil)
 	}
 	r.heap = append(r.heap, x)
 	r.up(r.Len())
@@ -52,8 +49,7 @@ func (r *heap) Add(x interface{}) {
 
 // 获取最大的数据
 func (r *heap) Pop() (interface{}, bool) {
-	//fmt.Printf("pop %s\n", r)
-	if r.Len() > 0 {
+	if len(r.heap) > 1 {
 		x := r.heap[1]
 		r.swap(1, r.Len())
 		r.heap = r.heap[:len(r.heap)-1]
@@ -68,11 +64,15 @@ func (r *heap) Pop() (interface{}, bool) {
 // 从index获取父节点的p-index，如果大于父节点，则上浮并递归，否则返回
 // p-index = index/2
 func (r *heap) up(index int) {
-	parent := index / 2
-	if r.less(r.heap[index], r.heap[parent]) {
-		r.swap(index, parent) // 子节点index上浮
-		r.up(parent)
+	if index > 1 { // index 1 是根节点
+		parent := index / 2
+		//fmt.Printf("index 1 %d %d\n", index, parent)
+		if r.less(r.heap[index], r.heap[parent]) {
+			r.swap(index, parent) // 子节点index上浮
+			r.up(parent)
+		}
 	}
+
 }
 
 // 下沉
@@ -86,7 +86,7 @@ func (r *heap) down(index int) {
 	if d := index*2 - r.Len(); d < 0 {
 		// 有左右孩
 		child = index * 2 //左孩节点
-		//fmt.Printf("%s/%d %d %d\n", r, len(r.heap), index, child)
+		//fmt.Printf("index 2 %d %d\n", child+1, child)
 		if r.less(r.heap[child+1], r.heap[child]) {
 			child++
 		}
@@ -99,6 +99,7 @@ func (r *heap) down(index int) {
 	}
 
 	// 子节点大于当前节点，下沉
+	//fmt.Printf("index 3 %d %d\n", child, index)
 	if r.less(r.heap[child], r.heap[index]) {
 		r.swap(child, index)
 		r.down(child)
@@ -110,8 +111,6 @@ func (r *heap) down(index int) {
 // 然后因为叶子节点没有子节点，所以不需要满足：「比所有子节点大」的条件
 // 所以从最后一个非叶子节点（也就是lastindex/2）开始调整：保证该节点比左孩和右孩大（也就是下沉该节点）
 func (r *heap) adjust() {
-	//fmt.Printf("adjust %s\n", r)
-
 	// 从最后一个叶子节点的父节点开始，到第一个节点的顺序做
 	for index := r.Len() / 2; index > 0; index-- {
 		r.down(index)
@@ -120,10 +119,11 @@ func (r *heap) adjust() {
 
 // 长度
 func (r *heap) Len() int {
-	if len(r.heap) == 0 {
+	switch x := len(r.heap); x {
+	case 0, 1:
 		return 0
-	} else {
-		return len(r.heap) - 1 //第一个位置没有数据
+	default:
+		return x - 1 //第一个位置没有数据
 	}
 }
 
