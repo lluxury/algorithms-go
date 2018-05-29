@@ -43,25 +43,25 @@ func NewHeap(less LessFunc, xs ...interface{}) *heap {
 // 添加节点
 // 将x添加到最后一个叶子节点，然后将最后一个节点上浮
 func (r *heap) Add(x interface{}) {
-	if r.length() == 0 {
+	if r.Len() == 0 {
 		r.heap = append(r.heap, 0)
 	}
 	r.heap = append(r.heap, x)
-	r.up(r.length())
+	r.up(r.Len())
 }
 
 // 获取最大的数据
 func (r *heap) Pop() (interface{}, bool) {
 	//fmt.Printf("pop %s\n", r)
-	if r.length() > 0 {
+	if r.Len() > 0 {
 		x := r.heap[1]
-		r.swap(1, r.length())
+		r.swap(1, r.Len())
 		r.heap = r.heap[:len(r.heap)-1]
 		r.adjust()
 		return x, true
 	}
 
-	return 0, false
+	return nil, false
 }
 
 // 上浮
@@ -83,7 +83,7 @@ func (r *heap) down(index int) {
 	var child int
 
 	// 如果有子节点的话，求左孩与右孩中较大的子节点的index
-	if d := index*2 - r.length(); d < 0 {
+	if d := index*2 - r.Len(); d < 0 {
 		// 有左右孩
 		child = index * 2 //左孩节点
 		//fmt.Printf("%s/%d %d %d\n", r, len(r.heap), index, child)
@@ -113,13 +113,13 @@ func (r *heap) adjust() {
 	//fmt.Printf("adjust %s\n", r)
 
 	// 从最后一个叶子节点的父节点开始，到第一个节点的顺序做
-	for index := r.length() / 2; index > 0; index-- {
+	for index := r.Len() / 2; index > 0; index-- {
 		r.down(index)
 	}
 }
 
 // 长度
-func (r *heap) length() int {
+func (r *heap) Len() int {
 	if len(r.heap) == 0 {
 		return 0
 	} else {
