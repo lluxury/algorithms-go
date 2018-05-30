@@ -20,7 +20,8 @@ A linked list can be reversed either iteratively or recursively. Could you imple
   - 反转单链表
   - `1 → 2 → 3 → Ø`, we would like to change it to `Ø ← 1 ← 2 ← 3`，最后返回的是最后3的地址
 - 思考
-  - 两种方法
+  - 3种方法
+  - 按照ii的方法：https://leetcode.com/problems/reverse-linked-list-ii/description/
   - 循环
     - 先设一个循环的当前节点 curr 和前一节点指针 prev
     - 设当前节点 A ,下一节点 B
@@ -62,11 +63,34 @@ func reverseList2(head *lib.ListNode) *lib.ListNode {
 	return t
 }
 
+// 根据ii的思路做
+// https://leetcode.com/problems/reverse-linked-list-ii/description/
+func reverseList3(head *lib.ListNode) *lib.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	dummy := &lib.ListNode{Next: head}
+	pre := dummy
+	first := pre.Next
+
+	for first.Next != nil {
+		// 将
+		// 1 2 3 4 5
+		// first           // 3
+		then := first.Next // 4
+		first.Next = then.Next
+		then.Next = pre.Next
+		pre.Next = then
+	}
+
+	return dummy.Next
+}
+
 func Test_206(t *testing.T) {
-	test.Runs(t, reverseList, []*test.Case{
-		{Input: `1->2->3->4->5`, Output: `5->4->3->2->1`},
-	})
-	test.Runs(t, reverseList2, []*test.Case{
-		{Input: `1->2->3->4->5`, Output: `5->4->3->2->1`},
-	})
+	for _, f := range []func(head *lib.ListNode) *lib.ListNode{reverseList, reverseList2, reverseList3} {
+		test.Runs(t, f, []*test.Case{
+			{Input: `1->2->3->4->5`, Output: `5->4->3->2->1`},
+		})
+	}
 }

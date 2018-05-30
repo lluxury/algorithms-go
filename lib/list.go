@@ -38,6 +38,14 @@ func (node *ListNode) Clone() *ListNode {
 	return l
 }
 
+func EqualsToListNode(a, b *ListNode) bool {
+	if a == nil || b == nil {
+		return b == b
+	}
+
+	return a.Val == b.Val && EqualsToListNode(a.Next, b.Next)
+}
+
 // 定义字符串能够通过转成定的类型: string -> typ
 // 特定的类型也能转成字符串:      typ -> string
 func (node *ListNode) Unmarshal(param string) (interface{}, error) {
