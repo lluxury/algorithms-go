@@ -103,7 +103,7 @@ func (t *TreeNode) Unmarshal(data string) (interface{}, error) {
 		}
 		return &TreeNode{Val: i}, nil
 	} else {
-		return nil, fmt.Errorf("must () or int")
+		return nil, fmt.Errorf("must () or int, but got %s", data)
 	}
 }
 

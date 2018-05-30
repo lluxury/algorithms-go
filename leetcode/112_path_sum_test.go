@@ -1,6 +1,11 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
+)
 
 /*
 > https://leetcode.com/problems/path-sum/description/
@@ -26,6 +31,9 @@ return true, as there exist a root-to-leaf path `5->4->11->2` which sum is 22.
 - 因为要求是到叶子节点而不是任意路径，所以需要判断当前节点是叶子节点的时候（左右子树为空），才可以判断当前sum是否为当前节点的值
 - 中序遍历，先中，然后左右子树
 
+
+类似： https://leetcode.com/problems/path-sum-ii/description/
+
 */
 
 func hasPathSum(root *lib.TreeNode, sum int) bool {
@@ -38,4 +46,10 @@ func hasPathSum(root *lib.TreeNode, sum int) bool {
 	}
 
 	return hasPathSum(root.Left, sum-root.Val) || hasPathSum(root.Right, sum-root.Val)
+}
+
+func Test_112(t *testing.T) {
+	test.Runs(t, hasPathSum, []*test.Case{
+		{Input: `(5,(4,(11,7,2)),(8,13,(4,,1))) \n 22`, Output: `true`},
+	})
 }
