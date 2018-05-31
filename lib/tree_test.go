@@ -7,9 +7,9 @@ import (
 )
 
 func TestTreeNode(t *testing.T) {
-	t.Run("TreeNode to string", func(t *testing.T) {
-		as := assert.New(t)
+	as := assert.New(t)
 
+	t.Run("TreeNode to string", func(t *testing.T) {
 		{
 			m, err := (&TreeNode{}).Marshal()
 			as.Nil(err)
@@ -47,8 +47,6 @@ func TestTreeNode(t *testing.T) {
 	})
 
 	t.Run("string to TreeNode", func(t *testing.T) {
-		as := assert.New(t)
-
 		for _, v := range []string{``, `()`} {
 			m, err := treeNodeUnmarshal(v)
 			as.Nil(err)
@@ -61,5 +59,22 @@ func TestTreeNode(t *testing.T) {
 			as.NotNil(m)
 			as.Equal(v, m.String())
 		}
+	})
+
+	t.Run("equal", func(t *testing.T) {
+		m1, err := treeNodeUnmarshal(`(2,3,(2,1,))`)
+		as.Nil(err)
+		as.NotNil(m1)
+
+		m2, err := treeNodeUnmarshal(`(2,3,(2,1,2))`)
+		as.Nil(err)
+		as.NotNil(m2)
+
+		m3, err := treeNodeUnmarshal(`(2,3,(2,1,))`)
+		as.Nil(err)
+		as.NotNil(m3)
+
+		as.False(EqualsToTreeNode(m1, m2))
+		as.True(EqualsToTreeNode(m1, m3))
 	})
 }

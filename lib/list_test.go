@@ -7,8 +7,9 @@ import (
 )
 
 func TestListNode(t *testing.T) {
+	as := assert.New(t)
+
 	t.Run("clone", func(t *testing.T) {
-		as := assert.New(t)
 		l := &ListNode{
 			Val: 1,
 			Next: &ListNode{
@@ -30,8 +31,6 @@ func TestListNode(t *testing.T) {
 	})
 
 	t.Run("add node", func(t *testing.T) {
-		as := assert.New(t)
-
 		node := &ListNode{Val: 1}
 		node.Add(2)
 		node.Add(3)
@@ -41,9 +40,7 @@ func TestListNode(t *testing.T) {
 		as.Equal(3, node.Next.Next.Val)
 	})
 
-	t.Run("marshal", func(t *testing.T) {
-		as := assert.New(t)
-
+	t.Run("marshal and string", func(t *testing.T) {
 		node2, err := new(ListNode).Unmarshal("1->2->3")
 		as.Nil(err)
 		node, ok := node2.(*ListNode)
@@ -56,5 +53,6 @@ func TestListNode(t *testing.T) {
 		s, err := node.Marshal()
 		as.Nil(err)
 		as.Equal("1->2->3", s)
+		as.Equal("1->2->3", node.String())
 	})
 }

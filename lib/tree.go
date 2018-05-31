@@ -19,7 +19,7 @@ func (t *TreeNode) String() string {
 	return s
 }
 
-func EqualsTo(r, t *TreeNode) bool {
+func EqualsToTreeNode(r, t *TreeNode) bool {
 	if t == nil || r == nil {
 		return r == t
 	}
@@ -28,7 +28,7 @@ func EqualsTo(r, t *TreeNode) bool {
 		return false
 	}
 
-	return EqualsTo(t.Left, r.Left) && EqualsTo(t.Right, r.Right)
+	return EqualsToTreeNode(t.Left, r.Left) && EqualsToTreeNode(t.Right, r.Right)
 }
 
 func treeNodeUnmarshal(data string) (*TreeNode, error) {
@@ -134,19 +134,4 @@ func (t *TreeNode) Marshal() (string, error) {
 		buf.WriteString(`)`)
 		return buf.String(), nil
 	}
-}
-
-func (t *TreeNode) Dump() {
-	t.dump("")
-}
-
-func (t *TreeNode) dump(indent string) {
-	if t == nil {
-		//fmt.Printf(indent+"<nil>\n")
-		return
-	}
-
-	fmt.Printf(indent+"%d\n", t.Val)
-	t.Left.dump(indent + "  ")
-	t.Right.dump(indent + "  ")
 }

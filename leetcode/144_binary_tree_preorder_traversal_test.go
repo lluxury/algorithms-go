@@ -128,7 +128,7 @@ func postOrder_Iterative(root *lib.TreeNode) []int {
 	for len(stack) != 0 {
 		cur = &stack[len(stack)-1]
 
-		if (cur.Left == nil && cur.Right == nil) || (pre != nil && (lib.EqualsTo(pre, cur.Left) || lib.EqualsTo(pre, cur.Right))) {
+		if (cur.Left == nil && cur.Right == nil) || (pre != nil && (lib.EqualsToTreeNode(pre, cur.Left) || lib.EqualsToTreeNode(pre, cur.Right))) {
 			values = append(values, cur.Val) // 处理
 			stack = stack[:len(stack)-1]
 			pre = cur

@@ -1,7 +1,21 @@
 package lib
 
+import (
+	"strconv"
+	"strings"
+)
+
 type Stack struct {
 	is []int
+}
+
+func (s *Stack) String() string {
+	var ss []string
+	for !s.IsEmpty() {
+		ss = append(ss, strconv.Itoa(s.Pop()))
+	}
+
+	return strings.Join(ss, " | ")
 }
 
 func (s *Stack) Push(i int) {
