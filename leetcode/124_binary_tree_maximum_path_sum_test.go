@@ -2,9 +2,9 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
 	"math"
+	"testing"
 )
 
 /*
@@ -43,6 +43,8 @@ Output: 42
 * 从下到上进行计算
 * 计算的过程中，.Val会存储那个节点为输入参数的所有path的最大值: root.Val += max(l, r)
 * 计算的过程中，最大值会存储到max_: if l + r + root.Val > *max_ { *max_ = l + r + root.Val }
+
+类似：https://leetcode.com/problems/longest-univalue-path/description/
 
 */
 

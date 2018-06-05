@@ -66,7 +66,6 @@ func (r *heap) Pop() (interface{}, bool) {
 func (r *heap) up(index int) {
 	if index > 1 { // index 1 是根节点
 		parent := index / 2
-		//fmt.Printf("index 1 %d %d\n", index, parent)
 		if r.less(r.heap[index], r.heap[parent]) {
 			r.swap(index, parent) // 子节点index上浮
 			r.up(parent)
@@ -86,7 +85,6 @@ func (r *heap) down(index int) {
 	if d := index*2 - r.Len(); d < 0 {
 		// 有左右孩
 		child = index * 2 //左孩节点
-		//fmt.Printf("index 2 %d %d\n", child+1, child)
 		if r.less(r.heap[child+1], r.heap[child]) {
 			child++
 		}
@@ -99,7 +97,6 @@ func (r *heap) down(index int) {
 	}
 
 	// 子节点大于当前节点，下沉
-	//fmt.Printf("index 3 %d %d\n", child, index)
 	if r.less(r.heap[child], r.heap[index]) {
 		r.swap(child, index)
 		r.down(child)

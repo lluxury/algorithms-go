@@ -1,8 +1,8 @@
 package leetcode
 
 import (
-	"testing"
 	"sort"
+	"testing"
 
 	"github.com/Chyroc/algorithms-go/test"
 )
@@ -40,7 +40,7 @@ func findRepeatedDnaSequences(s string) []string {
 	}
 
 	if max > 1 {
-		sort.Strings(max_s)//for test
+		sort.Strings(max_s) //for test
 		return max_s
 	}
 

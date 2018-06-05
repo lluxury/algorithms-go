@@ -1,11 +1,11 @@
 package leetcode
 
 import (
-	"testing"
 	"math"
+	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
 	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 /*

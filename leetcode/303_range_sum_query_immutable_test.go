@@ -27,14 +27,13 @@ type NumArray struct {
 	nums []int
 }
 
-
 func Constructor_303(nums []int) NumArray {
-	var result = make([]int,len(nums))
-	for k,v :=range nums{
-		if k==0{
-			result[0]=v
-		}else{
-			result[k] = result[k-1]+v
+	var result = make([]int, len(nums))
+	for k, v := range nums {
+		if k == 0 {
+			result[0] = v
+		} else {
+			result[k] = result[k-1] + v
 		}
 	}
 	return NumArray{
@@ -42,10 +41,9 @@ func Constructor_303(nums []int) NumArray {
 	}
 }
 
-
 func (this *NumArray) SumRange(i int, j int) int {
-	if i==0{
+	if i == 0 {
 		return this.nums[j]
 	}
-	return this.nums[j]-this.nums[i-1]
+	return this.nums[j] - this.nums[i-1]
 }

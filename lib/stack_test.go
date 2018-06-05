@@ -39,7 +39,7 @@ func Test_stack_ref_clone(t *testing.T) {
 		s2 := s1.Clone()
 
 		s1.Push(4)
-		as.Equal("4 | 3 | 2",s1.String())
-		as.Equal("3 | 2",s2.String())
+		as.Equal("4 | 3 | 2", s1.String())
+		as.Equal("3 | 2", s2.String())
 	}
 }

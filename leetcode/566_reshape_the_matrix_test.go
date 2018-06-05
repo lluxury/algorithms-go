@@ -1,5 +1,11 @@
 package leetcode
 
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+)
+
 /*
 > https://leetcode.com/problems/reshape-the-matrix/description/
 
@@ -74,7 +80,9 @@ func matrixReshape(nums [][]int, r int, c int) [][]int {
 	return newNums
 }
 
-//func main() {
-//	fmt.Printf("[%+v]\n", matrixReshape([][]int{{1, 2}, {3, 4}}, 1, 4)) // [[1 2 3 4]]
-//	fmt.Printf("[%+v]\n", matrixReshape([][]int{{1, 2}, {3, 4}}, 2, 4)) // [[1 2] [3 4]
-//}
+func Test_566(t *testing.T) {
+	test.Runs(t, matrixReshape, []*test.Case{
+		{Input: `[[1, 2], [3, 4]] \n 1 \n 4`, Output: `[[1, 2, 3, 4]]`},
+		{Input: `[[1, 2], [3, 4]] \n 2 \n 4`, Output: `[[1, 2], [3, 4]]`},
+	})
+}

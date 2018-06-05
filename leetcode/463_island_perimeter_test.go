@@ -1,5 +1,11 @@
 package leetcode
 
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+)
+
 /*
 > https://leetcode.com/problems/island-perimeter/description/
 
@@ -41,7 +47,9 @@ func islandPerimeter(grid [][]int) int {
 	return s
 }
 
-//func main() {
-//	fmt.Printf("%s\n", islandPerimeter([][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}) == 16)
-//	fmt.Printf("%s\n", islandPerimeter([][]int{{1, 0}}) == 4)
-//}
+func Test_463(t *testing.T) {
+	test.Runs(t, islandPerimeter, []*test.Case{
+		{Input: `[[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]`, Output: `16`},
+		{Input: `[[1, 0]]`, Output: `4`},
+	})
+}

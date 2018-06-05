@@ -2,9 +2,8 @@ package leetcode
 
 import (
 	"github.com/Chyroc/algorithms-go/lib"
-	"testing"
 	"github.com/Chyroc/algorithms-go/test"
-	"fmt"
+	"testing"
 )
 
 /*
@@ -33,8 +32,6 @@ func reverseKGroup_nil(head *lib.ListNode, k int) *lib.ListNode {
 
 func reverseKGroup(head *lib.ListNode, k int) *lib.ListNode {
 	x := reverseKGroup_nil(head, k)
-	fmt.Printf("head %s", head)
-	fmt.Printf("x %s", x)
 	if x == nil {
 		return head
 	}
