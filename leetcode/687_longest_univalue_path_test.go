@@ -1,4 +1,3 @@
-
 package leetcode
 
 import "github.com/Chyroc/algorithms-go/lib"
@@ -42,12 +41,11 @@ Note: The given binary tree has not more than 10000 nodes. The height of the tre
 
 */
 
-
-
 func longestUnivaluePath(root *lib.TreeNode) int {
-
+	// todo
+	return -1
 }
 
-func back_longestUnivaluePath()  {
-	
+func back_longestUnivaluePath() {
+
 }
