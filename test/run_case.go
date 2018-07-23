@@ -163,6 +163,10 @@ func Run(t *testing.T, c *Case) {
 
 		as.Equal(ithCallOut.Kind(), ithCallRealOut.Kind())
 		as.Equal(ithCallOut.Kind(), ithCallRealOut.Convert(ithCallOutType).Kind())
+		if ithCallOut.Kind() == reflect.Slice && ithCallOut.Len() == 0 {
+			as.Equal(0, ithCallRealOut.Convert(ithCallOutType).Len())
+			continue
+		}
 		as.Equal(ithCallOut.Interface(), ithCallRealOut.Convert(ithCallOutType).Interface())
 	}
 }
