@@ -38,6 +38,10 @@ func (s *Stack) Peek() int {
 	return s.is[len(s.is)-1]
 }
 
+func (s *Stack) Size() int {
+	return len(s.is)
+}
+
 func (s *Stack) IsEmpty() bool {
 	return len(s.is) == 0
 }
