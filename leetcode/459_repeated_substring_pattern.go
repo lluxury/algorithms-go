@@ -18,40 +18,39 @@ import (
  * Given a non-empty string check if it can be constructed by taking a
  * substring of it and appending multiple copies of the substring together.
  * You may assume the given string consists of lowercase English letters only
- * and its length  will not exceed 10000. 
- * 
+ * and its length  will not exceed 10000.
+ *
  * Example 1:
- * 
+ *
  * Input: "abab"
- * 
+ *
  * Output: True
- * 
+ *
  * Explanation: It's the substring "ab" twice.
- * 
- * 
- * 
+ *
+ *
+ *
  * Example 2:
- * 
+ *
  * Input: "aba"
- * 
+ *
  * Output: False
- * 
- * 
- * 
+ *
+ *
+ *
  * Example 3:
- * 
+ *
  * Input: "abcabcabcabc"
- * 
+ *
  * Output: True
- * 
+ *
  * Explanation: It's the substring "abc" four times. (And the substring
  * "abcabc" twice.)
- * 
- * 
+ *
+ *
  */
 
-
- /*
+/*
 
  给定一个字符串，判定其是否可以由子串重复而组成
    * 首先，肯定从第一个字符串开始重复
@@ -59,7 +58,7 @@ import (
    * 如果相等，则递归
    * 如果不相等，则将子串长度加一
    * 因为开始位置肯定是0，所以只需要记录子串的结尾位置
- */
+*/
 
 func repeatedSubstringPattern_ref(s, p string) bool {
 	for {
