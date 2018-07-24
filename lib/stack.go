@@ -1,28 +1,28 @@
 package lib
 
 import (
-	"strconv"
+	"fmt"
 	"strings"
 )
 
 type Stack struct {
-	is []int
+	is []interface{}
 }
 
 func (s *Stack) String() string {
 	var ss []string
 	for !s.IsEmpty() {
-		ss = append(ss, strconv.Itoa(s.Pop()))
+		ss = append(ss, fmt.Sprintf("%v", s.Pop()))
 	}
 
 	return strings.Join(ss, " | ")
 }
 
-func (s *Stack) Push(i int) {
+func (s *Stack) Push(i interface{}) {
 	s.is = append(s.is, i)
 }
 
-func (s *Stack) Pop() int {
+func (s *Stack) Pop() interface{} {
 	if s.IsEmpty() {
 		panic("is empty")
 	}
@@ -31,7 +31,7 @@ func (s *Stack) Pop() int {
 	return p
 }
 
-func (s *Stack) Peek() int {
+func (s *Stack) Peek() interface{} {
 	if s.IsEmpty() {
 		panic("is empty")
 	}

@@ -49,7 +49,6 @@ package lib
 
 type LessFunc func(a, b interface{}) bool
 
-
 type Heap struct {
 	heap []interface{} //第一个位置不存储数据，下标从1开始，因为0index求子节点不好求
 	less LessFunc

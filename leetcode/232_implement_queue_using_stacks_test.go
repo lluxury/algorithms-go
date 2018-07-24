@@ -68,7 +68,7 @@ func (this *MyQueue) Pop() int {
 		}
 	}
 
-	return this.s2.Pop()
+	return this.s2.Pop().(int)
 }
 
 /** Get the front element. */
@@ -79,7 +79,7 @@ func (this *MyQueue) Peek() int {
 		}
 	}
 
-	return this.s2.Peek()
+	return this.s2.Peek().(int)
 }
 
 /** Returns whether the queue is empty. */
