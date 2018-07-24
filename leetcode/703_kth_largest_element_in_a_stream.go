@@ -39,6 +39,14 @@ import "github.com/Chyroc/algorithms-go/lib"
  *
  */
 
+/*
+
+ 可以不停的添加数字，求所有的数字中第k大的数字
+ * 用最小堆实现
+ * 堆的长度限制为k，所以第k大的数字就是最小的数字
+
+*/
+
 type KthLargest struct {
 	k int
 	h *lib.Heap
