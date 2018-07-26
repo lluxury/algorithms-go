@@ -1,8 +1,9 @@
 package leetcode
 
 import (
-	"github.com/Chyroc/algorithms-go/test"
 	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
 )
 
 func Test_189(t *testing.T) {
