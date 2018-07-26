@@ -40,7 +40,7 @@ func longestPalindrome_ref(s string, start, offset *int, left, right int) {
 	}
 }
 
-func longestPalindrome(s string) string {
+func longestPalindrome_5(s string) string {
 	if len(s) < 2 {
 		return s
 	}
@@ -54,7 +54,7 @@ func longestPalindrome(s string) string {
 }
 
 func Test_5(t *testing.T) {
-	test.Runs(t, longestPalindrome, []*test.Case{
+	test.Runs(t, longestPalindrome_5, []*test.Case{
 		{Input: "", Output: ""},
 		{Input: "a", Output: "a"},
 		{Input: "abba", Output: "abba"},
