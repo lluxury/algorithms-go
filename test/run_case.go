@@ -123,6 +123,12 @@ func ParseParam(t *testing.T, param string, typ reflect.Type) (reflect.Value, er
 			return nilValue, err
 		}
 		return reflect.ValueOf(f), nil
+	case reflect.Uint8:
+		i, err := strconv.Atoi(param)
+		if err != nil {
+			return reflect.ValueOf(uint8(param[0])), nil
+		}
+		return reflect.ValueOf(uint8(i)), nil
 	default:
 		return nilValue, fmt.Errorf("not support %s", typ.Kind())
 	}
