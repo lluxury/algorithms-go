@@ -27,15 +27,6 @@ The median is (2 + 3)/2 = 2.5
   * 参考 http://cs-cjl.com/2016/06_25_leetcode_4_median_of_two_sorted_arrays
 */
 
-// 求两个数最小数
-func min(a, b int) int {
-	if a > b {
-		return b
-	} else {
-		return a
-	}
-}
-
 // 找到一个数的中间那个数的序号
 // 奇数返回中间那个需要
 // 偶数返回中间那两个数的前一个数的序号
