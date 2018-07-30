@@ -25,3 +25,35 @@ func isDigit(s uint8) bool {
 func toDigit(s uint8) int {
 	return int(s - '0')
 }
+
+func max(s ...int) int {
+	switch len(s) {
+	case 0:
+		panic("max all")
+	case 1:
+		return s[0]
+	case 2:
+		if s[0] > s[1] {
+			return s[0]
+		}
+		return s[1]
+	default:
+		return max(append([]int{max(s[0], s[1])}, s[2:]...)...)
+	}
+}
+
+func min(s ...int) int {
+	switch len(s) {
+	case 0:
+		panic("min")
+	case 1:
+		return s[0]
+	case 2:
+		if s[0] < s[1] {
+			return s[0]
+		}
+		return s[1]
+	default:
+		return min(append([]int{min(s[0], s[1])}, s[2:]...)...)
+	}
+}

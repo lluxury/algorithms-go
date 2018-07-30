@@ -47,7 +47,7 @@ func longestConsecutive(nums []int) int {
 		right := getOrDefault(m, n+1, 0)
 
 		sum := left + right + 1
-		res = max_all(res, sum)
+		res = max(res, sum)
 
 		m[n] = sum
 		m[n-left] = sum
