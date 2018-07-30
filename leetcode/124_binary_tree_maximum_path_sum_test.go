@@ -72,7 +72,7 @@ func back_maxPathSum(root *lib.TreeNode, max_ *int) int {
 	if tmp > *max_ {
 		*max_ = tmp
 	}
-	root.Val += max(l, r)
+	root.Val += max_all(l, r)
 	return root.Val
 }
 

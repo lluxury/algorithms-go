@@ -35,13 +35,6 @@ func getOrDefault(m map[int]int, key, d int) int {
 	}
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	} else {
-		return b
-	}
-}
 func longestConsecutive(nums []int) int {
 	var res int
 	var m = make(map[int]int)
@@ -54,7 +47,7 @@ func longestConsecutive(nums []int) int {
 		right := getOrDefault(m, n+1, 0)
 
 		sum := left + right + 1
-		res = max(res, sum)
+		res = max_all(res, sum)
 
 		m[n] = sum
 		m[n-left] = sum
