@@ -29,7 +29,7 @@ func toDigit(s uint8) int {
 func max(s ...int) int {
 	switch len(s) {
 	case 0:
-		panic("max all")
+		panic("max")
 	case 1:
 		return s[0]
 	case 2:
