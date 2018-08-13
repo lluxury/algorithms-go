@@ -29,15 +29,16 @@ import (
 	"github.com/Chyroc/algorithms-go/test"
 )
 
-var d = make(map[string]int)
+var rob_d = make(map[string]int)
 
 func rob(nums []int) int {
+
 	numss := []string{}
 	for _, v := range nums {
 		numss = append(numss, fmt.Sprintf("%d", v))
 	}
 	numsS := strings.Join(numss, "")
-	if v, ok := d[numsS]; ok {
+	if v, ok := rob_d[numsS]; ok {
 		return v
 	}
 
@@ -56,7 +57,7 @@ func rob(nums []int) int {
 
 	data := int(math.Max(float64(f1), float64(f2)))
 
-	d[numsS] = data
+	rob_d[numsS] = data
 
 	return data
 }
