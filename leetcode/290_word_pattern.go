@@ -51,11 +51,11 @@ import (
  *
  */
 
- /*
+/*
 
  和 205 题差不多，只是第二个字符串换成空格分割的多字符相连的字符串
 
- */
+*/
 
 func wordPattern_rec(pattern []string, str []string, rec bool) bool {
 	fmt.Printf("[%s][%s]\n", pattern, str)
