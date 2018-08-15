@@ -38,11 +38,11 @@ import "fmt"
  * test cases.
  */
 
- /*
+/*
 
  判断一个数是不是一个整数的平方
 
- */
+*/
 
 func isPerfectSquare(num int) bool {
 	var x float64 = 1
