@@ -1,5 +1,9 @@
 package leetcode
 
+// 求平方根的方法
+//   * 先假设1是a的平方根x
+//   * 将a除以x，再加上x，除以2，得到新的假设值x：x = ( x + a/x ) / 2
+//   * 当假设值x的平方和a越来越接近的时候，说明答案越来越准确
 func sqrt(a int) float64 {
 	x := float64(1)
 
