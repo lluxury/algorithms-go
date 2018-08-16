@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [482] License Key Formatting
  *
@@ -92,7 +90,6 @@ func licenseKeyFormatting(S string, K int) string {
 			buf = append(buf, '-')
 			count = 1
 		} else {
-			fmt.Printf("count %d k %d\n", count, K)
 			count++
 		}
 

@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/Chyroc/algorithms-go/test"
@@ -93,7 +92,6 @@ func canCompleteCircuit(gas []int, cost []int) int {
 		}
 
 	}
-	fmt.Printf("%v\n", posi_index)
 
 	for _, index := range posi_index {
 		x := 0

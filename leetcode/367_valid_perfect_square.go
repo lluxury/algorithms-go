@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [367] Valid Perfect Square
  *
@@ -49,9 +47,7 @@ func isPerfectSquare(num int) bool {
 	var d int
 	for {
 		x = float64(x+float64(num)/x) / 2
-		fmt.Printf("x is %v\n", x)
 		diff := int(x)*int(x) - num
-		fmt.Printf("diff is %v\n", diff)
 		if diff < 0 {
 			diff = -diff
 		}

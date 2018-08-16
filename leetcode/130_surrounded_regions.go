@@ -56,7 +56,6 @@ func solve_rec(board [][]byte, fangwen [][]bool, isO [][]bool, i, j int) {
 
 	if board[i][j] == 'O' {
 		isO[i][j] = true
-		//fmt.Printf("%d/%d %v\n", i, j, isO[i][j])
 		solve_rec(board, fangwen, isO, i+1, j)
 		solve_rec(board, fangwen, isO, i-1, j)
 		solve_rec(board, fangwen, isO, i, j+1)
@@ -87,12 +86,10 @@ func solve(board [][]byte) {
 		solve_rec(board, fangwen, iso, board_len-1, j)
 	}
 
-	//fmt.Printf("%#v\n", iso)
 
 	// 这个时候iso就是o所在的位置
 	for i, v := range iso {
 		for j, isooooo := range v {
-			//fmt.Printf("%d/%d is %v\n", i, j, isooooo)
 			if !isooooo {
 				board[i][j] = 'X'
 			}

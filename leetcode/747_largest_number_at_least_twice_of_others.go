@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [748] Largest Number At Least Twice of Others
  *
@@ -84,7 +82,6 @@ func dominantIndex(nums []int) int {
 
 	}
 
-	fmt.Printf("%v %v\n", max1index, max2index)
 	if nums[max1index] >= nums[max2index]*2 {
 		return max1index
 	}

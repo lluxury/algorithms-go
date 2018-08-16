@@ -55,7 +55,6 @@ package leetcode
 
 func validPalindrome_rec(s string, l, r int, rec bool) bool {
 	for i, j := l, r; i < j; {
-		//fmt.Printf("bijiao: %s %s\n",string(s[i]),string(s[j]))
 		if s[i] == s[j] {
 			i++
 			j--

@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [899] Binary Gap
  *
@@ -91,7 +89,6 @@ func i10_i2(n int) []int {
 
 func binaryGap(N int) int {
 	s := i10_i2(N)
-	fmt.Printf("S: %#v\n", s)
 
 	preindex := -1
 	max := -1

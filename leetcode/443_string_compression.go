@@ -116,11 +116,9 @@ func compress(chars []byte) int {
 			current_count++
 		} else {
 			if current_count == 1 {
-				//fmt.Printf("%s", string(current_char))
 				max += 1
 				current_char = now
 			} else {
-				//fmt.Printf("%s%d", string(current_char), current_count)
 				max += 1 + i10_length(current_count)
 			}
 			current_char = now
@@ -129,11 +127,9 @@ func compress(chars []byte) int {
 
 		if i == len(chars)-1 {
 			if current_count == 1 {
-				//fmt.Printf("%s", string(current_char))
 				max += 1
 				current_char = now
 			} else {
-				//fmt.Printf("%s%d", string(current_char), current_count)
 				max += 1 + i10_length(current_count)
 			}
 		}

@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [747] Min Cost Climbing Stairs
  *
@@ -92,7 +90,6 @@ func minCostClimbingStairs(cost []int) int {
 		for i := 3; i <= len(cost)+1; i++ {
 			m[i] = min(m[i-1]+cost[i-2], m[i-2]+cost[i-3])
 		}
-		fmt.Printf("m %#v\n", m)
 		return m[len(m)-1]
 	}
 }

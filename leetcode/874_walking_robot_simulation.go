@@ -111,16 +111,13 @@ func robotSim(commands []int, obstacles [][]int) int {
 				y2 := y + n
 
 				if maaa[[2]int{x2, y2}] {
-					fmt.Printf("contain %v,%v %v\n", x2, y2, v)
 					break
 				}
-				fmt.Printf("%v %v\n", x2, y2)
 				x = x2
 				y = y2
 			}
 		}
 	}
 
-	fmt.Printf("%v %v\n", x, y)
 	return int(math.Pow(float64(x), 2) + math.Pow(float64(y), 2))
 }

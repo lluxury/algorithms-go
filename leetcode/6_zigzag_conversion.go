@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * [6] ZigZag Conversion
  *
@@ -66,7 +64,6 @@ func convert(s string, numRows int) string {
 			add = -add
 		}
 
-		fmt.Printf("index %v\n", index)
 		result[index] = append(result[index], byte(s[k]))
 		index += add
 	}

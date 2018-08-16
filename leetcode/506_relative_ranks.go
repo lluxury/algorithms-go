@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -68,7 +67,6 @@ func findRelativeRanks(nums []int) []string {
 	copy(nnn, nums)
 
 	QuickSort(nums)
-	fmt.Printf("nums: %#v\n", nums)
 	m := make(map[int]int)
 	for k, v := range nums {
 		m[v] = k

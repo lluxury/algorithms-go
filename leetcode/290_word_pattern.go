@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -58,7 +57,6 @@ import (
 */
 
 func wordPattern_rec(pattern []string, str []string, rec bool) bool {
-	fmt.Printf("[%s][%s]\n", pattern, str)
 	d := make(map[string][]int)
 	for k := range pattern {
 		if _, ok := d[pattern[k]]; ok {
