@@ -61,3 +61,24 @@ func min(s ...int) int {
 		return min(append([]int{min(s[0], s[1])}, s[2:]...)...)
 	}
 }
+
+func copy_int_slice(a []int) []int {
+	b := make([]int, len(a))
+	copy(b, a)
+	return b
+}
+
+func delete_int_slice_index(a []int, index int) []int {
+	if len(a) == 0 {
+		return a
+	} else if len(a) == 1 {
+		return make([]int, 0)
+	} else if index >= len(a) {
+		return a
+	}
+
+	b := make([]int, len(a)-1)
+	copy(b[:index], a[:index])
+	copy(b[index:], a[index+1:])
+	return b
+}
