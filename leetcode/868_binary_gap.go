@@ -13,14 +13,14 @@ package leetcode
  *
  * Given a positive integer N, find and return the longest distance between two
  * consecutive 1's in the binary representation of N.
- * 
+ *
  * If there aren't two consecutive 1's, return 0.
  *
  * Example 1:
- * 
+ *
  * Input: 22
  * Output: 2
- * Explanation: 
+ * Explanation:
  * 22 in binary is 0b10110.
  * In the binary representation of 22, there are three ones, and two
  * consecutive pairs of 1's.
@@ -29,42 +29,42 @@ package leetcode
  * The answer is the largest of these two distances, which is 2.
  *
  * Example 2:
- * 
- * 
+ *
+ *
  * Input: 5
  * Output: 2
- * Explanation: 
+ * Explanation:
  * 5 in binary is 0b101.
  *
  * Example 3:
- * 
+ *
  * Input: 6
  * Output: 1
- * Explanation: 
+ * Explanation:
  * 6 in binary is 0b110.
- * 
+ *
  * Example 4:
  *
  * Input: 8
  * Output: 0
- * Explanation: 
+ * Explanation:
  * 8 in binary is 0b1000.
  * There aren't any consecutive pairs of 1's in the binary representation of 8,
  * so we return 0.
- * 
+ *
  * Note:
- * 
+ *
  * 1 <= N <= 10^9
  *
  */
 
- /*
+/*
 
  计算一个数字的二进制表示中，1和1之间距离的最大值（这两个1之间没有别的1）
 
  先转化为二进制，然后求最大值
 
- */
+*/
 
 func i10_i2(n int) []int {
 	s := []int{}

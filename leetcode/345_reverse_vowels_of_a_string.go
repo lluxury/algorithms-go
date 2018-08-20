@@ -13,36 +13,36 @@ package leetcode
  *
  * Write a function that takes a string as input and reverse only the vowels of
  * a string.
- * 
+ *
  * Example 1:
- * 
- * 
+ *
+ *
  * Input: "hello"
  * Output: "holle"
- * 
- * 
- * 
+ *
+ *
+ *
  * Example 2:
- * 
- * 
+ *
+ *
  * Input: "leetcode"
  * Output: "leotcede"
- * 
- * 
+ *
+ *
  * Note:
  * The vowels does not include the letter "y".
- * 
- * 
- * 
+ *
+ *
+ *
  */
 
- /*
+/*
 
  交换一个字符串中的元音
 
  用i和j指向开头和结尾，如果是元音就交换
 
- */
+*/
 
 func is(s uint8) bool {
 	switch s {
