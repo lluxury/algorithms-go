@@ -25,7 +25,6 @@ func reverseWords(s string) string {
 			d2 = ""
 		} else {
 			d2 = string(v) + d2
-			println(d2)
 		}
 	}
 	d1 = d1 + " " + d2

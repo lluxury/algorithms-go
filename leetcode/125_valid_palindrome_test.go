@@ -51,7 +51,6 @@ func isPalindrome(s string) bool {
 		for i < j && !isAlpha(int32(s[j])) {
 			j--
 		}
-		println(i, j)
 
 		if !isAlphaEqual(int32(s[i]), int32(s[j])) {
 			return false

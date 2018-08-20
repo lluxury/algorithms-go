@@ -30,11 +30,9 @@ Explanation:
 func findTheDifference(s string, t string) byte {
 	d := 0
 	for _, v := range s {
-		println(int(v))
 		d ^= int(v)
 	}
 	for _, v := range t {
-		println(int(v))
 		d ^= int(v)
 	}
 

@@ -67,7 +67,6 @@ func matrixReshape(nums [][]int, r int, c int) [][]int {
 			if len(newNums) <= rNow {
 				newNums = append(newNums, []int{})
 			}
-			println(newNums[rNow])
 			newNums[rNow] = append(newNums[rNow], v2)
 			cNow++
 			if cNow == c {

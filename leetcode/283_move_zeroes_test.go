@@ -35,7 +35,6 @@ func findFirstNotZero(nums []int, start int) int {
 
 func moveZeroes(nums []int) {
 	for k, v := range nums {
-		println(k, v)
 		if v == 0 {
 			if k == len(nums)-1 {
 				return
