@@ -1,14 +1,14 @@
 package leetcode
 
 /*
- * [207] Course Schedule
+ * [210] Course Schedule II
  *
- * https://leetcode.com/problems/course-schedule/description/
+ * https://leetcode.com/problems/course-schedule-ii/description/
  *
  * algorithms
- * Medium (34.55%)
- * Total Accepted:    141.1K
- * Total Submissions: 408.1K
+ * Medium (31.24%)
+ * Total Accepted:    101.9K
+ * Total Submissions: 325.6K
  * Testcase Example:  '2\n[[1,0]]'
  *
  * There are a total of n courses you have to take, labeled from 0 to n-1.
@@ -16,27 +16,32 @@ package leetcode
  * Some courses may have prerequisites, for example to take course 0 you have
  * to first take course 1, which is expressed as a pair: [0,1]
  * 
- * Given the total number of courses and a list of prerequisite pairs, is it
- * possible for you to finish all courses?
+ * Given the total number of courses and a list of prerequisite pairs, return
+ * the ordering of courses you should take to finish all courses.
+ * 
+ * There may be multiple correct orders, you just need to return one of them.
+ * If it is impossible to finish all courses, return an empty array.
  * 
  * Example 1:
  * 
  * 
  * Input: 2, [[1,0]] 
- * Output: true
- * Explanation: There are a total of 2 courses to take. 
- * To take course 1 you should have finished course 0. So it is possible.
+ * Output: [0,1]
+ * Explanation: There are a total of 2 courses to take. To take course 1 you
+ * should have finished   
+ * course 0. So the correct course order is [0,1] .
  * 
  * Example 2:
  * 
  * 
- * Input: 2, [[1,0],[0,1]]
- * Output: false
- * Explanation: There are a total of 2 courses to take. 
- * To take course 1 you should have finished course 0, and to take course 0 you
- * should
- * also have finished course 1. So it is impossible.
- * 
+ * Input: 4, [[1,0],[2,0],[3,1],[3,2]]
+ * Output: [0,1,2,3] or [0,2,1,3]
+ * Explanation: There are a total of 4 courses to take. To take course 3 you
+ * should have finished both     
+ * ⁠            courses 1 and 2. Both courses 1 and 2 should be taken after you
+ * finished course 0. 
+ * So one correct course order is [0,1,2,3]. Another correct ordering is
+ * [0,2,1,3] .
  * 
  * Note:
  * 
@@ -49,24 +54,7 @@ package leetcode
  * 
  */
 
-/*
-
-给一个数组，每个数组有两个数字，表示学习第一个课程的话，必须要先学习第二个课程（从第二个课程指向第一个课程的图）
-问：能否完成所有给定的课程
-
-即问一个图里面有没有有环图
-
-入度：指向这个节点的个数
-
-从所有的入度为0的节点出发，将经历过的节点的入度-1
-
-如果没有环，那么最后所有的节点的入度都是0
-如果还有节点的入度大于0，说明有环
-
-
-*/
-
-func canFinish(numCourses int, prerequisites [][]int) bool {
+func findOrder(numCourses int, prerequisites [][]int) []int {
 	tu := make(map[int][]int)
 	rudu := make(map[int]int)
 	for i := 0; i < numCourses; i++ {
@@ -86,6 +74,7 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 	}
 
 	// 遍历所有入度为0的节点
+	resp := []int{}
 	for {
 		if len(queues) == 0 {
 			break
@@ -93,6 +82,7 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 
 		queue := queues[0]
 		queues = append([]int{}, queues[1:]...)
+		resp = append(resp, queue)
 
 		for _, v := range tu[queue] {
 			rudu[v]--
@@ -104,9 +94,9 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 
 	for _, v := range rudu {
 		if v != 0 {
-			return false
+			return nil
 		}
 	}
-	return true
+	return resp
 
 }
