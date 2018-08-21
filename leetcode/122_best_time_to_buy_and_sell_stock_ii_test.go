@@ -44,9 +44,8 @@ func maxProfit_1(prices []int) int {
 - 方法二
   - 和方法一的思想是一致的
   - 想想一下求积分的那个阶梯
-
-
 */
+
 func maxProfit_2(prices []int) int {
 	i := 0
 	m := 0
