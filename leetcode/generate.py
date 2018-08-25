@@ -72,5 +72,21 @@ if __name__ == '__main__':
         f.write(''.join(content))
 
     testfile = find_test(question_number)
-    if testfile != '' and testfile != question_number + '_test.go':
+    if testfile=='':
+        with open(question_number+'_test.go', 'w') as f:
+            f.write('''package leetcode
+
+import (
+	"testing"
+
+	"github.com/Chyroc/algorithms-go/test"
+)
+
+func Test_{}(t *testing.T) {{
+	test.Runs(t, testfunction, []*test.Case{{
+	}})
+}}
+
+'''.format(question_number))
+    elif testfile != '' and testfile != question_number + '_test.go':
         os.rename(testfile, question_number + '_test.go')
