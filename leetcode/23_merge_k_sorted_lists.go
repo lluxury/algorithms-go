@@ -52,9 +52,6 @@ func mergeKLists(lists []*lib.ListNode) *lib.ListNode {
 	case 1:
 		return lists[0]
 	}
-	var less = func(a, b interface{}) bool {
-		return a.(*lib.ListNode).Val < b.(*lib.ListNode).Val
-	}
 
 	var input []interface{}
 	for _, v := range lists {
@@ -62,7 +59,7 @@ func mergeKLists(lists []*lib.ListNode) *lib.ListNode {
 			input = append(input, v)
 		}
 	}
-	heap := lib.NewHeap(less, input...)
+	heap := lib.NewHeap(func(a, b interface{}) bool { return a.(*lib.ListNode).Val < b.(*lib.ListNode).Val }, input...)
 
 	if heap.Len() == 0 {
 		return nil

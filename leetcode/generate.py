@@ -84,6 +84,7 @@ import (
 
 func Test_{}(t *testing.T) {{
 	test.Runs(t, testfunction, []*test.Case{{
+	    {{Input: ``, Output: ``}},
 	}})
 }}
 

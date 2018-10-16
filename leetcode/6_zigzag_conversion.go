@@ -49,6 +49,13 @@ package leetcode
  * P     I
  *
  */
+ 
+
+ /*
+
+ 给定一个字符串，将这么字符串按照Z的格式展开
+
+ */
 
 func convert(s string, numRows int) string {
 	if s == "" || numRows == 1 {

@@ -41,14 +41,15 @@ package leetcode
 
 */
 
-func longestPalindrome_ref(s string, start, offset *int, left, right int) {
+func longestPalindrome_ref(s string, start, maxLen *int, left, right int) {
 	for left >= 0 && right < len(s) && s[left] == s[right] {
 		left--
 		right++
 	}
 
-	if right-left-1 > *offset {
-		*offset = right - (left + 1)
+	if right-left-1 > *maxLen {
+		// 如果首尾之间的间隔大于最大长度，更新这个值
+		*maxLen = right - (left + 1)
 		*start = left + 1
 	}
 }
@@ -57,11 +58,13 @@ func longestPalindrome_5(s string) string {
 	if len(s) < 2 {
 		return s
 	}
-	var start, offset int
+	var start, maxLen int
 	for i := 0; i < len(s)-1; i++ {
-		longestPalindrome_ref(s, &start, &offset, i, i)
-		longestPalindrome_ref(s, &start, &offset, i, i+1)
+		// 以x为中心，向外扩展，检查每一次是不是字符都相等，x从 0 到 n-1
+		longestPalindrome_ref(s, &start, &maxLen, i, i)
+		// 以x, x+1 为中心，向外扩展，检查每一次是不是字符都相等，x从 0 到 n-1
+		longestPalindrome_ref(s, &start, &maxLen, i, i+1)
 	}
 
-	return s[start : start+offset]
+	return s[start : start+maxLen]
 }
