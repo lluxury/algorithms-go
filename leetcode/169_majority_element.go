@@ -28,8 +28,7 @@ package leetcode
  * 
  * Input: [2,2,1,1,1,2,2]
  * Output: 2
- * 
- * 
+ *
  */
 
 func majorityElement(nums []int) int {
