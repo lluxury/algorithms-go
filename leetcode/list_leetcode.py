@@ -26,6 +26,8 @@ def get_leetcode_list():
                     and not a.startswith('[141]') \
                     and not a.startswith('[190]') \
                     and not a.startswith('[191]') \
+                    and not a.startswith('[235]') \
+                    and not a.startswith('[237]') \
                     and not a.startswith('[160]'):
                 print(a)
 
