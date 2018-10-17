@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-
 func Test_438(t *testing.T) {
 	test.Runs(t, findAnagrams, []*test.Case{
 		{Input: `cbaebabacd \n abc`, Output: `[0,6]`},

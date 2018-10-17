@@ -18,38 +18,37 @@ import "github.com/Chyroc/algorithms-go/lib"
  * positions.
  *
  * Example 1:
- * 
+ *
  * Input: "ab-cd"
  * Output: "dc-ba"
- * 
+ *
  *
  * Example 2:
  *
  * Input: "a-bC-dEf-ghIj"
  * Output: "j-Ih-gfE-dCba"
- * 
+ *
  *
  * Example 3:
  *
  * Input: "Test1ng-Leet=code-Q!"
  * Output: "Qedo1ct-eeLg=ntse-T!"
- * 
+ *
  *
  * Note:
- * 
- * 
+ *
+ *
  * S.length <= 100
- * 33 <= S[i].ASCIIcode <= 122 
+ * 33 <= S[i].ASCIIcode <= 122
  * S doesn't contain \ or "
- * 
+ *
  */
 
-
- /*
+/*
 
  反转字符串，非字母的数据位置不动
 
- */
+*/
 
 func reverseOnlyLetters(S string) string {
 	var s = make([]byte, len([]byte(S)))

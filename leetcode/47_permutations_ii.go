@@ -18,10 +18,10 @@ import (
  *
  * Given a collection of numbers that might contain duplicates, return all
  * possible unique permutations.
- * 
+ *
  * Example:
- * 
- * 
+ *
+ *
  * Input: [1,1,2]
  * Output:
  * [
@@ -29,12 +29,11 @@ import (
  * ⁠ [1,2,1],
  * ⁠ [2,1,1]
  * ]
- * 
- * 
+ *
+ *
  */
 
-
- /*
+/*
 
 * 给一个重复元素数据集set，求这个set的排列的集合，如[3 3 0 3]返回[[0 3 3 3] [3 0 3 3] [3 3 0 3] [3 3 3 0]]（47）
   * 和46是一样，遍历数组

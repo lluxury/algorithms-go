@@ -7,7 +7,5 @@ import (
 )
 
 func Test_10(t *testing.T) {
-	test.Runs(t, findAnagrams, []*test.Case{
-	})
+	test.Runs(t, findAnagrams, []*test.Case{})
 }
-

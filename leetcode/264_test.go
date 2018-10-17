@@ -6,7 +6,6 @@ import (
 	"github.com/Chyroc/algorithms-go/test"
 )
 
-
 func Test_264(t *testing.T) {
 	test.Runs(t, nthUglyNumber, []*test.Case{
 		{Input: "0", Output: "-1"},

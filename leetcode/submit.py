@@ -1,14 +1,37 @@
+import os
 import sys
 from subprocess import call
+
 
 def rename_file(s):
     fs = s.split('_')
     return '/tmp/' + fs[0] + '.' + '-'.join(fs[1:])
 
 
+def read_lib_function():
+    fs = os.listdir('../lib')
+    cs = []
+    for v in fs:
+        if v.endswith('_test.go'):
+            continue
+        if not v.endswith('.go'):
+            continue
+
+        f = open('../lib/' + v).read()
+        f = f.replace('package lib', '')
+
+        cs.append(f)
+
+    return '\n'.join(cs)
+
+
 def fix_content(s):
     # package
     s = s.lstrip('package leetcode')
+
+    # lib
+    lib = read_lib_function()
+    print (lib)
 
     return s
 
@@ -35,6 +58,5 @@ if __name__ == '__main__':
     content = read_file(filename)
 
     write_file(newname, fix_content(content))
-
 
     call(["leetcode", "submit", newname])

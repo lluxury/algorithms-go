@@ -16,31 +16,31 @@ import "github.com/Chyroc/algorithms-go/lib"
  * Given a set of candidate numbers (candidates) (without duplicates) and a
  * target number (target), find all unique combinations in candidates where the
  * candidate numbers sums to target.
- * 
+ *
  * The same repeated number may be chosen from candidates unlimited number of
  * times.
- * 
+ *
  * Note:
- * 
- * 
+ *
+ *
  * All numbers (including target) will be positive integers.
  * The solution set must not contain duplicate combinations.
- * 
- * 
+ *
+ *
  * Example 1:
- * 
- * 
+ *
+ *
  * Input: candidates = [2,3,6,7], target = 7,
  * A solution set is:
  * [
  * ⁠ [7],
  * ⁠ [2,2,3]
  * ]
- * 
- * 
+ *
+ *
  * Example 2:
- * 
- * 
+ *
+ *
  * Input: candidates = [2,3,5], target = 8,
  * A solution set is:
  * [
@@ -48,8 +48,8 @@ import "github.com/Chyroc/algorithms-go/lib"
  * [2,3,3],
  * [3,5]
  * ]
- * 
- * 
+ *
+ *
  */
 
 /*
@@ -58,7 +58,7 @@ import "github.com/Chyroc/algorithms-go/lib"
 * 对于[a, b]来说，先选a再选b和先选b再选a，效果是一样的，所以需要一个游标start记录遍历开始的位置
 * 如果是有序的，就不要游标
 
-*/
+ */
 
 func backtrackCombinationSum(list *[][]int, nums []int, tempList []int, target int, start int) {
 	if target == 0 {

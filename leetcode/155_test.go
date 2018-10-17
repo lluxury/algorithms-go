@@ -5,7 +5,7 @@ import "testing"
 func Test_155(t *testing.T) {
 	// TODO
 	{
-		m := Constructor()
+		m := Constructor_155()
 		m.Push(-2)
 		m.Push(0)
 		m.Push(-3)

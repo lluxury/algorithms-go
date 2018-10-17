@@ -19,21 +19,20 @@ package leetcode
  * to the water around the island). One cell is a square with side length 1.
  * The grid is rectangular, width and height don't exceed 100. Determine the
  * perimeter of the island.
- * 
+ *
  * Example:
- * 
+ *
  * [[0,1,0,0],
  * ⁠[1,1,1,0],
  * ⁠[0,1,0,0],
  * ⁠[1,1,0,0]]
- * 
+ *
  * Answer: 16
  * Explanation: The perimeter is the 16 yellow stripes in the image below:
- * 
- * 
- * 
+ *
+ *
+ *
  */
-
 
 /*
 
@@ -59,4 +58,3 @@ func islandPerimeter(grid [][]int) int {
 	}
 	return s
 }
-
