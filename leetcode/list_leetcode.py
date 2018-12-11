@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # encoding: utf8
 
 import subprocess
@@ -22,13 +23,15 @@ def get_leetcode_list():
             if a.startswith('✘'):
                 continue
 
-            if 'Easy' in a \
-                    and not a.startswith('[141]') \
-                    and not a.startswith('[190]') \
-                    and not a.startswith('[191]') \
-                    and not a.startswith('[235]') \
-                    and not a.startswith('[237]') \
-                    and not a.startswith('[160]'):
+            skip = False
+            for i in [141, 190, 191, 235, 237, 160, 278]:
+                if a.startswith('[{}]'.format(i)):
+                    skip = True
+                    break
+            if skip:
+                continue
+
+            if 'Easy' in a:
                 print(a)
 
 

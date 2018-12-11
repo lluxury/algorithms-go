@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # encoding: utf8
 
 import os
@@ -45,7 +46,7 @@ def find_test(number):
 if __name__ == '__main__':
     argv = sys.argv
     if len(argv) < 2:
-        print('请输入参数')
+        print('请输入参数: 问题序号')
         exit(1)
 
     question_number = argv[1]
@@ -72,8 +73,8 @@ if __name__ == '__main__':
         f.write(''.join(content))
 
     testfile = find_test(question_number)
-    if testfile=='':
-        with open(question_number+'_test.go', 'w') as f:
+    if testfile == '':
+        with open(question_number + '_test.go', 'w') as f:
             f.write('''package leetcode
 
 import (
