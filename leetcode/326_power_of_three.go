@@ -42,6 +42,6 @@ package leetcode
  * Could you do it without using any loop / recursion?
  */
 
-func isPowerOfThree(n int) bool {
+// func isPowerOfThree(n int) bool {
     
-}
+// }
