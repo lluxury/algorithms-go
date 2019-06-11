@@ -1,0 +1,38 @@
+// 细节后续分析
+
+
+https://leetcode-badge.chyroc.cn/?name=chyroc
+
+// 颜色是会变化 红（低于等于30％），黄（低于等于60％），绿（其他）
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg
+
+// name=chyroc
+// leetcode_badge_style = Leetcode%20|%20Ranking-{{.ranking}}-green.svg
+// 后面为显示内容,前面是什么
+
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg
+// leetcode-badge.chyroc.cn
+// leetcode_badge_style
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Accepted/Total-{{.accepted_submission}}/{{.all_submission}}-green.svg
+// 这个域名貌似默认加 leetcode
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-green.svg?style=flat-square
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Solved/Total-{{.solved_question}}/{{.all_question}}-red.svg
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Solved/Total-{{.solved_question}}/{{.all_question}}-{{ if le .solved_question_rate_float 0.3}}red.svg{{ else if le .solved_question_rate_float 0.6}}yellow.svg{{ else }}green.svg{{ end }}
+// 计算不同的比例显示不同的颜色
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Question-{{.solved_question_rate}}-{{ if le .solved_question_rate_float 0.3}}red{{ else if le .solved_question_rate_float 0.6}}yellow{{ else }}green{{ end }}.svg
+
+https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Submission-{{.accepted_submission_rate}}-{{ if le .accepted_submission_rate_float 0.3}}red{{ else if le .solved_question_rate_float 0.6}}yellow{{ else }}green{{ end }}.svg
+
+
+// name：leetcode用户名
+// leetcode_badge_style：自定义的badge显示格式
+
+// {{ .xxx }}可以引用下面的6个变量
+// {{ le .xx 0.3 }} a {{ else if le 0.6 }} b {{ else }} c xx小于等于0.3返回a，小于等于0.6返回b，否则返回c

@@ -1,0 +1,39 @@
+
+
+06-11 16:23
+// 本地运行比较困难,被墙的包太多,建议放github上测试
+
+// C:\Users\yann\go\src\github.com\algorithms-go\project
+
+
+// 编译失败
+// 覆盖率86%
+// 排名 61758
+// 解决 198道 ,貌似是leet上的数据,和本地没联系
+
+// 需要解决的问题
+    // file印记,没有的click需要消失
+    // 了解 readme 的生成方式
+    // 解决编译故障
+
+mkdir stretchr
+cd !$
+git clone https://github.com/stretchr/testify.git
+
+mkdir magiconair
+cd !$
+git clone https://github.com/magiconair/properties.git
+
+cd C:\Users\yann\go\src
+go test github.com\Chyroc\algorithms-go\leetcode\
+// ok      github.com/Chyroc/algorithms-go/leetcode        0.341s
+
+go test
+
+    go test -v hello_test.go
+
+    go test -v hello_test.go -test.run TestHello
+    // 单个函数
+
+// 目前不能使用, 原因待查
+// 屏蔽了好多内容,勉强本地跑通
