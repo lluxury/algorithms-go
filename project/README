@@ -1,5 +1,12 @@
 
 
+06-14 13:56
+// 多个结果的时候,次序问题怎么解决?
+// 目前看好像是固定次序,暂不处理
+
+
+
+
 
 06-12 10:37
 // 终于写出第一个测试了,不错不错
@@ -8,8 +15,27 @@
 // 更新一点误解,需要的库 leetcode会自动导入
 // 不用考虑自建函数需要 string 和fmt的问题
 
+// 142 的测试写不出来,怎么做环的测试啊
+
 // 239 最后是用树做的,先放一下好了,需要手写树的知识补充
 // 不是自己写的错误好多啊
+
+// 环境 linux ,python3
+ cover.sh*
+ genarate_readme.py*
+ generate_code -> ../leetcode/generate.py*
+ list_leetcode -> ../leetcode/list_leetcode.py*
+ submit -> ../leetcode/submit.py*
+// 用途未知
+ // 做了一些自动化操作, 对应导入,lib,文件名的问题等
+ // 可惜我全手动了
+
+// 链接和引用还是要替换啊,不然指到原来的项目,更新显示不了
+// output = subprocess.check_output(['leetcode', 'list']) 这个命令在哪,难道自己写的?
+
+// 梳理了一下,发现没有leetcode的个命令啥都打开不了,
+// 不过好事是目前还比较新,有900多题,先这么用吧
+
 
 06-11 16:23
 // 本地运行比较困难,被墙的包太多,建议放github上测试

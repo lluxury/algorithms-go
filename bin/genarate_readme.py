@@ -131,7 +131,7 @@ def get_leetcode_list():
     unlock_questions.reverse()
     lock_questions.reverse()
     return unlock_questions, lock_questions
-
+# 执行指定的命令，如果执行状态码为0则返回命令执行结果，否则抛出异常
 
 def to_markdown(questions):
     l = []
