@@ -43,13 +43,13 @@ p and q are different and both values will exist in the BST.*/
  * }
  */
 // func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode  {
-func lowestCommonAncestor(root, p, q *lib.TreeNode) *lib.TreeNode  {
+func lowestCommonAncestor_235(root, p, q *lib.TreeNode) *lib.TreeNode  {
      if (p.Val < root.Val && root.Val > q.Val){
-         return lowestCommonAncestor(root.Left, p, q)
+         return lowestCommonAncestor_235(root.Left, p, q)
      }
      
      if (p.Val > root.Val && root.Val < q.Val ){
-         return lowestCommonAncestor(root.Right, p ,q)
+         return lowestCommonAncestor_235(root.Right, p ,q)
      }
      return root
 }
