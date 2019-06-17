@@ -32,7 +32,7 @@ All of the nodes' values will be unique.
 p and q are different and both values will exist in the BST.*/
 
 
-// 找最小公共祖先,需要考虑几种可能性,然后重新传参,递归
+// 二叉搜索树是有序的, 判断是否在2边,否则反回中间
 
 /**
  * Definition for TreeNode.
@@ -44,15 +44,12 @@ p and q are different and both values will exist in the BST.*/
  */
 // func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode  {
 func lowestCommonAncestor(root, p, q *lib.TreeNode) *lib.TreeNode  {
-    if p.Val > q.Val {
-        p,q = q,p
-    }
-
-    if root == nil || p.Val<= root.Val && root.Val <= q.Val {
-        return root
-    } else if q.Val <= root.Val{
-        return lowestCommonAncestor(root.Left, p, q)
-    } else {
-        return lowestCommonAncestor(root.Right, p, q)
-    }
+     if (p.Val < root.Val && root.Val > q.Val){
+         return lowestCommonAncestor(root.Left, p, q)
+     }
+     
+     if (p.Val > root.Val && root.Val < q.Val ){
+         return lowestCommonAncestor(root.Right, p ,q)
+     }
+     return root
 }
