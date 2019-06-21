@@ -59,3 +59,17 @@ func maxProfit_2(prices []int) int {
 
 	return m
 }
+
+// func maxProfit(prices []int) int {
+// // func maxProfit(prices int[]) int  {
+// 	profit := 0
+// 	for i := 1; i < len(prices); i++ {
+// 		if (prices[i] > prices [i-1]){
+// 			profit = profit + prices[i] - prices[i -1]
+// 		}
+// 	}
+// 	return profit 
+// }
+
+// 我的参考解法,上面2个都很优秀啊,为啥我的这么low
+// 有机会再读下细节好了,感觉没有处理好
