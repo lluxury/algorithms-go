@@ -41,8 +41,9 @@ package leetcode
 
  求平方根，转成整数
 
-*/
 
+*/
+/*
 func mySqrt(x int) int {
 	var a float64 = 1
 	for {
@@ -58,4 +59,30 @@ func mySqrt(x int) int {
 	}
 
 	return int(a)
+}*/
+
+
+func mySqrt(x int) int {
+	if (x == 0 || x == 1){
+		return x
+	}
+
+	l := 1
+	r := x
+	var res int
+
+	for (l <= r){
+		var m int 
+		m = (l + r) /2
+		// mm = ll + (rr - ll >> 1);
+		if (m == x / m) {
+			return m
+		} else if (m > x / m){
+			r = m -1
+		} else {
+			l = m + 1
+			res = m 
+		}
+	}
+    return res
 }
