@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/Chyroc/algorithms-go/lib"
-	"github.com/Chyroc/algorithms-go/test"
+	"github.com/lluxury/algorithms-go/lib"
+	"github.com/lluxury/algorithms-go/test"
 )
 
 func Test_23(t *testing.T) {

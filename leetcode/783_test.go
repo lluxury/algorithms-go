@@ -3,7 +3,7 @@ package leetcode
 import (
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
+	"github.com/lluxury/algorithms-go/test"
 )
 
 //Input: root = [4,2,6,1,3,null,null]

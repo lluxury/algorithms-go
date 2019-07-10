@@ -30,6 +30,7 @@ def find_generate_file(number, rec=True):
         command = ['leetcode', 'show', number, '-gx', '-l', 'golang']
         p = subprocess.Popen(command)
         p.wait()
+        # 获取题目, 等待完成
 
     return find_generate_file(number, False)
 
@@ -80,7 +81,7 @@ if __name__ == '__main__':
 import (
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
+	"github.com/lluxury/algorithms-go/test"
 )
 
 func Test_{}(t *testing.T) {{

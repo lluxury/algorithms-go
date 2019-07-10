@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/lluxury/algorithms-go/lib"
 	"math"
 )
 

@@ -3,11 +3,11 @@ import subprocess
 
 readme = '''# algorithms-go
 
-[![Build Status](https://travis-ci.org/Chyroc/algorithms-go.svg?branch=master)](https://github.com/Chyroc/leetcode-badge)
-[![codecov](https://codecov.io/gh/Chyroc/algorithms-go/branch/master/graph/badge.svg)](https://github.com/Chyroc/leetcode-badge)
+[![Build Status](https://travis-ci.org/Chyroc/algorithms-go.svg?branch=master)](https://github.com/lluxury/leetcode-badge)
+[![codecov](https://codecov.io/gh/Chyroc/algorithms-go/branch/master/graph/badge.svg)](https://github.com/lluxury/leetcode-badge)
 
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg&refresh=new)](https://github.com/Chyroc/leetcode-badge)
-[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&refresh=new)](https://github.com/Chyroc/leetcode-badge)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode%20|%20Ranking-{{.ranking}}-green.svg&refresh=new)](https://github.com/lluxury/leetcode-badge)
+[![leetcode badge](https://leetcode-badge.chyroc.cn/?name=chyroc&refresh=new)](https://github.com/lluxury/leetcode-badge)
 
 记录go算法题训练的地方
 '''
@@ -36,7 +36,7 @@ def _format_leetcode_line(line):
         i += 1
 
         char = line[i]
-        print('i', i, 'start', start, 'char', char, char == '[', char == ']', char == '(', char == ')')
+        # print('i', i, 'start', start, 'char', char, char == '[', char == ']', char == '(', char == ')')
 
         if start <= 0:
             # if char == '✔':
@@ -145,7 +145,7 @@ def to_markdown(questions):
     l.append('---  | --- | --- | --- | --- | ---')
     for q in questions:
         url = '[click](https://leetcode.com/problems/{}/description/)'.format(q.title.replace(' ', '-').lower())
-        file = '[click](https://github.com/Chyroc/algorithms-go/blob/master/leetcode/{}_{}.go)'.format(q.number, q.title.replace(' ', '_').lower())
+        file = '[click](https://github.com/lluxury/algorithms-go/blob/master/leetcode/{}_{}.go)'.format(q.number, q.title.replace(' ', '_').lower())
         l.append('{} | {} | {} | {} | {} | {}'.format(q.number, q.title, q.right, q.level, url, file))
 
     return '\n'.join(l)

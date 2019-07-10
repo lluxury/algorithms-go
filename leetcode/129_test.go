@@ -3,7 +3,7 @@ package leetcode
 import (
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/test"
+	"github.com/lluxury/algorithms-go/test"
 )
 
 func Test_129(t *testing.T) {

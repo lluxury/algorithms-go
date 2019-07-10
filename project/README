@@ -3,6 +3,14 @@
 // 122 用贪婪出奇的简单, 用动态规划呢?
 
 // 做了个修改, genarate_readme.py 可以用了,刷新了最新题目
+python3 bin/genarate_readme.py
+
+// generate.py 可以用了, 在leetcod目录下使用
+python3 generate.py xx
+
+// 为了让新上的题目可以访问,修改了原始链接
+// 相对位置  
+$GOPATH\src\github.com\lluxury\algorithms-go\
 
 07-08 14:14  
 // 动态规划的债越欠越多了, 得找个时间消化下
@@ -159,7 +167,7 @@ git clone https://github.com/magiconair/properties.git
 
 cd C:\Users\yann\go\src
 go test github.com\Chyroc\algorithms-go\leetcode\
-// ok      github.com/Chyroc/algorithms-go/leetcode        0.341s
+// ok      github.com/lluxury/algorithms-go/leetcode        0.341s
 
 go test
 
@@ -168,5 +176,4 @@ go test
     go test -v hello_test.go -test.run TestHello
     // 单个函数
 
-// cover 目前不能使用, 原因待查
-// 屏蔽了好多内容,勉强本地跑通
+

@@ -1,5 +1,5 @@
 package leetcode
-import "github.com/Chyroc/algorithms-go/lib"
+import "github.com/lluxury/algorithms-go/lib"
 
 /*
 Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.

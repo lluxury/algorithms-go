@@ -44,3 +44,6 @@ lib
 specialized_training/dp
 test
 
+// generate.py 很好用,解析完毕
+
+// submit.py 没有完全懂, 不过我喜欢在网页上提交解答,先放弃

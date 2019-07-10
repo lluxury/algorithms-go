@@ -1,6 +1,6 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import "github.com/lluxury/algorithms-go/lib"
 
 /*
  * [563] Binary Tree Tilt

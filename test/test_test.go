@@ -3,7 +3,7 @@ package test
 import (
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/lluxury/algorithms-go/lib"
 	"strings"
 )
 

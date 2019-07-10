@@ -1,6 +1,6 @@
 package leetcode
 
-import "github.com/Chyroc/algorithms-go/lib"
+import "github.com/lluxury/algorithms-go/lib"
 
 /*
  * [515] Find Largest Value in Each Tree Row

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Chyroc/algorithms-go/lib"
+	"github.com/lluxury/algorithms-go/lib"
 	"github.com/stretchr/testify/assert"
 )
 
