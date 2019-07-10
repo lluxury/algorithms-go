@@ -22,8 +22,10 @@ class Question:
     passed = ''
 
     def __str__(self):
-        return '<({})\t({})\t({})\t({})\t({})\t({})>'.format(self.right, self.lock, self.number, self.level,
-                                                             self.passed, self.title)
+        # return '<({})\t({})\t({})\t({})\t({})\t({})>'.format(self.right, self.lock, self.number, self.level,
+        #                                                     self.passed, self.title)
+        return '<({})\t({})\t({})\t({})\t({})\t({})>'.format(self.lock, self.right, self.number, self.title, self.level,
+                                                             self.passed)
 
 
 def _format_leetcode_line(line):
@@ -34,16 +36,20 @@ def _format_leetcode_line(line):
         i += 1
 
         char = line[i]
-        # print('i', i, 'start', start, 'char', char, char == '[', char == ']', char == '(', char == ')')
+        print('i', i, 'start', start, 'char', char, char == '[', char == ']', char == '(', char == ')')
 
         if start <= 0:
-            if char == '✔':
+            # if char == '✔':
+            if char == '√':
                 q.right = '✅'
                 continue
-            elif char == '✘':
+            # elif char == '✘':
+            elif char == '×':
                 q.right = '❌'
                 continue
-            elif char == '🔒':
+            # elif char == '🔒':
+            elif char == '$':
+                # q.lock = '🔒'
                 q.lock = '🔒'
                 continue
             elif char == '[':

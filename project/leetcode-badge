@@ -36,3 +36,11 @@ https://leetcode-badge.chyroc.cn/?name=chyroc&leetcode_badge_style=Leetcode | Su
 
 // {{ .xxx }}可以引用下面的6个变量
 // {{ le .xx 0.3 }} a {{ else if le 0.6 }} b {{ else }} c xx小于等于0.3返回a，小于等于0.6返回b，否则返回c
+
+
+// 有4个目录可以测试, 有时候分析下测试用例
+leetcode
+lib
+specialized_training/dp
+test
+
