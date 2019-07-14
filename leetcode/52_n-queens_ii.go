@@ -90,28 +90,30 @@ Explanation: There are two distinct solutions to the 4-queens puzzle as shown be
 //     }
 // }
 
-// var count int =0
-// func totalNQueens(n int) int {
-//     if n < 1 {
-//         return 0
-//     }
-
-//     dfs_52(n,0,0,0,0)
-//     return count
-// }
-
-// func dfs_52(n int, row int, cols int, slash int, backslash int) {
-//     if row >= n {
-//         count++
-//         return
-//     }
-//     bits := (^(cols | slash | backslash)) & ((1 << uint(n)) - 1)
-//     for bits > 0 {
-//         p := bits & -bits
-//         dfs_52(n, row+1, cols|p, (slash|p)<<1, (backslash|p)>>1)
-//         bits = bits & (bits - 1)
-//     }
-// }
+//var count int = 0
+//func totalNQueens(n int) int {
+//    if n < 1 {
+//        return 0
+//    }
+//
+//    dfs_52(0,0,0,0,n)
+//    return count
+//}
+//
+//func dfs_52(row int, cols int, slash int, backslash int,n int) {
+//    if row >= n {
+//        count++
+//        return
+//    }
+//
+//    bits := (^(cols | slash | backslash)) & ((1 << uint(n)) - 1)
+//    //1<< 其实是2 的 n次方 认清自己的不足
+//    for bits > 0 {
+//        p := bits & -bits
+//        dfs_52( row+1, cols|p, (slash|p)<<1, (backslash|p)>>1,n)
+//        bits = bits & (bits - 1)
+//    }
+//}
 
 // 花了4个小时,甚至抄袭了别人的解法,还是不正确,先放放吧
 
