@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
     exist = exist_question(question_number)
     if exist:
-        print('exist')
+        print('duplicated item!')
         sys.exit(0)
 
     file = find_generate_file(question_number)

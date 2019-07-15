@@ -1,5 +1,7 @@
 package leetcode
-
+import (
+	"sort"
+)
 /*
  * [300] Longest Increasing Subsequence
  *
@@ -57,25 +59,19 @@ package leetcode
 
 */
 
-func lengthOfLIS(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
 
-	m := make([]int, len(nums))
-	for k := range m {
-		m[k] = 1
-	}
+func lengthOfLIS(nums []int) int  {
+	tails := make([]int, 0,len(nums))
 
-	for i := 1; i < len(nums); i++ {
-		for j := 0; j < i; j++ {
-			if nums[i] > nums[j] {
-				m[i] = max(m[i], m[j]+1)
-			}
+	for _, n := range nums {
+		at := sort.SearchInts(tails,n)
+		if at == len(tails){
+		tails = append(tails,n)
+		} else if tails[at] > n {
+			tails[at] = n
 		}
 	}
-
-	return max(m...)
+	return len(tails)
 }
 
 // todo
@@ -86,7 +82,6 @@ func lengthOfLIS(nums []int) int {
 //
 //解法二：
 //
-//复制代码
 //class Solution {
 //public:
 //    int lengthOfLIS(vector<int>& nums) {
