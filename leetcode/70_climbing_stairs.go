@@ -27,16 +27,29 @@ Explanation: There are three ways to climb to the top.
 // DP 状态定义
 // DP 状态方程
 
-func climbStairs(n int) int {
-    if (n == 0 || n == 1 || n == 2){
-        return n
-    } 
+// func climbStairs(n int) int {
+//     if (n == 0 || n == 1 || n == 2){
+//         return n
+//     } 
     
-    mem := make([]int,n)
-    mem[0] = 1
-    mem[1] = 2
-    for i := 2; i < n; i++{
-        mem[i]=mem[i-1]+ mem[i-2]
+//     mem := make([]int,n)
+//     mem[0] = 1
+//     mem[1] = 2
+//     for i := 2; i < n; i++{
+//         mem[i]=mem[i-1]+ mem[i-2]
+//     }
+//     return mem[n-1]
+// }
+
+func climbStairs(n int) int {
+
+    // slice1 := make([]type, len) 长度必须
+    d := make([]int,n+1)
+    d[0] = 1
+    d[1] = 1
+
+    for i := 2; i <= n; i++ {
+        d[i] = d[i-1]+d[i-2]
     }
-    return mem[n-1]
+    return d[n]
 }

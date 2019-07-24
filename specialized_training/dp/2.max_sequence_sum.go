@@ -19,3 +19,5 @@ func MaxSequenceSum(a []int) int {
 
 	return lib.Max(sum...)
 }
+
+// 看由题目来看, 是连续任意个数,得出数列中的和最大值
