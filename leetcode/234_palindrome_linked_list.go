@@ -38,9 +38,28 @@ import "github.com/lluxury/algorithms-go/lib"
 
  */
 
-func isPalindrome_234(head *lib.ListNode) bool {
-	head2 := head.Clone()
-	r := reverseList3(head)
+// func isPalindrome_234(head *lib.ListNode) bool {
+// 	head2 := head.Clone()
+// 	r := reverseList3(head)
 
-	return lib.EqualsToListNode(head2, r)
+// 	return lib.EqualsToListNode(head2, r)
+// }
+
+func isPalindrome_234(head *lib.ListNode) bool {
+// func isPalindrome(head *lib.ListNode) bool {
+    nums := make([]int,0, 64)
+    for head != nil {
+        nums = append(nums, head.Val)
+        head = head.Next
+    }
+    
+    l,r :=0, len(nums)-1
+    for l < r {
+        if nums[l] != nums[r]{
+            return false
+        }
+        l++
+        r--
+    }
+    return true
 }

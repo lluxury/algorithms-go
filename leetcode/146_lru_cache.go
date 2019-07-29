@@ -67,7 +67,8 @@ type LRUCache struct {
 // 添加新节点的时候，添加到尾节点的前一个；
 	// 更新一个存储的节点的生命的时候，先移除他，然后再添加他（即自动的到最后去了）
 
-func Constructor(capacity int) LRUCache {
+// func Constructor(capacity int) LRUCache {
+func Constructor_146(capacity int) LRUCache {
 	cap := LRUCache{
 		map1: make(map[int]*Link),
 		capacity: capacity,
