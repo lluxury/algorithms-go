@@ -1,6 +1,8 @@
 package leetcode
 
-import "sort"
+// import "sort"
+import "time"
+import "container/heap"
 
 /*
  * [460] LFU Cache
@@ -53,73 +55,103 @@ import "sort"
 // m 存储数据, k-v
 // heap 存储使用量，最小堆
 // capacity 堆容量，超过的删除堆顶
+
 type LFUCache struct {
-	m        map[int]*heap_useage
-	capacity int
+	m 			map[int]*entry
+	pq			PQ
+	cap	int
 }
 
-type heap_useage struct {
-	Key   int
-	Value int
-	Count int
-}
-
-type heap_useages struct {
-	s []*heap_useage
-}
-
-func (r heap_useages) Len() int { return len(r.s) }
-
-func (r heap_useages) Less(i, j int) bool { return r.s[i].Count < r.s[j].Count }
-
-func (r heap_useages) Swap(i, j int) { r.s[i], r.s[j] = r.s[j], r.s[i] }
-
-func getMinCount(m map[int]*heap_useage) int {
-	s := []*heap_useage{}
-	for _, v := range m {
-		s = append(s, v)
-	}
-	h := heap_useages{s}
-	sort.Sort(h)
-	return h.s[0].Key
-}
-
-func Constructor_460(capacity int) LFUCache {
+func Constructor_460(capacity int) LFUCache  {
 	return LFUCache{
-		m:        make(map[int]*heap_useage),
-		capacity: capacity,
+		m: 		make(map[int]*entry, capacity),
+		pq:		make(PQ, 0, capacity),
+		cap:	capacity,
 	}
 }
 
-func (this *LFUCache) Get(key int) int {
-	if v, ok := this.m[key]; ok {
-		v.Count++
-		return v.Value
+func (c *LFUCache) Get(key int) int  {
+	if ep, ok := c.m[key];ok{
+		c.pq.update(ep)
+		return ep.value
 	}
 	return -1
 }
 
-func (this *LFUCache) Put(key int, value int) {
-	v, ok := this.m[key]
+func (c *LFUCache) Put(key int, value int)  {
+	if c.cap <= 0 {
+		return 
+	}
+	
+	ep,ok := c.m[key]
 	if ok {
-		v.Count++
-		v.Value = value
-		return
+		c.m[key].value = value
+		c.pq.update(ep)
+		return 
 	}
 
-	if len(this.m) >= this.capacity {
-		minKey := getMinCount(this.m)
-		delete(this.m, minKey)
+	ep = &entry{key:key, value:value}
+	if len(c.pq) == c.cap{
+		temp := heap.Pop(&c.pq).(*entry)
+		delete(c.m, temp.key)
 	}
-
-	this.m[key] = &heap_useage{
-		Key:   key,
-		Value: value,
-		Count: 1,
-	}
+	
+	c.m[key] = ep
+	heap.Push(&c.pq, ep)
 }
 
-// 这个解法有漏洞的, 越界了
+
+type entry struct {
+	key 		int
+	value		int
+	frequence	int
+	index		int
+	date	time.Time
+}
+
+type PQ []*entry
+
+func (pq PQ) Len() int  { return len(pq) }
+func (pq PQ) Less(i,j int) bool {
+	if pq[i].frequence == pq[j].frequence{
+		return pq[i].date.Before(pq[j].date)
+	}
+	return pq[i].frequence < pq[j].frequence
+}
+
+func (pq PQ) Swap(i,j int) {
+	pq[i],pq[j] = pq[j], pq[i]
+	pq[i].index = i
+	pq[j].index = j
+}
+
+func (pq *PQ) Push(x interface{})  {
+	n:= len(*pq)
+	entry := x.(*entry)
+	entry.index = n
+	entry.date = time.Now()
+	*pq = append(*pq, entry)
+}
+
+func (pq *PQ) Pop() interface{} {
+	old := *pq
+	n := len(old)
+	entry := old[n-1]
+	entry.index = -1 // for safety
+	*pq = old[0 : n-1]
+	return entry
+}
+
+// update modifies the priority of an entry in the queue.
+func (pq *PQ) update(entry *entry) {
+	entry.frequence++
+	entry.date = time.Now()
+	heap.Fix(pq, entry.index)
+}
+
+
+
+
 
 /**
  * Your LFUCache object will be instantiated and called as such:
