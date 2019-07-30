@@ -119,6 +119,8 @@ func (this *LFUCache) Put(key int, value int) {
 	}
 }
 
+// 这个解法有漏洞的, 越界了
+
 /**
  * Your LFUCache object will be instantiated and called as such:
  * obj := Constructor(capacity);
