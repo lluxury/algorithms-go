@@ -2,7 +2,7 @@ package leetcode
 
 import (
     // "fmt"
-    // "math"
+    "math"
     // "strconv"
     // "strings"
     // "unicode"
