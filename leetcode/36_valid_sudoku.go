@@ -1,6 +1,7 @@
 package leetcode
 
 import "strconv"
+
 /*
 Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
 
@@ -42,7 +43,7 @@ Input:
   [".",".",".",".","8",".",".","7","9"]
 ]
 Output: false
-Explanation: Same as Example 1, except with the 5 in the top left corner being 
+Explanation: Same as Example 1, except with the 5 in the top left corner being
     modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
 Note:
 
@@ -52,67 +53,62 @@ The given board contain only digits 1-9 and the character '.'.
 The given board size is always 9x9.
 */
 
-
-
 // 注意审题, 这个是判断数独是否成立, 逻辑比后一题简单很多
 // 三次遍历都通过就可以了
 
+func isValidSudoku(board [][]byte) bool {
+	for i := 0; i < 9; i++ {
+		tmp := [10]int{}
+		for j := 0; j < 9; j++ {
+			cellVal := board[i][j : j+1]
+			if string(cellVal) != "." {
+				index, _ := strconv.Atoi(string(cellVal))
+				if index > 9 || index < 1 {
+					return false
+				}
+				if tmp[index] == 1 {
+					return false
+				}
+				tmp[index] = 1
+			}
+		}
+	}
 
-func isValidSudoku(board [][]byte) bool  {
-    for i := 0; i < 9; i++ {
-        tmp := [10]int{}
-        for j := 0; j < 9; j++ {
-            cellVal := board[i][j:j+1]
-            if string(cellVal) != "." {
-                index, _ := strconv.Atoi(string(cellVal))
-                if index > 9 || index < 1 {
-                    return false
-                }
-                if tmp[index] == 1 {
-                    return false
-                }
-                tmp[index] = 1
-            }
-        }
-    }
+	for i := 0; i < 9; i++ {
+		tmp := [10]int{}
+		for j := 0; j < 9; j++ {
+			cellVal := board[j][i]
+			if string(cellVal) != "." {
+				index, _ := strconv.Atoi(string(cellVal))
+				if index > 9 || index < 1 {
+					return false
+				}
+				if tmp[index] == 1 {
+					return false
+				}
+				tmp[index] = 1
+			}
 
-    for i := 0; i < 9; i++ {
-        tmp := [10]int{}
-        for j := 0; j < 9; j++ {
-            cellVal := board[j][i]
-            if string(cellVal) != "." {
-                index, _ := strconv.Atoi(string(cellVal))
-                if index > 9 || index < 1 {
-                    return false
-                } 
-                if tmp[index] == 1 {
-                    return false
-                }
-                tmp[index] = 1
-            }
+		}
+	}
 
-        }
-    }
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			tmp := [10]int{}
+			for ii := i * 3; ii < i*3+3; ii++ {
+				for jj := j * 3; jj < j*3+3; jj++ {
+					cellVal := board[ii][jj]
+					if string(cellVal) != "." {
+						index, _ := strconv.Atoi(string(cellVal))
+						if tmp[index] == 1 {
+							return false
+						}
+						tmp[index] = 1
+					}
+				}
+			}
+		}
+	}
 
-    for i := 0; i < 3; i++ {
-        for j := 0; j < 3; j++ {
-            tmp := [10]int{}
-            for ii := i * 3; ii < i * 3+3; ii++ {
-                for jj := j * 3; jj < j*3+3; jj++ {
-                    cellVal := board[ii][jj]
-                    if string(cellVal) != "." {
-                        index, _ := strconv.Atoi(string(cellVal))
-                        if tmp[index] == 1 {
-                            return false
-                        }
-                        tmp[index] = 1
-                    }
-                }
-            }
-        }
-    }
-
-    return true
+	return true
 }
-
-

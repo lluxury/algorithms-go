@@ -47,40 +47,40 @@ cache.get(4);       // returns 4
         如果长度超出，删除最旧的数据（头结点的下一个节点）
 */
 type Link struct {
-	key 	int
-	value 	int
-	prev 	*Link
-	next 	*Link
+	key   int
+	value int
+	prev  *Link
+	next  *Link
 }
 
 type LRUCache struct {
-	map1			map[int]*Link
-	capacity	int
-	head 		*Link
-	tail		*Link
+	map1     map[int]*Link
+	capacity int
+	head     *Link
+	tail     *Link
 }
 
 // 1. 头节点和尾节点都不存储数据，
-		// 正式数据存储于头节点和尾节点之间的节点之间
+// 正式数据存储于头节点和尾节点之间的节点之间
 // 2. 在链表中，靠前的数据是「最少」用到的，靠后的是「用的多」的
 // 3. 所以，移除无用数据的时候，请删除头结点的下一个节点；
 // 添加新节点的时候，添加到尾节点的前一个；
-	// 更新一个存储的节点的生命的时候，先移除他，然后再添加他（即自动的到最后去了）
+// 更新一个存储的节点的生命的时候，先移除他，然后再添加他（即自动的到最后去了）
 
 // func Constructor(capacity int) LRUCache {
 func Constructor_146(capacity int) LRUCache {
 	cap := LRUCache{
-		map1: make(map[int]*Link),
+		map1:     make(map[int]*Link),
 		capacity: capacity,
-		head: 	new(Link),
-		tail: 	new(Link),
+		head:     new(Link),
+		tail:     new(Link),
 	}
 	cap.head.next = cap.tail
 	cap.tail.prev = cap.head
 	return cap
 }
 
-func (this *LRUCache) Get(key int) int{
+func (this *LRUCache) Get(key int) int {
 	v, ok := this.map1[key]
 	if ok {
 		this.delete(v)
@@ -91,7 +91,7 @@ func (this *LRUCache) Get(key int) int{
 	}
 }
 
-func (this *LRUCache) Put(key int, value int){
+func (this *LRUCache) Put(key int, value int) {
 	v, ok := this.map1[key]
 	if ok {
 		this.delete(v)
@@ -99,22 +99,22 @@ func (this *LRUCache) Put(key int, value int){
 		this.map1[key].value = value
 	} else {
 		link := &Link{
-			key: key,
+			key:   key,
 			value: value,
 		}
 		this.add(link)
-		this.map1[key]=link
-		if len(this.map1) > this.capacity{
+		this.map1[key] = link
+		if len(this.map1) > this.capacity {
 			data := this.head.next
 			this.delete(data)
-			delete(this.map1,data.key)
+			delete(this.map1, data.key)
 		}
 	}
 }
 
 // 删除一个节点：将这个节点的pre和next链接起来
-func (this *LRUCache) delete (node *Link){
-	prev :=node.prev
+func (this *LRUCache) delete(node *Link) {
+	prev := node.prev
 	next := node.next
 	next.prev = prev
 	prev.next = next
@@ -124,7 +124,7 @@ func (this *LRUCache) delete (node *Link){
 //   * 先拿到最后一个节点
 //   * 将最后一个节点的pre设置为node，倒数第二个节点的next设置为nodex  [] -> [] <- []
 //   * node的pre和next分别设置为倒数第二个节点和最后一个节点          [] <- [] -> []
-func (this *LRUCache) add(node *Link){
+func (this *LRUCache) add(node *Link) {
 	prev := this.tail.prev
 	prev.next = node
 	this.tail.prev = node
@@ -138,5 +138,3 @@ func (this *LRUCache) add(node *Link){
  * param_1 := obj.Get(key);
  * obj.Put(key,value);
  */
-
-

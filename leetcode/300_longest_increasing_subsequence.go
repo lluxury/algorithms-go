@@ -1,7 +1,9 @@
 package leetcode
+
 import (
 	"sort"
 )
+
 /*
  * [300] Longest Increasing Subsequence
  *
@@ -59,14 +61,13 @@ import (
 
 */
 
-
-func lengthOfLIS(nums []int) int  {
-	tails := make([]int, 0,len(nums))
+func lengthOfLIS(nums []int) int {
+	tails := make([]int, 0, len(nums))
 
 	for _, n := range nums {
-		at := sort.SearchInts(tails,n)
-		if at == len(tails){
-		tails = append(tails,n)
+		at := sort.SearchInts(tails, n)
+		if at == len(tails) {
+			tails = append(tails, n)
 		} else if tails[at] > n {
 			tails[at] = n
 		}
@@ -76,17 +77,17 @@ func lengthOfLIS(nums []int) int  {
 
 // todo
 // 优化算法，回头看，现在先集中解决动态规划
-//下面我们来看一种优化时间复杂度到O(nlgn)的解法，这里用到了二分查找法，所以才能加快运行时间哇。  
+//下面我们来看一种优化时间复杂度到O(nlgn)的解法，这里用到了二分查找法，所以才能加快运行时间哇。
 
-// 思路是，我们先建立一个数组ends，把首元素放进去，然后比较之后的元素，  
-// 如果遍历到的新元素比ends数组中的首元素小的话，替换首元素为此新元素，  
-// 如果遍历到的新元素比ends数组中的末尾元素还大的话，将此新元素添加到ends数组末尾(注意不覆盖原末尾元素)。  
-// 如果遍历到的新元素比ends数组首元素大，比尾元素小时，此时用二分查找法找到第一个不小于此新元素的位置，  
-// 覆盖掉位置的原来的数字，以此类推直至遍历完整个nums数组，此时ends数组的长度就是我们要求的LIS的长度，  
+// 思路是，我们先建立一个数组ends，把首元素放进去，然后比较之后的元素，
+// 如果遍历到的新元素比ends数组中的首元素小的话，替换首元素为此新元素，
+// 如果遍历到的新元素比ends数组中的末尾元素还大的话，将此新元素添加到ends数组末尾(注意不覆盖原末尾元素)。
+// 如果遍历到的新元素比ends数组首元素大，比尾元素小时，此时用二分查找法找到第一个不小于此新元素的位置，
+// 覆盖掉位置的原来的数字，以此类推直至遍历完整个nums数组，此时ends数组的长度就是我们要求的LIS的长度，
 
-// 特别注意的是ends数组的值可能不是一个真实的LIS，  
-// 比如若输入数组nums为{4, 2， 4， 5， 3， 7}，那么算完后的ends数组为{2， 3， 5， 7}，  
-// 可以发现它不是一个原数组的LIS，只是长度相等而已，千万要注意这点。  
+// 特别注意的是ends数组的值可能不是一个真实的LIS，
+// 比如若输入数组nums为{4, 2， 4， 5， 3， 7}，那么算完后的ends数组为{2， 3， 5， 7}，
+// 可以发现它不是一个原数组的LIS，只是长度相等而已，千万要注意这点。
 // 参见代码如下：
 
 //

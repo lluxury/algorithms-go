@@ -57,76 +57,75 @@ import "container/heap"
 // capacity 堆容量，超过的删除堆顶
 
 type LFUCache struct {
-	m 			map[int]*entry
-	pq			PQ
-	cap	int
+	m   map[int]*entry
+	pq  PQ
+	cap int
 }
 
-func Constructor_460(capacity int) LFUCache  {
+func Constructor_460(capacity int) LFUCache {
 	return LFUCache{
-		m: 		make(map[int]*entry, capacity),
-		pq:		make(PQ, 0, capacity),
-		cap:	capacity,
+		m:   make(map[int]*entry, capacity),
+		pq:  make(PQ, 0, capacity),
+		cap: capacity,
 	}
 }
 
-func (c *LFUCache) Get(key int) int  {
-	if ep, ok := c.m[key];ok{
+func (c *LFUCache) Get(key int) int {
+	if ep, ok := c.m[key]; ok {
 		c.pq.update(ep)
 		return ep.value
 	}
 	return -1
 }
 
-func (c *LFUCache) Put(key int, value int)  {
+func (c *LFUCache) Put(key int, value int) {
 	if c.cap <= 0 {
-		return 
+		return
 	}
-	
-	ep,ok := c.m[key]
+
+	ep, ok := c.m[key]
 	if ok {
 		c.m[key].value = value
 		c.pq.update(ep)
-		return 
+		return
 	}
 
-	ep = &entry{key:key, value:value}
-	if len(c.pq) == c.cap{
+	ep = &entry{key: key, value: value}
+	if len(c.pq) == c.cap {
 		temp := heap.Pop(&c.pq).(*entry)
 		delete(c.m, temp.key)
 	}
-	
+
 	c.m[key] = ep
 	heap.Push(&c.pq, ep)
 }
 
-
 type entry struct {
-	key 		int
-	value		int
-	frequence	int
-	index		int
-	date	time.Time
+	key       int
+	value     int
+	frequence int
+	index     int
+	date      time.Time
 }
 
 type PQ []*entry
 
-func (pq PQ) Len() int  { return len(pq) }
-func (pq PQ) Less(i,j int) bool {
-	if pq[i].frequence == pq[j].frequence{
+func (pq PQ) Len() int { return len(pq) }
+func (pq PQ) Less(i, j int) bool {
+	if pq[i].frequence == pq[j].frequence {
 		return pq[i].date.Before(pq[j].date)
 	}
 	return pq[i].frequence < pq[j].frequence
 }
 
-func (pq PQ) Swap(i,j int) {
-	pq[i],pq[j] = pq[j], pq[i]
+func (pq PQ) Swap(i, j int) {
+	pq[i], pq[j] = pq[j], pq[i]
 	pq[i].index = i
 	pq[j].index = j
 }
 
-func (pq *PQ) Push(x interface{})  {
-	n:= len(*pq)
+func (pq *PQ) Push(x interface{}) {
+	n := len(*pq)
 	entry := x.(*entry)
 	entry.index = n
 	entry.date = time.Now()
@@ -148,10 +147,6 @@ func (pq *PQ) update(entry *entry) {
 	entry.date = time.Now()
 	heap.Fix(pq, entry.index)
 }
-
-
-
-
 
 /**
  * Your LFUCache object will be instantiated and called as such:

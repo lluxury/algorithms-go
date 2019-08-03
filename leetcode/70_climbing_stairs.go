@@ -1,4 +1,5 @@
 package leetcode
+
 /*
 You are climbing a stair case. It takes n steps to reach to the top.
 
@@ -22,7 +23,6 @@ Explanation: There are three ways to climb to the top.
 2. 1 step + 2 steps
 3. 2 steps + 1 step*/
 
-
 // 动态规划,基础题
 // DP 状态定义
 // DP 状态方程
@@ -30,8 +30,8 @@ Explanation: There are three ways to climb to the top.
 // func climbStairs(n int) int {
 //     if (n == 0 || n == 1 || n == 2){
 //         return n
-//     } 
-    
+//     }
+
 //     mem := make([]int,n)
 //     mem[0] = 1
 //     mem[1] = 2
@@ -43,13 +43,13 @@ Explanation: There are three ways to climb to the top.
 
 func climbStairs(n int) int {
 
-    // slice1 := make([]type, len) 长度必须
-    d := make([]int,n+1)
-    d[0] = 1
-    d[1] = 1
+	// slice1 := make([]type, len) 长度必须
+	d := make([]int, n+1)
+	d[0] = 1
+	d[1] = 1
 
-    for i := 2; i <= n; i++ {
-        d[i] = d[i-1]+d[i-2]
-    }
-    return d[n]
+	for i := 2; i <= n; i++ {
+		d[i] = d[i-1] + d[i-2]
+	}
+	return d[n]
 }

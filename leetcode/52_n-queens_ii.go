@@ -166,4 +166,3 @@ func Solve(board Board) int {
 		return result
 	}
 }
-

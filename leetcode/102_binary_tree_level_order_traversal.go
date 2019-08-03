@@ -2,7 +2,7 @@ package leetcode
 
 import (
 	"github.com/lluxury/algorithms-go/lib"
- )
+)
 
 /*
  Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
@@ -30,38 +30,36 @@ return its level order traversal as:
 // 循环完lenQ后,跳过已循环部分,重定义q
 // ret添加多个结果
 
-
-func levelOrder(root *lib.TreeNode) [][]int  {
-    return bfs(root)
+func levelOrder(root *lib.TreeNode) [][]int {
+	return bfs(root)
 }
 
-func bfs(root *lib.TreeNode) [][]int  {
-    if root == nil {
-        return nil
-    }
+func bfs(root *lib.TreeNode) [][]int {
+	if root == nil {
+		return nil
+	}
 
-    var ret [][]int
-    var q []*lib.TreeNode
-    q = append(q, root)
-    for len(q) > 0 {
-        lenQ := len(q)
-        var tmp []int
-        for i := 0; i  < lenQ; i++ {
-            n := q[i]
-            tmp = append(tmp,n.Val)
-            if n.Left != nil{
-                q = append(q, n.Left)
-            }
+	var ret [][]int
+	var q []*lib.TreeNode
+	q = append(q, root)
+	for len(q) > 0 {
+		lenQ := len(q)
+		var tmp []int
+		for i := 0; i < lenQ; i++ {
+			n := q[i]
+			tmp = append(tmp, n.Val)
+			if n.Left != nil {
+				q = append(q, n.Left)
+			}
 
-            if n.Right != nil {
-                q = append(q, n.Right)
+			if n.Right != nil {
+				q = append(q, n.Right)
 			}
 			// 前序遍历
 		}
 		// print("lenQ=",len(q), " ")
 		q = q[lenQ:]
-        ret = append(ret, tmp)
-    }
-    return ret
+		ret = append(ret, tmp)
+	}
+	return ret
 }
-

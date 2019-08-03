@@ -26,18 +26,17 @@ Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.*/
 
-
 // 可以买卖多次, 把盈余累计起来就好
 
 // func maxProfit(prices []int) int {
 func maxProfit_122(prices []int) int {
-    n := len(prices)
-    // var i int
-    res := 0
-    for i := 1; i < n; i++ {
-        if (prices[i] > prices[i-1]){
-            res += prices[i] - prices[i - 1]
-        }
-    }
-    return res
+	n := len(prices)
+	// var i int
+	res := 0
+	for i := 1; i < n; i++ {
+		if prices[i] > prices[i-1] {
+			res += prices[i] - prices[i-1]
+		}
+	}
+	return res
 }

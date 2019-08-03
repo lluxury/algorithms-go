@@ -36,7 +36,6 @@ package leetcode
  *
  */
 
- 
 func minimumTotal(triangle [][]int) int {
 	n := len(triangle)
 	if n == 0 {

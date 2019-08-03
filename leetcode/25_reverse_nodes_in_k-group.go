@@ -1,4 +1,5 @@
 package leetcode
+
 import "github.com/lluxury/algorithms-go/lib"
 
 /*
@@ -18,10 +19,6 @@ Note:
 
 Only constant extra memory is allowed.
 You may not alter the values in the list's nodes, only nodes itself may be changed.*/
-
-
-
-
 
 // import (
 // 	"strconv"
@@ -139,5 +136,3 @@ func reverseKGroup(head *lib.ListNode, k int) *lib.ListNode {
 	}
 	return prev
 }
-
-

@@ -1,7 +1,7 @@
 package leetcode
 
 import (
-   "github.com/lluxury/algorithms-go/lib"
+	"github.com/lluxury/algorithms-go/lib"
 )
 
 /*
@@ -12,7 +12,7 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
 
 
- 
+
 
 Example 1:
 
@@ -24,13 +24,12 @@ Example 2:
 Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
 Output: 2
 Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.
- 
+
 
 Note:
 
 All of the nodes' values will be unique.
 p and q are different and both values will exist in the BST.*/
-
 
 // 二叉搜索树是有序的, 判断是否在2边,否则反回中间
 
@@ -43,13 +42,13 @@ p and q are different and both values will exist in the BST.*/
  * }
  */
 // func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode  {
-func lowestCommonAncestor_235(root, p, q *lib.TreeNode) *lib.TreeNode  {
-     if (p.Val < root.Val && root.Val > q.Val){
-         return lowestCommonAncestor_235(root.Left, p, q)
-     }
-     
-     if (p.Val > root.Val && root.Val < q.Val ){
-         return lowestCommonAncestor_235(root.Right, p ,q)
-     }
-     return root
+func lowestCommonAncestor_235(root, p, q *lib.TreeNode) *lib.TreeNode {
+	if p.Val < root.Val && root.Val > q.Val {
+		return lowestCommonAncestor_235(root.Left, p, q)
+	}
+
+	if p.Val > root.Val && root.Val < q.Val {
+		return lowestCommonAncestor_235(root.Right, p, q)
+	}
+	return root
 }

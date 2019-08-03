@@ -19,8 +19,6 @@ Can you do it like a boss? Do it without using any builtin function like __built
 
 // 用一个推导式做的, 估计要下次消化了
 
-
-
 // func countBits(num int) []int {
 //     f := make([]int, num + 1)
 //     for i := 1; i <= num; i++ {
@@ -29,12 +27,10 @@ Can you do it like a boss? Do it without using any builtin function like __built
 //     return f
 // }
 
-
 func countBits(num int) []int {
-    f := make([]int, num + 1)
-    for i := 1; i <= num; i++ {
-        f[i] = f[i & (i - 1)] + 1
-    }
-    return f
+	f := make([]int, num+1)
+	for i := 1; i <= num; i++ {
+		f[i] = f[i&(i-1)] + 1
+	}
+	return f
 }
-

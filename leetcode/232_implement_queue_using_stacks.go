@@ -58,100 +58,97 @@ package leetcode
     * 入队都放在第一个栈
     * 出队：如果第二个栈有数据，直接pop，否则将第一个栈的所有数据pop，然后push到第二个栈
 */
-    // type MyQueue struct {
-    // 	s1 *lib.Stack
-    // 	s2 *lib.Stack
-    // }
+// type MyQueue struct {
+// 	s1 *lib.Stack
+// 	s2 *lib.Stack
+// }
 
-    // /** Initialize your data structure here. */
-    // func Constructor_232() MyQueue {
-    // 	return MyQueue{
-    // 		s1: lib.NewStack(),
-    // 		s2: lib.NewStack(),
-    // 	}
-    // }
+// /** Initialize your data structure here. */
+// func Constructor_232() MyQueue {
+// 	return MyQueue{
+// 		s1: lib.NewStack(),
+// 		s2: lib.NewStack(),
+// 	}
+// }
 
-    // /** Push element x to the back of queue. */
-    // func (this *MyQueue) Push(x int) {
-    // 	this.s1.Push(x)
-    // }
+// /** Push element x to the back of queue. */
+// func (this *MyQueue) Push(x int) {
+// 	this.s1.Push(x)
+// }
 
-    // /** Removes the element from in front of queue and returns that element. */
-    // func (this *MyQueue) Pop() int {
-    // 	if this.s2.IsEmpty() {
-    // 		for !this.s1.IsEmpty() {
-    // 			this.s2.Push(this.s1.Pop())
-    // 		}
-    // 	}
+// /** Removes the element from in front of queue and returns that element. */
+// func (this *MyQueue) Pop() int {
+// 	if this.s2.IsEmpty() {
+// 		for !this.s1.IsEmpty() {
+// 			this.s2.Push(this.s1.Pop())
+// 		}
+// 	}
 
-    // 	return this.s2.Pop().(int)
-    // }
+// 	return this.s2.Pop().(int)
+// }
 
-    // /** Get the front element. */
-    // func (this *MyQueue) Peek() int {
-    // 	if this.s2.IsEmpty() {
-    // 		for !this.s1.IsEmpty() {
-    // 			this.s2.Push(this.s1.Pop())
-    // 		}
-    // 	}
+// /** Get the front element. */
+// func (this *MyQueue) Peek() int {
+// 	if this.s2.IsEmpty() {
+// 		for !this.s1.IsEmpty() {
+// 			this.s2.Push(this.s1.Pop())
+// 		}
+// 	}
 
-    // 	return this.s2.Peek().(int)
-    // }
+// 	return this.s2.Peek().(int)
+// }
 
-    // /** Returns whether the queue is empty. */
-    // func (this *MyQueue) Empty() bool {
-    // 	return this.s1.IsEmpty() && this.s2.IsEmpty()
-    // }
-
-
+// /** Returns whether the queue is empty. */
+// func (this *MyQueue) Empty() bool {
+// 	return this.s1.IsEmpty() && this.s2.IsEmpty()
+// }
 
 type MyQueue struct {
-    inStack []int
-    outStack []int
+	inStack  []int
+	outStack []int
 }
 
 // func Constructor() MyQueue  {
-func Constructor_232() MyQueue  {
-    inStack := make([]int, 0)
-    outStack := make([]int, 0)
-    q:= MyQueue{
-        inStack : inStack,
-        outStack : outStack,
-    }
-    return q
+func Constructor_232() MyQueue {
+	inStack := make([]int, 0)
+	outStack := make([]int, 0)
+	q := MyQueue{
+		inStack:  inStack,
+		outStack: outStack,
+	}
+	return q
 }
 
-func (q *MyQueue) Push(x int)  {
-    for len(q.outStack) !=0{
-        q.inStack = append(q.inStack, q.outStack[len(q.outStack)-1])
-        q.outStack = q.outStack[:len(q.outStack)-1]
-    }
-    q.inStack= append(q.inStack, x)
+func (q *MyQueue) Push(x int) {
+	for len(q.outStack) != 0 {
+		q.inStack = append(q.inStack, q.outStack[len(q.outStack)-1])
+		q.outStack = q.outStack[:len(q.outStack)-1]
+	}
+	q.inStack = append(q.inStack, x)
 }
 
-func (q *MyQueue) Pop() int{
-    for len(q.inStack)!=0{
-        q.outStack = append(q.outStack, q.inStack[len(q.inStack)-1])
-        q.inStack = q.inStack[:len(q.inStack)-1]
-    }
-    returnv :=q.outStack[len(q.outStack)-1]
-    q.outStack = q.outStack[:len(q.outStack)-1]
-    return returnv
+func (q *MyQueue) Pop() int {
+	for len(q.inStack) != 0 {
+		q.outStack = append(q.outStack, q.inStack[len(q.inStack)-1])
+		q.inStack = q.inStack[:len(q.inStack)-1]
+	}
+	returnv := q.outStack[len(q.outStack)-1]
+	q.outStack = q.outStack[:len(q.outStack)-1]
+	return returnv
 }
 
-func (q *MyQueue) Peek() int  {
-    for len(q.inStack)!=0{
-        q.outStack = append(q.outStack,q.inStack[len(q.inStack)-1])
-        q.inStack = q.inStack[:len(q.inStack)-1]
-    }
-    returnv := q.outStack[len(q.outStack)-1]
-    return returnv
+func (q *MyQueue) Peek() int {
+	for len(q.inStack) != 0 {
+		q.outStack = append(q.outStack, q.inStack[len(q.inStack)-1])
+		q.inStack = q.inStack[:len(q.inStack)-1]
+	}
+	returnv := q.outStack[len(q.outStack)-1]
+	return returnv
 }
 
-func (q *MyQueue) Empty() bool  {
-    return len(q.inStack) == 0 && len(q.outStack) == 0
+func (q *MyQueue) Empty() bool {
+	return len(q.inStack) == 0 && len(q.outStack) == 0
 }
-
 
 /**
  * Your MyQueue object will be instantiated and called as such:

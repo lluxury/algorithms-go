@@ -4,7 +4,7 @@ package leetcode
 
 Write a function that takes an unsigned integer and return the number of '1' bits it has (also known as the Hamming weight).
 
- 
+
 Example 1:
 
 Input: 00000000000000000000000000001011
@@ -20,7 +20,7 @@ Example 3:
 Input: 11111111111111111111111111111101
 Output: 31
 Explanation: The input binary string 11111111111111111111111111111101 has a total of thirty one '1' bits.
- 
+
 
 Note:
 
@@ -33,12 +33,11 @@ In Java, the compiler represents the signed integers using 2's complement notati
 // 位运算第一题, n & (n-1) 去末尾 1 操作
 // 虽然用除2的方法也可以达成,不过我没有试
 
-
 func hammingWeight_191(num uint32) int {
-    cnt := 0
-    for (num != 0){
-        num = num & (num - 1)
-        cnt=cnt + 1
-    }
-    return cnt
+	cnt := 0
+	for num != 0 {
+		num = num & (num - 1)
+		cnt = cnt + 1
+	}
+	return cnt
 }

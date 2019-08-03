@@ -68,7 +68,7 @@ func coinChange(coins []int, amount int) int {
 	}
 }
 
-func min_322(a,b int) int  {
+func min_322(a, b int) int {
 	if a > b {
 		return b
 	} else {

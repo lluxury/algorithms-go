@@ -61,9 +61,8 @@ func mySqrt(x int) int {
 	return int(a)
 }*/
 
-
 func mySqrt(x int) int {
-	if (x == 0 || x == 1){
+	if x == 0 || x == 1 {
 		return x
 	}
 
@@ -71,18 +70,18 @@ func mySqrt(x int) int {
 	r := x
 	var res int
 
-	for (l <= r){
-		var m int 
-		m = (l + r) /2
+	for l <= r {
+		var m int
+		m = (l + r) / 2
 		// mm = ll + (rr - ll >> 1);
-		if (m == x / m) {
+		if m == x/m {
 			return m
-		} else if (m > x / m){
-			r = m -1
+		} else if m > x/m {
+			r = m - 1
 		} else {
 			l = m + 1
-			res = m 
+			res = m
 		}
 	}
-    return res
+	return res
 }

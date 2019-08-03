@@ -8,7 +8,7 @@ import (
 
 func Test_120(t *testing.T) {
 	test.Runs(t, minimumTotal, []*test.Case{
-	    {Input: `[
+		{Input: `[
      [2],
     [3,4],
    [6,5,7],
@@ -16,4 +16,3 @@ func Test_120(t *testing.T) {
 ]`, Output: `11`},
 	})
 }
-

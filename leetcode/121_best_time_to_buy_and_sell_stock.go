@@ -1,4 +1,3 @@
-
 package leetcode
 
 /*
@@ -21,20 +20,17 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
-
-func maxProfit(prices []int) int  {
-    tmp := 0
-    max := 0
-    for i := 1; i < len(prices); i++ {
-        tmp += prices[i] - prices[i-1]
-        if tmp < 0 {
-            tmp = 0
-        }
-        if tmp > max {
-            max = tmp
-        }
-    }
-    return max
+func maxProfit(prices []int) int {
+	tmp := 0
+	max := 0
+	for i := 1; i < len(prices); i++ {
+		tmp += prices[i] - prices[i-1]
+		if tmp < 0 {
+			tmp = 0
+		}
+		if tmp > max {
+			max = tmp
+		}
+	}
+	return max
 }
-
-
