@@ -1,5 +1,8 @@
 package leetcode
 
+import (
+	// "fmt"
+)
 /*
  * [168] Excel Sheet Column Title
  *
@@ -64,17 +67,26 @@ package leetcode
 
 */
 
-func convertToTitle(n int) string {
-	s := ""
-
-	for n > 0 {
-		m := n % 26
-		if m == 0 {
-			m += 26
-		}
-		s = string(m+64) + s
-		n = (n - m) / 26
+func toChar(n int) string {
+	if n == 0 {
+		n = 26
 	}
+	return string('A'+n-1)
+}
 
-	return s
+func convertToTitle(n int) string {
+	res :=""
+	for n> 26{
+		d := n % 26
+		res = toChar(d) + res
+		n/=26
+		if d==0{
+			n-=1
+		}
+	}
+	d := n % 26
+	// // fmt.Fprintln(n,d,res)
+    // fmt.Println(n, d, res)
+	res = toChar(d) + res
+	return res
 }
