@@ -1,6 +1,7 @@
 package leetcode
 
-import "github.com/lluxury/algorithms-go/lib"
+// import "github.com/lluxury/algorithms-go/lib"
+import "sort"
 
 /*
  * [39] Combination Sum
@@ -60,25 +61,25 @@ import "github.com/lluxury/algorithms-go/lib"
 
  */
 
-func backtrackCombinationSum(list *[][]int, nums []int, tempList []int, target int, start int) {
-	if target == 0 {
-		*list = append(*list, lib.IntArrayDeepCopy(tempList))
+
+func backtrack_39(candidates, solution []int, target int, result *[][]int){
+    if target == 0 {
+		*result = append(*result, solution)
+	}
+
+	if len(candidates) == 0 || target < candidates[0]{
 		return
 	}
-
-	for i := start; i < len(nums); i++ {
-		c := target - nums[i]
-		if c < 0 {
-			continue
-		} else if c == 0 {
-
-		}
-		backtrackCombinationSum(list, nums, append(tempList, nums[i]), c, i)
-	}
+	solution = solution[:len(solution):len(solution)]
+	backtrack_39(candidates, append(solution, candidates[0]), target-candidates[0],result)
+	backtrack_39(candidates[1:], solution, target, result)
 }
 
 func combinationSum(candidates []int, target int) [][]int {
-	var list = make([][]int, 0)
-	backtrackCombinationSum(&list, candidates, []int{}, target, 0)
-	return list
+	sort.Ints(candidates)
+
+	res := [][]int{}
+	solution := []int{}
+	backtrack_39(candidates, solution, target, &res)
+	return res
 }

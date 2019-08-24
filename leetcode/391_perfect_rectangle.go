@@ -1,5 +1,7 @@
 package leetcode
 
+import "math"
+
 /*
  * @lc app=leetcode id=391 lang=golang
  *
@@ -119,10 +121,10 @@ func isRectangleCover(rectangles [][]int) bool {
 	for _, r := range rectangles {
 		x1,y1,x2,y2 = r[0], r[1], r[2], r[3]
 
-		minX = min(x1, minX)
-		minY = min(y1, minY)
-		maxX = max(x2, maxX)
-		maxY = max(y2, maxY)
+		minX = min_391(x1, minX)
+		minY = min_391(y1, minY)
+		maxX = max_391(x2, maxX)
+		maxY = max_391(y2, maxY)
 
 		area += (x2 - x1) * (y2 -y1)
 
@@ -152,14 +154,14 @@ func isRectangleCover(rectangles [][]int) bool {
 	return area == (maxX-minX)*(maxY-minY)
 }
 
-func max(a,b int) int {
+func max_391(a,b int) int {
 	if a > b {
 		return a
 	}
 	return b
 }
 
-func min(a,b int) int  {
+func min_391(a,b int) int  {
 	if a < b {
 		return a
 	}
