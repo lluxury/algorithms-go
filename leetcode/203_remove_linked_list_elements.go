@@ -40,14 +40,23 @@ import "github.com/lluxury/algorithms-go/lib"
 */
 
 func removeElements(head *lib.ListNode, val int) *lib.ListNode {
-	if head == nil {
-		return nil
-	}
-	if head.Val == val {
-		return removeElements(head.Next, val)
-	}
+// 	if head == nil {
+// 		return nil
+// 	}
+// 	if head.Val == val {
+// 		return removeElements(head.Next, val)
+// 	}
 
-	head.Next = removeElements(head.Next, val)
+// 	head.Next = removeElements(head.Next, val)
 
-	return head
+// 	return head
+// }
+
+ // func removeElements(head *ListNode, val int) *ListNode {
+    if head ==nil {return nil}
+    head.Next = removeElements(head.Next,val)
+    if head.Val == val {
+        return head.Next
+    }
+    return head
 }
